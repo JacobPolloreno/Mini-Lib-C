@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 19:30:43 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/19 19:34:54 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/20 17:30:10 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,13 @@
 
 void	*ft_memset(void *b, int c, size_t n)
 {
+	char *str;
+
+	str = (char *)b;
+	while (n--)
+	{
+		str[0] = c;
+		str++;
+	}
 	return (b);
 }

@@ -1,0 +1,22 @@
+#include "test.h"
+
+#test check_memccpy
+	const char *src = "42 is a school.";
+	char buff[50];
+	char buff2[50];
+	char *dest;
+	char *dest2;
+
+	dest = memccpy(buff, src, '2', strlen(src) + 1);
+	dest2 = ft_memccpy(buff2, src, '2',  strlen(src) + 1);
+	*dest = '\0';
+	*dest2 = '\0';
+	ck_assert_int_eq(strlen(dest), 2);
+	ck_assert_int_eq(strlen(dest2), 2);
+	ck_assert_str_eq(dest, "42");
+	ck_assert_str_eq(dest2, "42");
+	ck_assert_str_eq(dest2, dest2);
+
+	/* ck_assert_str_eq(dest, src); */
+	/* ck_assert_str_eq(dest2, src); */
+	/* ck_assert_str_eq(dest, dest2); */

@@ -1,0 +1,14 @@
+#include "test.h"
+
+#test check_bzero
+	char str[20] = "42 is a school";
+	char str2[20] = "42 is a school";
+
+	bzero(str + 3, 8 * sizeof(char));
+	ft_bzero(str2 + 3, 8 * sizeof(char));
+
+	ck_assert_str_eq("42 ", str);
+	ck_assert_str_eq("42 ", str2);
+	ck_assert_str_eq(str, str2);
+	ck_assert_str_ne(str, "42 is a school");
+	ck_assert_str_ne(str2, "42 is a school");

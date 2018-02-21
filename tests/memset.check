@@ -1,0 +1,10 @@
+#include "test.h"
+
+#test check_memset
+	char str[50] = "42 is a school";
+	memset(str + 3, '.', 8 * sizeof(char));
+	ck_assert_str_eq("42 ........ool", str);
+	char str2[50] = "42 is a school";
+	ft_memset(str2 + 3, '.', 8 * sizeof(char));
+	ck_assert_str_eq("42 ........ool", str2);
+	ck_assert_str_eq(str, str2);

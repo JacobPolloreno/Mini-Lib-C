@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/19 14:59:02 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/21 08:53:40 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/21 09:13:56 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/21 10:38:14 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
-# include <fcntl.h>
-# include <stdio.h>
-# include <string.h>
-# include <strings.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "libft.h"
-#endif
+#include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	len;
+
+	len = 0;
+	while (len < n)
+	{
+		ft_memset(&((char *)dst)[len], ((char *)src)[len], 1);
+		len += sizeof(char);
+	}
+	return (dst);
+}

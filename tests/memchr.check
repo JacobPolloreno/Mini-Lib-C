@@ -1,0 +1,14 @@
+#include "test.h"
+
+#test check_memchr
+   const char str[] = "http://www.42siliconvalley.com";
+   const char ch = '.';
+   char *ret;
+   char *ret2;
+
+   printf("CHECKING MEMCHR\n");
+   ret = memchr(str, ch, strlen(str));
+   ret2 = memchr(str, ch, strlen(str));
+   ck_assert_str_eq(ret, ".42siliconvalley.com");
+   ck_assert_str_eq(ret2, ".42siliconvalley.com");
+   ck_assert_ptr_eq(ret, ret2);

@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/02/21 11:19:40 by jpollore         ###   ########.fr        #
+#    Updated: 2018/02/21 21:54:55 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ TEST = tests/
 SRC = srcs/
 CS = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c
 CS += ft_strlcat.c ft_strcmp.c ft_strncmp.c ft_atoi.c ft_strstr.c ft_memset.c
-CS += ft_bzero.c ft_memcpy.c ft_memccpy.c
-TS = strcmp.check memset.check bzero.check memcpy.check memccpy.check
+CS += ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c
+TS = strcmp.check memset.check bzero.check memcpy.check memccpy.check memmove.check memchr.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))
 TEST_OBJS = $(addprefix $(TEST), $(addsuffix .o, $(TS)))
@@ -30,8 +30,7 @@ all: $(NAME)
 
 $(NAME):
 	$(CC) $(CFLAGS) -c $(SRCS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
 	/bin/rm -f $(OBJS)

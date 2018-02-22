@@ -6,13 +6,14 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 18:48:15 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/19 18:48:17 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/22 11:26:19 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*copy;
 	int		len;
@@ -21,14 +22,9 @@ char	*ft_strdup(char *src)
 	while (*(src + len))
 		len++;
 	copy = (char *)malloc(sizeof(*copy) * (len + 1));
-	if (copy != ((void*)0))
+	if (copy)
 	{
-		len = 0;
-		while (*(src + len))
-		{
-			*(copy + len) = *(src + len);
-			len++;
-		}
+		ft_memcpy(copy, src, len);
 		*(copy + len) = '\0';
 		return (copy);
 	}

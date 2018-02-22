@@ -25,9 +25,9 @@
 	memset(longstr, '.', 8999 * sizeof(char));
 	t = clock() - t;
 	time_taken = ((double)t) / CLOCKS_PER_SEC;
-	printf("Memset took %f to execute\n", time_taken);
+	printf("\tMemset took %f to execute\n", time_taken);
 	t = clock();
 	ft_memset(longstr, '.', 8999 * sizeof(char));
 	t = clock() - t;
 	time_taken = ((double)t) / CLOCKS_PER_SEC;
-	printf("ft_memset took %f to execute\n", time_taken);
+	printf("\tft_memset took %f to execute\n", time_taken);

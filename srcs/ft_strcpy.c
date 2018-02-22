@@ -6,9 +6,11 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 18:33:21 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/19 18:46:46 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/22 11:57:31 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strcpy(char *dest, char *src)
 {

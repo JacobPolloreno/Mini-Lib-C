@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 19:30:43 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/21 15:32:15 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/22 09:54:44 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,8 @@ void	*ft_memset(void *b, int c, size_t n)
 	ptr_w = (unsigned int *)ptr_c;
 	tail = n & 3;
 	n >>= 2;
-	while (n)
-	{
+	while (n--)
 		*ptr_w++ = value_w;
-		n--;
-	}
 	ptr_c = (char *)ptr_w;
 	while (tail--)
 		*ptr_c++ = value_c;

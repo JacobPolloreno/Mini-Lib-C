@@ -7,10 +7,13 @@
 	char *dest;
 	char *dest2;
 
+	printf("CHECKING MEMCCPY\n");
 	dest = memccpy(buff, src, '2', strlen(src) + 1);
 	dest2 = ft_memccpy(buff2, src, '2',  strlen(src) + 1);
 	*dest = '\0';
 	*dest2 = '\0';
+	dest -= 2;
+	dest2 -= 2;
 	ck_assert_int_eq(strlen(dest), 2);
 	ck_assert_int_eq(strlen(dest2), 2);
 	ck_assert_str_eq(dest, "42");

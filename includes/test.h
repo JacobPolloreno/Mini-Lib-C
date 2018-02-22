@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 14:59:02 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/21 08:53:40 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/21 12:55:24 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <time.h>
 # include <unistd.h>
 # include "libft.h"
 #endif

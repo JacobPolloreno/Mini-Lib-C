@@ -4,7 +4,7 @@
 	char str[20] = "42 is a school";
 	char str2[20] = "42 is a school";
 
-	printf("\nCHECKING BZERO\n");
+	printf("CHECKING BZERO...\n");
 	bzero(str + 3, 8 * sizeof(char));
 	ft_bzero(str2 + 3, 8 * sizeof(char));
 
@@ -21,7 +21,7 @@
 	char *dest;
 	char *dest2;
 
-	printf("\nCHECKING MEMCCPY\n");
+	printf("CHECKING MEMCCPY...\n");
 	dest = memccpy(buff, src, '2', strlen(src) + 1);
 	dest2 = ft_memccpy(buff2, src, '2',  strlen(src) + 1);
 	*dest = '\0';
@@ -44,7 +44,7 @@
    char *ret;
    char *ret2;
 
-   printf("\nCHECKING MEMCHR\n");
+   printf("CHECKING MEMCHR...\n");
    ret = memchr(str, ch, strlen(str));
    ret2 = memchr(str, ch, strlen(str));
    ck_assert_str_eq(ret, ".42siliconvalley.com");
@@ -60,7 +60,7 @@
 	clock_t t;
 	double time_taken;
 
-	printf("\nCHECKING MEMCMP\n");
+	printf("CHECKING MEMCMP...\n");
 	memcpy(str1, "abcdef", 6);
 	memcpy(str2, "ABCDEF", 6);
 
@@ -113,7 +113,7 @@
 	clock_t t;
 	double time_taken;
 
-	printf("\nCHECKING MEMCPY\n");
+	printf("CHECKING MEMCPY...\n");
 	memcpy(dest, src, strlen(src) + 1);
 	ft_memcpy(dest2, src, strlen(src) + 1);
 	ck_assert_str_eq(dest, src);
@@ -138,7 +138,7 @@
 	char csrc[100] = "Geeksfor";
 	char csrc2[100] = "Geeksfor";
 
-	printf("\nCHECKING MEMMOVE\n");
+	printf("CHECKING MEMMOVE...\n");
 	memmove(csrc + 5, csrc, strlen(csrc) + 1);
 	ft_memmove(csrc2 + 5, csrc2, strlen(csrc2) + 1);
 	ck_assert_str_eq(csrc, "GeeksGeeksfor");
@@ -152,7 +152,7 @@
 	clock_t t;
 	double time_taken;
 
-	printf("\nCHECKING MEMSET\n");
+	printf("CHECKING MEMSET...\n");
 	ck_assert_int_eq(sizeof(unsigned long), 8);
 	memset(str + 3, '.', sizeof(char));
 	ft_memset(str2 + 3, '.', sizeof(char));
@@ -178,8 +178,35 @@
 	printf("\tft_memset took %f to execute\n", time_taken);
 
 #test check_strcmp
-	printf("\nCHECKING STRCMP\n");
+	printf("CHECKING STRCMP...\n");
 	ck_assert_int_eq(ft_strcmp("A", "A"), strcmp("A", "A"));
+
+#test check_strcpy
+	char dest[9999];
+	char dest2[9999];
+	char src[9999];
+	char *ptr;
+	char *ptr2;
+	clock_t t;
+	double time_taken;
+
+	printf("CHECKING STRCPY...\n");
+	ft_bzero(src, 9999);
+	strcpy(dest, src);
+	strcpy(dest2, src);
+	ck_assert_str_eq(dest, src);
+	ck_assert_str_eq(dest2, src);
+	ck_assert_str_eq(dest, dest2);
+	ck_assert_int_eq(dest[9998], 0);
+	ck_assert_int_eq(dest2[9998], 0);
+	ptr = dest;
+	ptr2 = dest2;
+	ck_assert_ptr_eq(ptr, dest);
+	ck_assert_ptr_eq(ptr2, dest2);
+	ptr += 9998;
+	ptr2 += 9998;
+	ck_assert_int_eq(*ptr, '\0');
+	ck_assert_int_eq(*ptr2, '\0');
 
 #test check_strdup
 	char src[9999];
@@ -190,7 +217,7 @@
 	clock_t t;
 	double time_taken;
 
-	printf("\nCHECKING STRDUP\n");
+	printf("CHECKING STRDUP...\n");
 	res3 = strdup(src2);
 	ck_assert_int_eq(res3[6], '\0');
 	ck_assert_str_eq(res3, src2);
@@ -225,7 +252,7 @@
 	double time_taken;
 	int len;
 
-	printf("\nCHECKING STRLEN\n");
+	printf("CHECKING STRLEN...\n");
 	ck_assert_int_eq(ft_strlen(str), strlen(str));
 	memset(longstr, 'A', 9000);
 	ck_assert_int_eq(ft_strlen(longstr), strlen(longstr));

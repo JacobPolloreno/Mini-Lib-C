@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 09:13:56 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/22 16:50:06 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/22 17:22:56 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		*dst_s++ = *src_s++;
 	return (dst);
 }
-
-/* void	*ft_memcpy(void *dst, const void *src, size_t n) */
-/* { */
-/* 	size_t	len; */
-
-/* 	len = 0; */
-/* 	while (len < n) */
-/* 	{ */
-/* 		ft_memset(&((char *)dst)[len], ((char *)src)[len], 1); */
-/* 		len += sizeof(char); */
-/* 	} */
-/* 	return (dst); */
-/* } */
-
-/* void	*ft_memcpy(void *dst, const void *src, size_t n) */
-/* { */
-/* 	int *s_word; */
-/* 	int d_word; */
-/* 	int *dst32; */
-
-/* 	s_word = (int *)src; */
-/* 	src++; */
-/* 	dst32 = (int *)dst; */
-/* 	while (n--) */
-/* 	{ */
-/* 		d_word = *s_word << 8; */
-/* 		s_word = (int *)src; */
-/* 		src++; */
-/* 		d_word |= *s_word >> 24; */
-/* 		*dst32 = d_word; */
-/* 		dst++; */
-/* 	} */
-/* 	return (dst); */
-/* } */

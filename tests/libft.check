@@ -192,8 +192,16 @@
 
 	printf("CHECKING STRCPY...\n");
 	ft_bzero(src, 9999);
+	t = clock();
 	strcpy(dest, src);
-	strcpy(dest2, src);
+	t = clock() - t;
+	time_taken = ((double) t) / CLOCKS_PER_SEC;
+	printf("\tstrcpy took %f to execute\n", time_taken);
+	t = clock();
+	ft_strcpy(dest2, src);
+	t = clock() - t;
+	time_taken = ((double) t) / CLOCKS_PER_SEC;
+	printf("\tft_strcpy took %f to execute\n", time_taken);
 	ck_assert_str_eq(dest, src);
 	ck_assert_str_eq(dest2, src);
 	ck_assert_str_eq(dest, dest2);

@@ -6,12 +6,11 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 18:48:15 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/22 11:26:19 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/22 19:24:57 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strdup(const char *src)
 {

@@ -6,11 +6,11 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 18:45:54 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/22 10:56:35 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/22 19:22:10 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int		ft_strlen(const char *str)
 {
 	int count;
 

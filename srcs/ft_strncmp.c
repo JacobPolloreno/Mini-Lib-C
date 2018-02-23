@@ -6,11 +6,11 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/15 20:58:45 by jpollore          #+#    #+#             */
-/*   Updated: 2018/01/16 12:19:58 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/22 19:24:39 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
 	while ((s1[0] || s2[0]) && n)
 	{

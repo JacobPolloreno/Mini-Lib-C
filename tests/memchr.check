@@ -6,7 +6,7 @@
    char *ret;
    char *ret2;
 
-   printf("CHECKING MEMCHR\n");
+   printf("\nCHECKING MEMCHR\n");
    ret = memchr(str, ch, strlen(str));
    ret2 = memchr(str, ch, strlen(str));
    ck_assert_str_eq(ret, ".42siliconvalley.com");

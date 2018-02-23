@@ -9,7 +9,7 @@
 	clock_t t;
 	double time_taken;
 
-	printf("CHECKING STRDUP\n");
+	printf("\nCHECKING STRDUP\n");
 	res3 = strdup(src2);
 	ck_assert_int_eq(res3[6], '\0');
 	ck_assert_str_eq(res3, src2);

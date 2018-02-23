@@ -7,7 +7,7 @@
 	double time_taken;
 	int len;
 
-	printf("CHECKING STRLEN\n");
+	printf("\nCHECKING STRLEN\n");
 	ck_assert_int_eq(ft_strlen(str), strlen(str));
 	memset(longstr, 'A', 9000);
 	ck_assert_int_eq(ft_strlen(longstr), strlen(longstr));

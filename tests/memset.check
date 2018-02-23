@@ -7,8 +7,8 @@
 	clock_t t;
 	double time_taken;
 
+	printf("\nCHECKING MEMSET\n");
 	ck_assert_int_eq(sizeof(unsigned long), 8);
-	printf("CHECKING MEMSET\n");
 	memset(str + 3, '.', sizeof(char));
 	ft_memset(str2 + 3, '.', sizeof(char));
 	ck_assert_str_eq("42 .s a school", str);

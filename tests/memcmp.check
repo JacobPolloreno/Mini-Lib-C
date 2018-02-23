@@ -9,7 +9,7 @@
 	clock_t t;
 	double time_taken;
 
-	printf("CHECKING MEMCMP\n");
+	printf("\nCHECKING MEMCMP\n");
 	memcpy(str1, "abcdef", 6);
 	memcpy(str2, "ABCDEF", 6);
 

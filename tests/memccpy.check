@@ -7,7 +7,7 @@
 	char *dest;
 	char *dest2;
 
-	printf("CHECKING MEMCCPY\n");
+	printf("\nCHECKING MEMCCPY\n");
 	dest = memccpy(buff, src, '2', strlen(src) + 1);
 	dest2 = ft_memccpy(buff2, src, '2',  strlen(src) + 1);
 	*dest = '\0';

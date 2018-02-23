@@ -1,5 +1,5 @@
 #include "test.h"
 
 #test check_strcmp
-	printf("CHECKING STRCMP\n");
+	printf("\nCHECKING STRCMP\n");
 	ck_assert_int_eq(ft_strcmp("A", "A"), strcmp("A", "A"));

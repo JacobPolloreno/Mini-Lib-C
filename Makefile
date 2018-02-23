@@ -6,33 +6,35 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/02/22 16:24:23 by jpollore         ###   ########.fr        #
+#    Updated: 2018/02/22 17:18:05 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = libft.a
 HEADER = includes/
+TS_NAME = check.out
+TEST_HEADER = /nfs/2018/j/jpollore/.brew/include/
+TEST_LIBRARY = /nfs/2018/j/jpollore/.brew/lib/
 TEST = tests/
 SRC = srcs/
 CS = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c
 CS += ft_strlcat.c ft_strcmp.c ft_strncmp.c ft_atoi.c ft_strstr.c ft_memset.c
 CS += ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c
 CS += ft_strdup.c
-TS = strcmp.check memset.check bzero.check memcpy.check memccpy.check
-TS += memmove.check memchr.check memcmp.check strlen.check
-TS += strdup.check
+TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))
-TEST_OBJS = $(addprefix $(TEST), $(addsuffix .o, $(TS)))
-TEST_DEBUGS = $(addsuffix .dSYM, $(TEST_OBJS))
-TEST_SRCS = $(addprefix $(TEST), $(addsuffix .c, $(TS)))
-CFLAGS = -Wall -Wextra -Werror -I$(HEADER)
+TEST_CHECK = $(addprefix $(TEST), $(TS))
+TEST_SRC = $(addsuffix .c, $(TEST_CHECK))
+CFLAGS = -Wall -Wextra -Werror
+OPTION1 = -I$(HEADER)
+OPTION2 = $(OPTION1) -I$(TEST_HEADER) -L$(TEST_LIBRARY) -lcheck $(NAME)
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) -c $(SRCS)
+	$(CC) $(CFLAGS) $(OPTION1) -c $(SRCS)
 	ar rcs $(NAME) $(OBJS)
 
 clean:
@@ -43,11 +45,13 @@ fclean: clean
 
 re: fclean all
 
-run_test: clean_test $(NAME)
-	./make_test.sh
-	./run_test.sh
+make_test: clean_test $(NAME)
+	checkmk $(TEST_CHECK) > $(TEST_SRC)
+	gcc $(CFLAGS) $(OPTION2) $(TEST_SRC) -o $(TS_NAME)
+
+run_test: make_test
+	./$(TS_NAME)
 
 clean_test:
-	/bin/rm -f $(TEST_SRCS)
-	/bin/rm -f $(TEST_OBJS)
-	/bin/rm -rf $(TEST_DEBUGS)
+	/bin/rm -f $(TEST_SRC)
+	/bin/rm -f $(TS_NAME)

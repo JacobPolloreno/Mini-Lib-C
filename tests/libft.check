@@ -1,0 +1,243 @@
+#include "test.h"
+
+#test check_bzero
+	char str[20] = "42 is a school";
+	char str2[20] = "42 is a school";
+
+	printf("\nCHECKING BZERO\n");
+	bzero(str + 3, 8 * sizeof(char));
+	ft_bzero(str2 + 3, 8 * sizeof(char));
+
+	ck_assert_str_eq("42 ", str);
+	ck_assert_str_eq("42 ", str2);
+	ck_assert_str_eq(str, str2);
+	ck_assert_str_ne(str, "42 is a school");
+	ck_assert_str_ne(str2, "42 is a school");
+
+#test check_memccpy
+	const char *src = "42 is a school.";
+	char buff[50];
+	char buff2[50];
+	char *dest;
+	char *dest2;
+
+	printf("\nCHECKING MEMCCPY\n");
+	dest = memccpy(buff, src, '2', strlen(src) + 1);
+	dest2 = ft_memccpy(buff2, src, '2',  strlen(src) + 1);
+	*dest = '\0';
+	*dest2 = '\0';
+	dest -= 2;
+	dest2 -= 2;
+	ck_assert_int_eq(strlen(dest), 2);
+	ck_assert_int_eq(strlen(dest2), 2);
+	ck_assert_str_eq(dest, "42");
+	ck_assert_str_eq(dest2, "42");
+	ck_assert_str_eq(dest2, dest2);
+
+	/* ck_assert_str_eq(dest, src); */
+	/* ck_assert_str_eq(dest2, src); */
+	/* ck_assert_str_eq(dest, dest2); */
+
+#test check_memchr
+   const char str[] = "http://www.42siliconvalley.com";
+   const char ch = '.';
+   char *ret;
+   char *ret2;
+
+   printf("\nCHECKING MEMCHR\n");
+   ret = memchr(str, ch, strlen(str));
+   ret2 = memchr(str, ch, strlen(str));
+   ck_assert_str_eq(ret, ".42siliconvalley.com");
+   ck_assert_str_eq(ret2, ".42siliconvalley.com");
+   ck_assert_ptr_eq(ret, ret2);
+
+#test check_memcmp
+	char str1[15];
+	char str2[15];
+	char longstr1[9999];
+	char longstr2[9999];
+	int ret;
+	clock_t t;
+	double time_taken;
+
+	printf("\nCHECKING MEMCMP\n");
+	memcpy(str1, "abcdef", 6);
+	memcpy(str2, "ABCDEF", 6);
+
+	ck_assert_int_eq(memcmp("", "", 0), ft_memcmp("", "", 0));
+	ck_assert_int_eq(memcmp("", "", 1), ft_memcmp("", "", 1));
+	ck_assert_int_eq(memcmp("Z", "Z", 1), ft_memcmp("Z", "Z", 1));
+	ck_assert_int_eq(memcmp("a", "b", 1), ft_memcmp("a", "b", 1));
+	ck_assert_int_eq(memcmp("b", "a", 1), ft_memcmp("b", "a", 1));
+	ck_assert_int_eq(memcmp("a", "A", 1), ft_memcmp("a", "A", 1));
+	ck_assert_int_eq(memcmp("ABx", "ABX", 3), ft_memcmp("ABx", "ABX", 3));
+
+	t = clock();
+	ret = memcmp(str1, str2, 5);
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("\tMemcmp took %f to execute\n", time_taken);
+	ck_assert_int_gt(ret, 0);
+
+	t = clock();
+	ret = ft_memcmp(str1, str2, 5);
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("\tft_memcmp took %f to execute\n", time_taken);
+	ck_assert_int_gt(ret, 0);
+
+	memset(longstr1, 'a', 9999);
+	memset(longstr2, 'a', 9999);
+
+	t = clock();
+	ret = memcmp(longstr1, longstr2, 9999);
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("\tMemcmp took %f to execute\n", time_taken);
+	ck_assert_int_eq(ret, 0);
+
+	t = clock();
+	ret = ft_memcmp(longstr1, longstr2, 9999);
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("\tft_memcmp took %f to execute\n", time_taken);
+	ck_assert_int_eq(ret, 0);
+
+#test check_memcpy
+	const char *src = "42 is a school.";
+	char dest[50];
+	char dest2[50];
+	char long_src[9999];
+	char long1[9999];
+	char long2[9999];
+	clock_t t;
+	double time_taken;
+
+	printf("\nCHECKING MEMCPY\n");
+	memcpy(dest, src, strlen(src) + 1);
+	ft_memcpy(dest2, src, strlen(src) + 1);
+	ck_assert_str_eq(dest, src);
+	ck_assert_str_eq(dest2, src);
+	ck_assert_str_eq(dest, dest2);
+
+	ft_bzero(long_src, 9999);
+
+	t = clock();
+	memcpy(long1, long_src, 9999);
+	t = clock() - t;
+	time_taken = ((double) t) / CLOCKS_PER_SEC;
+	printf("\tMemcpy took %f to execute\n", time_taken);
+
+	t = clock();
+	ft_memcpy(long2, long_src, 9999);
+	t = clock() - t;
+	time_taken = ((double) t) / CLOCKS_PER_SEC;
+	printf("\tft_memcpy took %f to execute\n", time_taken);
+
+#test check_memmove
+	char csrc[100] = "Geeksfor";
+	char csrc2[100] = "Geeksfor";
+
+	printf("\nCHECKING MEMMOVE\n");
+	memmove(csrc + 5, csrc, strlen(csrc) + 1);
+	ft_memmove(csrc2 + 5, csrc2, strlen(csrc2) + 1);
+	ck_assert_str_eq(csrc, "GeeksGeeksfor");
+	ck_assert_str_eq(csrc2, "GeeksGeeksfor");
+	ck_assert_str_eq(csrc, csrc2);
+
+#test check_memset
+	char str[50] = "42 is a school";
+	char str2[50] = "42 is a school";
+	char longstr[9000] = "This is a long sentence with many many words. Many words.";
+	clock_t t;
+	double time_taken;
+
+	printf("\nCHECKING MEMSET\n");
+	ck_assert_int_eq(sizeof(unsigned long), 8);
+	memset(str + 3, '.', sizeof(char));
+	ft_memset(str2 + 3, '.', sizeof(char));
+	ck_assert_str_eq("42 .s a school", str);
+	ck_assert_str_eq("42 .s a school", str2);
+	ck_assert_str_eq(str, str2);
+
+	memset(str + 4, '.', 7 * sizeof(char));
+	ft_memset(str2 + 4, '.', 7 * sizeof(char));
+	ck_assert_str_eq("42 ........ool", str);
+	ck_assert_str_eq("42 ........ool", str2);
+	ck_assert_str_eq(str, str2);
+
+	t = clock();
+	memset(longstr, '.', 8999 * sizeof(char));
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("\tMemset took %f to execute\n", time_taken);
+	t = clock();
+	ft_memset(longstr, '.', 8999 * sizeof(char));
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("\tft_memset took %f to execute\n", time_taken);
+
+#test check_strcmp
+	printf("\nCHECKING STRCMP\n");
+	ck_assert_int_eq(ft_strcmp("A", "A"), strcmp("A", "A"));
+
+#test check_strdup
+	char src[9999];
+	char src2[6] = "12345";
+	char *res;
+	char *res2;
+	char *res3;
+	clock_t t;
+	double time_taken;
+
+	printf("\nCHECKING STRDUP\n");
+	res3 = strdup(src2);
+	ck_assert_int_eq(res3[6], '\0');
+	ck_assert_str_eq(res3, src2);
+	free(res3);
+	res3 = NULL;
+	ck_assert_ptr_eq(res3, 0);
+
+	bzero(src, 9999);
+	t = clock();
+	res = strdup(src); 
+	t = clock() - t;
+	time_taken = ((double) t) / CLOCKS_PER_SEC; 
+	printf("\tStrdup took %f to execute\n", time_taken);
+
+	t = clock();
+	res2 = ft_strdup(src); 
+	t = clock() - t;
+	time_taken = ((double) t) / CLOCKS_PER_SEC; 
+	printf("\tft_strdup took %f to execute\n", time_taken);
+
+	ck_assert_str_eq(res, src);
+	ck_assert_str_eq(res2, src);
+	ck_assert_int_eq(res[0], 0);
+	ck_assert_int_eq(res2[0], 0);
+	free(res);
+	free(res2);
+
+#test check_strlen
+	char str[10] = "0123456789";
+	char longstr[9000];
+	clock_t t;
+	double time_taken;
+	int len;
+
+	printf("\nCHECKING STRLEN\n");
+	ck_assert_int_eq(ft_strlen(str), strlen(str));
+	memset(longstr, 'A', 9000);
+	ck_assert_int_eq(ft_strlen(longstr), strlen(longstr));
+	
+	t = clock();
+	len = strlen(longstr);
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("\tStrlen took %f to execute\n", time_taken);
+	
+	t = clock();
+	len = ft_strlen(longstr);
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("\tft_strlen took %f to execute\n", time_taken);

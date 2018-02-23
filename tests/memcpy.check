@@ -30,34 +30,3 @@
 	t = clock() - t;
 	time_taken = ((double) t) / CLOCKS_PER_SEC;
 	printf("\tft_memcpy took %f to execute\n", time_taken);
-
-#test check_memcpy_2
-	const char *src = "42 is a school.";
-	char dest[50];
-	char dest2[50];
-	char long_src[9999];
-	char long1[9999];
-	char long2[9999];
-	clock_t t;
-	double time_taken;
-
-	printf("\nCHECKING MEMCPY\n");
-	memcpy(dest, src, strlen(src) + 1);
-	ft_memcpy(dest2, src, strlen(src) + 1);
-	ck_assert_str_eq(dest, src);
-	ck_assert_str_eq(dest2, src);
-	ck_assert_str_eq(dest, dest2);
-
-	ft_bzero(long_src, 9999);
-
-	t = clock();
-	memcpy(long1, long_src, 9999);
-	t = clock() - t;
-	time_taken = ((double) t) / CLOCKS_PER_SEC;
-	printf("\tMemcpy took %f to execute\n", time_taken);
-
-	t = clock();
-	ft_memcpy(long2, long_src, 9999);
-	t = clock() - t;
-	time_taken = ((double) t) / CLOCKS_PER_SEC;
-	printf("\tft_memcpy took %f to execute\n", time_taken);

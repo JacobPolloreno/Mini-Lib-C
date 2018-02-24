@@ -254,10 +254,6 @@
 	ck_assert_int_eq(dest[250 + 100], 0);
 	ck_assert_int_eq(dest2[250 + 100], 0);
 
-#test check_strcmp
-	printf("CHECKING STRCMP...\n");
-	ck_assert_int_eq(ft_strcmp("A", "A"), strcmp("A", "A"));
-
 #test check_strcpy
 	char dest[9999];
 	char dest2[9999];
@@ -456,3 +452,113 @@
 	ck_assert_str_eq(ret, largestring);
 	ck_assert_str_eq(ret2, largestring);
 	ck_assert_ptr_eq(ret, ret2);
+
+#test check_strcmp
+	printf("CHECKING STRCMP...\n");
+	ck_assert_int_eq(ft_strcmp("A", "A"), strcmp("A", "A"));
+	ck_assert_int_eq(ft_strcmp("", ""), strcmp("", ""));
+	ck_assert_int_eq(ft_strcmp("ABc", "ABc"), strcmp("ABc", "ABc"));
+	ck_assert_int_eq(ft_strcmp("abcdef", "ABCDEF"), strcmp("abcdef", "ABCDEF"));
+
+#test check_strncmp
+	printf("CHECKING STRNCMP...\n");
+	ck_assert_int_eq(ft_strncmp("A", "A", 1), strncmp("A", "A", 1));
+	ck_assert_int_eq(ft_strncmp("", "", 0), strncmp("", "", 0));
+	ck_assert_int_eq(ft_strncmp("ABc", "ABc", 3), strncmp("ABc", "ABc", 3));
+	ck_assert_int_eq(ft_strncmp("ABc", "ABc", 2), strncmp("ABc", "ABc", 2));
+	ck_assert_int_eq(ft_strncmp("ABc", "ABc", 5), strncmp("ABc", "ABc", 5));
+	ck_assert_int_eq(ft_strncmp("abcdef", "ABCDEF", 6), strncmp("abcdef", "ABCDEF", 6));
+
+#test check_atoi
+	printf("CHECKING ATOI...\n");
+
+	ck_assert_int_eq(atoi("123"), ft_atoi("123"));
+	ck_assert_int_eq(atoi("-123"), ft_atoi("-123"));
+	ck_assert_int_eq(atoi("-12-3"), ft_atoi("-12-3"));
+	ck_assert_int_eq(atoi("- 1"), ft_atoi("- 1"));
+	ck_assert_int_eq(atoi("-+1"), ft_atoi("-+1"));
+	ck_assert_int_eq(atoi("\t\t\t+1"), ft_atoi("\t\t\t+1"));
+	ck_assert_int_eq(atoi("\t\t\t+\n1-"), ft_atoi("\t\t\t+\n1-"));
+	ck_assert_int_eq(atoi("\n-\n1"), ft_atoi("\n-\n1"));
+	ck_assert_int_eq(atoi("- 12-3"), ft_atoi("- 12-3"));
+	ck_assert_int_eq(atoi("0"), ft_atoi("0"));
+	ck_assert_int_eq(atoi("++0"), ft_atoi("++0"));
+	ck_assert_int_eq(atoi("00+123"), ft_atoi("00+123"));
+	ck_assert_int_eq(atoi("00000000000000001"), ft_atoi("00000000000000001"));
+	ck_assert_int_eq(atoi("-00000000000001"), ft_atoi("-00000000000001"));
+	ck_assert_int_eq(atoi("00-00000000000001"), ft_atoi("00-00000000000001"));
+	ck_assert_int_eq(atoi("2147483647"), ft_atoi("2147483647"));
+	ck_assert_int_eq(atoi("-2147483648"), ft_atoi("-2147483648"));
+	ck_assert_int_eq(atoi("-9223372036854775808"), ft_atoi("-9223372036854775808"));
+	ck_assert_int_eq(atoi("9223372036854775807"), ft_atoi("9223372036854775807"));
+
+#test check_isalpha
+	printf("CHECKING ISALPHA...\n");
+
+	ck_assert_int_eq(isalpha('A'), ft_isalpha('A'));
+	ck_assert_int_eq(isalpha('Z'), ft_isalpha('Z'));
+	ck_assert_int_eq(isalpha('a'), ft_isalpha('a'));
+	ck_assert_int_eq(isalpha('z'), ft_isalpha('z'));
+	ck_assert_int_eq(isalpha('0'), ft_isalpha('0'));
+	ck_assert_int_eq(isalpha('\n'), ft_isalpha('\n'));
+
+#test check_isdigit
+	printf("CHECKING ISDIGIT...\n");
+
+	ck_assert_int_eq(isdigit('0'), ft_isdigit('0'));
+	ck_assert_int_eq(isdigit('4'), ft_isdigit('4'));
+	ck_assert_int_eq(isdigit('9'), ft_isdigit('9'));
+	ck_assert_int_eq(isdigit('a'), ft_isdigit('a'));
+	ck_assert_int_eq(isdigit('\n'), ft_isdigit('\n'));
+
+#test check_isalphanum
+	printf("CHECKING ISALNUM...\n");
+
+	ck_assert_int_eq(isalnum('0'), ft_isalnum('0'));
+	ck_assert_int_eq(isalnum('9'), ft_isalnum('9'));
+	ck_assert_int_eq(isalnum('A'), ft_isalnum('A'));
+	ck_assert_int_eq(isalnum('Z'), ft_isalnum('Z'));
+	ck_assert_int_eq(isalnum('z'), ft_isalnum('z'));
+
+#test check_isascii
+	printf("CHECKING ISASCII...\n");
+
+	ck_assert_int_eq(isascii('0'), ft_isascii('0'));
+	ck_assert_int_eq(isascii('9'), ft_isascii('9'));
+	ck_assert_int_eq(isascii('A'), ft_isascii('A'));
+	ck_assert_int_eq(isascii('Z'), ft_isascii('Z'));
+	ck_assert_int_eq(isascii('z'), ft_isascii('z'));
+	ck_assert_int_eq(isascii('\r'), ft_isascii('\r'));
+	ck_assert_int_eq(isascii(127), ft_isascii(127));
+	ck_assert_int_eq(isascii(128), ft_isascii(128));
+	ck_assert_int_eq(isascii(0), ft_isascii(0));
+	ck_assert_int_eq(isascii(-1), ft_isascii(-1));
+
+#test check_isprint
+	printf("CHECKING ISPRINT...\n");
+
+	ck_assert_int_eq(isprint('a'), ft_isprint('a'));
+	ck_assert_int_eq(isprint(0), ft_isprint(0));
+	ck_assert_int_eq(isprint(127), ft_isprint(127));
+	ck_assert_int_eq(isprint(' '), ft_isprint(' '));
+	ck_assert_int_eq(isprint('~'), ft_isprint('~'));
+	ck_assert_int_eq(isprint('\n'), ft_isprint('\n'));
+	ck_assert_int_eq(isprint('\r'), ft_isprint('\r'));
+
+#test check_tolower
+	printf("CHECKING TOLOWER...\n");
+
+	ck_assert_int_eq(tolower('A'), ft_tolower('A'));
+	ck_assert_int_eq(tolower('a'), ft_tolower('a'));
+	ck_assert_int_eq(tolower('Z'), ft_tolower('Z'));
+	ck_assert_int_eq(tolower('z'), ft_tolower('z'));
+	ck_assert_int_eq(tolower('\n'), ft_tolower('\n'));
+
+#test check_toupper
+	printf("CHECKING TOUPPER...\n");
+
+	ck_assert_int_eq(toupper('A'), ft_toupper('A'));
+	ck_assert_int_eq(toupper('a'), ft_toupper('a'));
+	ck_assert_int_eq(toupper('Z'), ft_toupper('Z'));
+	ck_assert_int_eq(toupper('z'), ft_toupper('z'));
+	ck_assert_int_eq(toupper('\n'), ft_toupper('\n'));

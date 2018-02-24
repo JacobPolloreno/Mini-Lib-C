@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/23 18:08:30 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/24 10:27:37 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <string.h>
 # include <stdlib.h>
+# include <ctype.h>
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t n);
@@ -31,6 +32,15 @@ char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_atoi(const char *str);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 #endif

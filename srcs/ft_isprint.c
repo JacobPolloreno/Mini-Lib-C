@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/15 20:58:45 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/24 08:57:44 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/24 10:13:18 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/24 10:18:40 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_isprint(int c)
 {
-	while ((*s1 || *s2) && n)
-	{
-		if (*s1 == *s2)
-		{
-			s1++;
-			s2++;
-			n--;
-		}
-		else
-			return ((unsigned)*s1 - (unsigned)*s2);
-	}
-	return (0);
+	return (c >= 32 && c <= 126);
 }

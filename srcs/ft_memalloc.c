@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   ft_memmalloc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/19 14:59:02 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/24 10:43:59 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/24 10:31:39 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/24 10:45:33 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
-# include <ctype.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <string.h>
-# include <strings.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <time.h>
-# include <unistd.h>
-# include "libft.h"
-#endif
+#include "libft.h"
+
+void	*ft_memalloc(size_t size)
+{
+	void	*buf;
+
+	if ((buf = (void *)malloc(size)))
+	{
+		ft_bzero(buf, size);
+		return (buf);
+	}
+	return (NULL);
+}

@@ -562,3 +562,15 @@
 	ck_assert_int_eq(toupper('Z'), ft_toupper('Z'));
 	ck_assert_int_eq(toupper('z'), ft_toupper('z'));
 	ck_assert_int_eq(toupper('\n'), ft_toupper('\n'));
+
+#test check_memalloc
+	printf("CHECKING MEMALLOC...\n");
+
+	void	*buf;
+
+	buf = ft_memalloc(1000);
+
+	ck_assert_int_eq(*(int *)buf, 0);
+	ck_assert_int_eq(*((int *)buf + 999), 0);
+	ck_assert_int_eq(*((int *)buf + 1000), 0);
+	free(buf);

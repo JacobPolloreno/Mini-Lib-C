@@ -170,12 +170,89 @@
 	memset(longstr, '.', 8999 * sizeof(char));
 	t = clock() - t;
 	time_taken = ((double)t) / CLOCKS_PER_SEC;
-	printf("\tMemset took %f to execute\n", time_taken);
+	printf("\tmemset took %f to execute\n", time_taken);
 	t = clock();
 	ft_memset(longstr, '.', 8999 * sizeof(char));
 	t = clock() - t;
 	time_taken = ((double)t) / CLOCKS_PER_SEC;
 	printf("\tft_memset took %f to execute\n", time_taken);
+
+#test check_strcat
+	printf("CHECKING STRCAT...\n");
+	char dest[600];
+	char dest2[600];
+	char src[250];
+
+	memset(dest, '.', 250);
+	memset(dest2, '.', 250);
+	dest[250] = '\0';
+	dest2[250] = '\0';
+	ck_assert_int_eq(strlen(dest), strlen(dest2));
+	ck_assert_str_eq(dest, dest2);
+	memset(src, 'S', 249);
+	src[249] = '\0';
+	ck_assert_int_eq(src[249], '\0');
+	ck_assert_int_eq(strlen(src), 249);
+
+	src[75] = 'A';
+	strcat(dest, src);
+	ft_strcat(dest2, src);
+	ck_assert_str_eq(dest, dest2);
+	ck_assert_int_eq(dest[250 + 75], 'A');
+	ck_assert_int_eq(dest2[250 + 75], 'A');
+	ck_assert_int_ne(dest[250 + 248], 0);
+	ck_assert_int_ne(dest2[250 + 248], 0);
+	ck_assert_int_eq(dest[250 + 249], 0);
+	ck_assert_int_eq(dest2[250 + 249], 0);
+
+#test check_strlcat
+	printf("CHECKING STRLCAT...\n");
+	char dest[600];
+	char dest2[600];
+	char src[250];
+
+	memset(dest, '.', 250);
+	memset(dest2, '.', 250);
+	dest[250] = '\0';
+	dest2[250] = '\0';
+	ck_assert_int_eq(strlen(dest), strlen(dest2));
+	ck_assert_str_eq(dest, dest2);
+	memset(src, 'S', 249);
+	src[249] = '\0';
+	ck_assert_int_eq(src[249], '\0');
+	ck_assert_int_eq(strlen(src), 249);
+
+	src[75] = 'A';
+	ck_assert_int_eq(strlcat(dest, src, 100), ft_strlcat(dest2, src, 100));
+	ck_assert_str_eq(dest, dest2);
+
+#test check_strncat
+	printf("CHECKING STRNCAT...\n");
+	char dest[600];
+	char dest2[600];
+	char src[250];
+
+	memset(dest, '.', 250);
+	memset(dest2, '.', 250);
+	dest[250] = '\0';
+	dest2[250] = '\0';
+	ck_assert_int_eq(strlen(dest), strlen(dest2));
+	ck_assert_str_eq(dest, dest2);
+	memset(src, 'S', 249);
+	src[249] = '\0';
+	ck_assert_int_eq(src[249], '\0');
+	ck_assert_int_eq(strlen(src), 249);
+
+	src[75] = 'A';
+	strncat(dest, src, 100);
+	ft_strncat(dest2, src, 100);
+	ck_assert_str_eq(dest, dest2);
+	ck_assert_int_eq(dest[250 + 75], 'A');
+	ck_assert_int_eq(dest2[250 + 75], 'A');
+	ck_assert_int_ne(dest[250 + 99], 0);
+	ck_assert_int_ne(dest2[250 + 99], 0);
+	ck_assert_int_eq(dest[250 + 100], 0);
+	ck_assert_int_eq(dest2[250 + 100], 0);
 
 #test check_strcmp
 	printf("CHECKING STRCMP...\n");
@@ -216,6 +293,68 @@
 	ck_assert_int_eq(*ptr, '\0');
 	ck_assert_int_eq(*ptr2, '\0');
 
+#test check_strchr
+	char str[100];
+	char *start;
+	char *ptr;
+	char *ptr2;
+
+	printf("CHECKING STRCHR...\n");
+	start = str;
+	memset(str, '.', 50);
+	memset(str + 50, 'A', 1);
+	memset(str + 51, '.', 48);
+	str[99] = '\0';
+	ck_assert_int_eq(str[50], 'A');
+
+	ptr = strchr(str, 'A');
+	ck_assert_int_eq(*ptr, 'A');
+	ck_assert_ptr_eq(ptr, &str[50]);
+
+	ptr2 = ft_strchr(str, 'A');
+	ck_assert_int_eq(*ptr, 'A');
+	ck_assert_ptr_eq(ptr, &str[50]);
+
+	ck_assert_ptr_eq(ptr, ptr2);
+	ck_assert_ptr_eq(str, start);
+
+#test check_strrchr
+	char str[100];
+	char *start;
+	char *ptr;
+	char *ptr2;
+
+	printf("CHECKING STRRCHR...\n");
+	start = str;
+	memset(str, '.', 50);
+	memset(str + 50, 'A', 1);
+	memset(str + 51, '.', 48);
+	str[99] = '\0';
+	ck_assert_int_eq(str[50], 'A');
+
+	ptr = strrchr(str, 'A');
+	ck_assert_int_eq(*ptr, 'A');
+	ck_assert_ptr_eq(ptr, &str[50]);
+
+	ptr2 = ft_strrchr(str, 'A');
+	ck_assert_int_eq(*ptr, 'A');
+	ck_assert_ptr_eq(ptr, &str[50]);
+
+	ck_assert_ptr_eq(ptr, ptr2);
+	ck_assert_ptr_eq(str, start);
+
+	memset(str + 51, 'A', 48);
+	ptr = strrchr(str, 'A');
+	ck_assert_int_eq(*ptr, 'A');
+	ck_assert_ptr_eq(ptr, &str[98]);
+
+	ptr2 = ft_strrchr(str, 'A');
+	ck_assert_int_eq(*ptr, 'A');
+	ck_assert_ptr_eq(ptr, &str[98]);
+
+	ck_assert_ptr_eq(ptr, ptr2);
+	ck_assert_ptr_eq(str, start);
+
 #test check_strdup
 	char src[9999];
 	char src2[6] = "12345";
@@ -235,15 +374,15 @@
 
 	bzero(src, 9999);
 	t = clock();
-	res = strdup(src); 
+	res = strdup(src);
 	t = clock() - t;
-	time_taken = ((double) t) / CLOCKS_PER_SEC; 
+	time_taken = ((double) t) / CLOCKS_PER_SEC;
 	printf("\tStrdup took %f to execute\n", time_taken);
 
 	t = clock();
-	res2 = ft_strdup(src); 
+	res2 = ft_strdup(src);
 	t = clock() - t;
-	time_taken = ((double) t) / CLOCKS_PER_SEC; 
+	time_taken = ((double) t) / CLOCKS_PER_SEC;
 	printf("\tft_strdup took %f to execute\n", time_taken);
 
 	ck_assert_str_eq(res, src);
@@ -264,15 +403,54 @@
 	ck_assert_int_eq(ft_strlen(str), strlen(str));
 	memset(longstr, 'A', 9000);
 	ck_assert_int_eq(ft_strlen(longstr), strlen(longstr));
-	
+
 	t = clock();
 	len = strlen(longstr);
 	t = clock() - t;
 	time_taken = ((double)t) / CLOCKS_PER_SEC;
 	printf("\tStrlen took %f to execute\n", time_taken);
-	
+
 	t = clock();
 	len = ft_strlen(longstr);
 	t = clock() - t;
 	time_taken = ((double)t) / CLOCKS_PER_SEC;
 	printf("\tft_strlen took %f to execute\n", time_taken);
+
+#test check_strstr
+	const char *largestring = "Foo Bar Baz";
+	const char *smallstring = "Bar";
+	char *ret;
+	char *ret2;
+
+	printf("CHECKING STRSTR...\n");
+	ret = strstr(largestring, smallstring);
+	ck_assert_int_eq(*ret, *smallstring);
+	ck_assert_str_eq(ret, "Bar Baz");
+
+	ret2 = ft_strstr(largestring, smallstring);
+	ck_assert_int_eq(*ret, *smallstring);
+	ck_assert_str_eq(ret, "Bar Baz");
+
+	ck_assert_ptr_eq(ret, ret2);
+
+#test check_strnstr
+	const char *largestring = "Foo Bar Baz";
+	const char *smallstring = "Bar";
+	char *ret;
+	char *ret2;
+
+	printf("CHECKING STRSTR...\n");
+	ret = strnstr(largestring, smallstring, strlen(largestring));
+	ck_assert_int_eq(*ret, *smallstring);
+	ck_assert_str_eq(ret, "Bar Baz");
+
+	ret2 = ft_strnstr(largestring, smallstring, strlen(largestring));
+	ck_assert_int_eq(*ret, *smallstring);
+	ck_assert_str_eq(ret, "Bar Baz");
+
+	ck_assert_ptr_eq(ret, ret2);
+
+	ret = strnstr(largestring, "", 1);
+	ret2 = ft_strnstr(largestring, "", 1);
+
+	ck_assert_ptr_eq(ret, ret2);

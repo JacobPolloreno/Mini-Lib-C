@@ -428,8 +428,8 @@
 	ck_assert_str_eq(ret, "Bar Baz");
 
 	ret2 = ft_strstr(largestring, smallstring);
-	ck_assert_int_eq(*ret, *smallstring);
-	ck_assert_str_eq(ret, "Bar Baz");
+	ck_assert_int_eq(*ret2, *smallstring);
+	ck_assert_str_eq(ret2, "Bar Baz");
 
 	ck_assert_ptr_eq(ret, ret2);
 
@@ -439,18 +439,20 @@
 	char *ret;
 	char *ret2;
 
-	printf("CHECKING STRSTR...\n");
+	printf("CHECKING STRNSTR...\n");
 	ret = strnstr(largestring, smallstring, strlen(largestring));
 	ck_assert_int_eq(*ret, *smallstring);
 	ck_assert_str_eq(ret, "Bar Baz");
 
 	ret2 = ft_strnstr(largestring, smallstring, strlen(largestring));
-	ck_assert_int_eq(*ret, *smallstring);
-	ck_assert_str_eq(ret, "Bar Baz");
+	ck_assert_int_eq(*ret2, *smallstring);
+	ck_assert_str_eq(ret2, "Bar Baz");
 
 	ck_assert_ptr_eq(ret, ret2);
 
-	ret = strnstr(largestring, "", 1);
-	ret2 = ft_strnstr(largestring, "", 1);
+	ret = strnstr(largestring, "", strlen(largestring));
+	ret2 = ft_strnstr(largestring, "", strlen(largestring));
 
+	ck_assert_str_eq(ret, largestring);
+	ck_assert_str_eq(ret2, largestring);
 	ck_assert_ptr_eq(ret, ret2);

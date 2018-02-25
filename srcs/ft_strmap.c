@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/24 10:51:48 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/24 15:24:22 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/24 16:03:49 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/24 16:23:22 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+char	*ft_strmap(const char *s, char (*f)(char))
 {
-	free(*ap);
-	*ap = NULL;
+	size_t	size;
+	size_t	len;
+	char	*new;
+
+	size = ft_strlen(s);
+	new = ft_strnew(size);
+	len = 0;
+	while (len < size)
+	{
+		new[len] = (*f)(s[len]);
+		len++;
+	}
+	return (new);
 }

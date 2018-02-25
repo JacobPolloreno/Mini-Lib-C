@@ -1,5 +1,15 @@
 #include "test.h"
 
+void	string_to_upper(char *s)
+{
+	*s = ft_toupper(*s);	
+}
+
+void	string_to_idx(unsigned int idx, char *s)
+{
+	*s = '0' + idx;
+}
+
 #test check_bzero
 	char str[20] = "42 is a school";
 	char str2[20] = "42 is a school";
@@ -569,8 +579,90 @@
 	void	*buf;
 
 	buf = ft_memalloc(1000);
-
 	ck_assert_int_eq(*(int *)buf, 0);
 	ck_assert_int_eq(*((int *)buf + 999), 0);
 	ck_assert_int_eq(*((int *)buf + 1000), 0);
 	free(buf);
+
+#test check_memdel
+	printf("CHECKING MEMDEL...\n");
+
+	void	*buf;
+
+	buf = ft_memalloc(1000);
+	ft_memset(buf, 'A', 999);
+	*((char *)buf + 999) = '\0';
+	ck_assert_ptr_ne(buf, NULL);
+	ft_memdel(&buf);
+	ck_assert_ptr_eq(buf, NULL);
+
+#test check_strnew
+	printf("CHECKING STRNEW...\n");
+
+	char	*buf;
+	
+	buf = ft_strnew(1000);
+	ck_assert_int_eq(*(char *)buf, 0);
+	ck_assert_int_eq(*((char *)buf + 999), 0);
+	ck_assert_int_eq(*((char *)buf + 1000), 0);
+	ck_assert_int_ne(*(char *)buf, 'A');
+	ck_assert_int_ne(*(char *)buf + 123, 'A');
+	free(buf);
+
+#test check_strdel
+	printf("CHECKING STRDEL...\n");
+
+	char	*str;
+
+	str = ft_strnew(100);
+	ck_assert_ptr_ne(str, NULL);
+	ft_strdel(&str);
+	ck_assert_ptr_eq(str, NULL);
+
+#test check_strclr
+	printf("CHECKING STRCLR...\n");
+
+	char *str;
+
+	str = ft_strnew(10);
+	memset(str, 'A', 9);
+	*((char *)str + 9) = '\0';
+	ck_assert_str_eq(str, "AAAAAAAAA");
+	ft_strclr(str);
+	ck_assert_str_ne(str, "AAAAAAAAA");
+	ck_assert_str_eq(str, "");
+
+#test check_striter
+	printf("CHECKING STRITER...\n");
+
+	char *str;
+
+	str = ft_strnew(10);
+	memset(str, 'a', 9);
+	*((char *)str + 9) = '\0';
+	ck_assert_str_eq(str, "aaaaaaaaa");
+	ft_striter(str, &string_to_upper);
+	ck_assert_str_ne(str, "aaaaaaaaa");
+	ck_assert_str_eq(str, "AAAAAAAAA");
+
+#test check_striteri
+	printf("CHECKING STRITERI...\n");
+
+	char *str;
+
+	str = ft_strnew(10);
+	memset(str, 'a', 9);
+	*((char *)str + 9) = '\0';
+	ck_assert_str_eq(str, "aaaaaaaaa");
+	ft_striteri(str, &string_to_idx);
+	ck_assert_str_ne(str, "aaaaaaaaa");
+	ck_assert_str_eq(str, "012345678");
+
+#test check_strmap
+	printf("CHECKING STRMAP...\n");
+
+	char *src = "abcdefgh";
+	char *str;
+
+	str = ft_strmap(src, );
+

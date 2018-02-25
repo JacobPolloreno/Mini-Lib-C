@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/24 10:51:48 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/24 15:24:22 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/24 15:39:09 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/24 15:47:07 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	free(*ap);
-	*ap = NULL;
+	char *ptr;
+
+	ptr = s;
+	while (*ptr)
+		(*f)(ptr++);
 }

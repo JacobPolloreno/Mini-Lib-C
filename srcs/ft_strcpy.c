@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 18:33:21 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/23 17:27:58 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/25 13:52:02 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	int len;
+	size_t	len;
 
-	len = ft_strlen(src);
-	ft_memcpy(dst, src, len);
-	dst[++len] = '\0';
+	len = 0;
+	while (src[len])
+	{
+		dst[len] = src[len];
+		len++;
+	}
+	dst[len] = '\0';
 	return (dst);
 }

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/24 16:03:49 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/24 19:52:01 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/24 21:53:37 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/24 22:04:09 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(const char *s, char (*f)(char))
+int	ft_strequ(const char *s1, const char *s2)
 {
-	size_t	size;
-	size_t	len;
-	char	*new;
-
-	size = ft_strlen(s);
-	new = ft_strnew(size);
-	len = 0;
-	while (len < size)
+	while (*s1 && *s2)
 	{
-		new[len] = (*f)(s[len]);
-		len++;
+		if (*s1++ != *s2++)
+			return (0);
 	}
-	return (new);
+	if (*s1 || *s2)
+		return (0);
+	return (1);
 }

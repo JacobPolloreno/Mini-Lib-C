@@ -2,12 +2,23 @@
 
 void	string_to_upper(char *s)
 {
-	*s = ft_toupper(*s);	
+	*s = ft_toupper(*s);
 }
 
 void	string_to_idx(unsigned int idx, char *s)
 {
 	*s = '0' + idx;
+}
+
+char	char_to_upper(char c)
+{
+	return ((char)ft_toupper(c));
+}
+
+char	char_to_idx(unsigned int idx, char c)
+{
+	(void)c;
+	return ('0' + idx);
 }
 
 #test check_bzero
@@ -664,5 +675,22 @@ void	string_to_idx(unsigned int idx, char *s)
 	char *src = "abcdefgh";
 	char *str;
 
-	str = ft_strmap(src, );
+	str = ft_strmap(src, &char_to_upper);
+	ck_assert_str_eq(str, "ABCDEFGH");
 
+#test check_strmapi
+	printf("CHECKING STRMAPI...\n");
+
+	char *src = "abcdefgh";
+	char *str;
+
+	str = ft_strmapi(src, &char_to_idx);
+	ck_assert_str_eq(str, "01234567");
+
+#test check_strequ
+	printf("CHECKING STREQU...\n");
+
+	char *s1 = "abc";
+	char *s2 = "abc";
+
+	ck_assert_int_eq(ft_strequ(s1, s2), 1);

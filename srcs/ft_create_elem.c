@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   ft_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/19 14:59:02 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/25 18:50:18 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/25 18:48:07 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/25 18:48:15 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
-# include <ctype.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <string.h>
-# include <strings.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <time.h>
-# include <unistd.h>
-# include "libft.h"
-# include "ft_list.h"
-#endif
+#include "ft_list.h"
+
+t_list	*ft_create_elem(void *data)
+{
+	t_list *tmp;
+
+	tmp = (t_list *)malloc(sizeof(t_list));
+	if (tmp)
+	{
+		tmp->data = data;
+		tmp->next = NULL;
+	}
+	return (tmp);
+}

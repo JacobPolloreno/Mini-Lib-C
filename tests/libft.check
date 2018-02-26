@@ -1051,3 +1051,6 @@ char	char_to_idx(unsigned int idx, char c)
 	fclose(fp);
 
 	remove("./tests/redir.txt");
+
+#test check_strsplit
+	printf("CHECKING STRSPLIT...\n");

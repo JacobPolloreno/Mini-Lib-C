@@ -773,6 +773,180 @@ char	char_to_idx(unsigned int idx, char c)
 	ck_assert_str_eq(s, "_ABC_");
 	free(s);
 
+#test check_putchar
+	printf("CHECKING PUTCHAR...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *str;
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putchar('A');
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 1);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%c", str);
+	ck_assert_str_eq(str, "A");
+	fclose(fp);
+	free(str);
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putchar('z');
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 1);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%c", str);
+	ck_assert_str_eq(str, "z");
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");
+
+#test check_putchar_fd
+	printf("CHECKING PUTCHAR_FD...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *str;
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stderr);
+	ft_putchar_fd('A', 2);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 1);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%c", str);
+	ck_assert_str_eq(str, "A");
+	fclose(fp);
+	free(str);
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putchar_fd('z', 1);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 1);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%c", str);
+	ck_assert_str_eq(str, "z");
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");
+
+#test check_putstr
+	printf("CHECKING PUTSTR...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *str;
+	const char *sentence = "ThisIsASentence.";
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putstr(sentence);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, strlen(sentence));
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%s", str);
+	ck_assert_str_eq(str, sentence);
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");
+
+#test check_putstr_fd
+	printf("CHECKING PUTSTR_FD...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *str;
+	const char *sentence = "ThisIsASentence.";
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stderr);
+	ft_putstr_fd(sentence, 2);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, strlen(sentence));
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%s", str);
+	ck_assert_str_eq(str, sentence);
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");
+
+#test check_putendl
+	printf("CHECKING PUTENDL...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *str;
+	char newline[1];
+	const char *sentence = "ThisIsASentence.";
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putendl(sentence);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, strlen(sentence) + 1);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%s", str);
+	fscanf(fp, "%c", newline);
+	ck_assert_str_eq(str, sentence);
+	ck_assert_int_eq(*newline, '\n');
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");
+
+#test check_putendl_fd
+	printf("CHECKING PUTENDL...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *str;
+	char newline[1];
+	const char *sentence = "ThisIsASentence.";
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stderr);
+	ft_putendl_fd(sentence, 2);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, strlen(sentence) + 1);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%s", str);
+	fscanf(fp, "%c", newline);
+	ck_assert_str_eq(str, sentence);
+	ck_assert_int_eq(*newline, '\n');
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");
+
 #test check_putnbr
 	printf("CHECKING PUTNBR...\n");
 
@@ -832,5 +1006,48 @@ char	char_to_idx(unsigned int idx, char c)
 	ck_assert_str_eq(str, "0");
 	fclose(fp);
 	free(str);
+
+	remove("./tests/redir.txt");
+
+#test check_putnbr_fd
+	printf("CHECKING PUTNBR_FD...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	int num;
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stderr);
+	ft_putnbr_fd(10, 2);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 2);
+	rewind(fp);
+	fscanf(fp, "%d", &num);
+	ck_assert_int_eq(num, 10);
+	fclose(fp);
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stderr);
+	ft_putnbr_fd(123456789, 2);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 9);
+	rewind(fp);
+	fscanf(fp, "%d", &num);
+	ck_assert_int_eq(num, 123456789);
+	fclose(fp);
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putnbr_fd(-123456789, 1);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 10);
+	rewind(fp);
+	fscanf(fp, "%d", &num);
+	ck_assert_int_eq(num, -123456789);
+	fclose(fp);
 
 	remove("./tests/redir.txt");

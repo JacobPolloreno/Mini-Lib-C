@@ -601,19 +601,22 @@ char	char_to_idx(unsigned int idx, char c)
 	printf("CHECKING MEMDEL...\n");
 
 	void	*buf;
+	void	*ptr;
 
+	ptr = NULL;
 	buf = ft_memalloc(1000);
 	ft_memset(buf, 'A', 999);
 	*((char *)buf + 999) = '\0';
 	ck_assert_ptr_ne(buf, NULL);
 	ft_memdel(&buf);
 	ck_assert_ptr_eq(buf, NULL);
+	ft_memdel(&ptr);
 
 #test check_strnew
 	printf("CHECKING STRNEW...\n");
 
 	char	*buf;
-	
+
 	buf = ft_strnew(1000);
 	ck_assert_int_eq(*(char *)buf, 0);
 	ck_assert_int_eq(*((char *)buf + 999), 0);
@@ -1054,3 +1057,11 @@ char	char_to_idx(unsigned int idx, char c)
 
 #test check_strsplit
 	printf("CHECKING STRSPLIT...\n");
+
+	char *src = "*One*Two**Three";
+	char **words;
+
+	words = ft_strsplit(src, '*');
+	ck_assert_str_eq(words[0], "One");
+	ck_assert_str_eq(words[1], "Two");
+	ck_assert_str_eq(words[2], "Three");

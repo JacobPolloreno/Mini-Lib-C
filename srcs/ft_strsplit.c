@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 12:56:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/26 13:24:59 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/26 13:29:55 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static void		put_words(char **res, const char *str, const char c)
 	word = 0;
 	while (str[len])
 	{
-		if (!*(str + len + 1))
+		if (!str[len + 1])
 			return ;
 		else if ((!(str[len + 1] == c) && str[len] == c) || (len == 0))
 		{

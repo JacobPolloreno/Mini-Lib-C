@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/02/25 14:13:12 by jpollore         ###   ########.fr        #
+#    Updated: 2018/02/25 15:58:42 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ CS += ft_strdup.c ft_strchr.c ft_strrchr.c ft_strnstr.c ft_isalpha.c
 CS += ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c
 CS += ft_tolower.c ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c
 CS += ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c
-CS += ft_strequ.c ft_strnequ.c ft_strsub.c
+CS += ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c
+CS += ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c
+CS += ft_putendl.c ft_putendl_fd.c ft_putnbr.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))

@@ -733,3 +733,62 @@ char	char_to_idx(unsigned int idx, char c)
 	sub = ft_strsub(s, 0, 0);
 	ck_assert_str_eq(sub, "");
 	free(sub);
+
+#test check_strjoin
+	printf("CHECKING STRJOIN...\n");
+
+	char *prefix = "One Two Three ";
+	char *suffix = "Four Five Six";
+	char *concat;
+
+	concat = ft_strjoin(prefix, suffix);
+	ck_assert_str_eq(concat, "One Two Three Four Five Six");
+	free(concat);
+	concat = ft_strjoin("", "");
+	ck_assert_str_eq(concat, "");
+	free(concat);
+	concat = ft_strjoin("abc", "");
+	ck_assert_str_eq(concat, "abc");
+	ck_assert_int_eq(concat[3], '\0');
+	free(concat);
+
+#test check_strtrim
+	printf("CHECKING STRTRIM...\n");
+
+	char *s;
+
+	s = ft_strtrim("  ABC   ");
+	ck_assert_str_eq(s, "ABC");
+	free(s);
+	s = ft_strtrim("\n\n  ABC\n\n\t\t\n  \n");
+	ck_assert_str_eq(s, "ABC");
+	free(s);
+	s = ft_strtrim("");
+	ck_assert_str_eq(s, "");
+	free(s);
+	s = ft_strtrim("\n\n\n\n\n\n\t\t \t \t");
+	ck_assert_str_eq(s, "");
+	free(s);
+	s = ft_strtrim("\n\n\n\n\n\n\t\t_ABC_ \t \t");
+	ck_assert_str_eq(s, "_ABC_");
+	free(s);
+
+#test check_putnbr
+	printf("CHECKING PUTNBR...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *str;
+
+	bytes_written = 0;
+	fp = freopen("redir.txt", "w+x", stdout);
+	ft_putnbr(10);
+	stat("redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 2);
+	fscanf(fp, "%s", str);
+	ck_assert_str_eq(str, "10");
+
+	//ft_putnbr(123456789);
+	//ft_putnbr(-123456789);

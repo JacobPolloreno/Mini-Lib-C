@@ -782,13 +782,55 @@ char	char_to_idx(unsigned int idx, char c)
 	char *str;
 
 	bytes_written = 0;
-	fp = freopen("redir.txt", "w+x", stdout);
+	fp = freopen("./tests/redir.txt", "w+", stdout);
 	ft_putnbr(10);
-	stat("redir.txt", &st);
+	stat("./tests/redir.txt", &st);
 	bytes_written = st.st_size;
 	ck_assert_int_eq(bytes_written, 2);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
 	fscanf(fp, "%s", str);
 	ck_assert_str_eq(str, "10");
+	fclose(fp);
+	free(str);
 
-	//ft_putnbr(123456789);
-	//ft_putnbr(-123456789);
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putnbr(123456789);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 9);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%s", str);
+	ck_assert_str_eq(str, "123456789");
+	fclose(fp);
+	free(str);
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putnbr(-123456789);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 10);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%s", str);
+	ck_assert_str_eq(str, "-123456789");
+	fclose(fp);
+	free(str);
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putnbr(0);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 1);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%s", str);
+	ck_assert_str_eq(str, "0");
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");

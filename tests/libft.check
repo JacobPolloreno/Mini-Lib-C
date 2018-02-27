@@ -1079,3 +1079,15 @@ char	char_to_idx(unsigned int idx, char c)
 	free(words[2]);
 	free(words[1]);
 	free(words[0]);
+
+#test check_itoa
+	printf("CHECKING ITOA...\n");
+
+	ck_assert_str_eq(ft_itoa(123), "123");
+	ck_assert_str_eq(ft_itoa(10), "10");
+	ck_assert_str_eq(ft_itoa(-123), "-123");
+	ck_assert_str_eq(ft_itoa(0), "0");
+
+	ck_assert_str_eq(ft_itoa(123456789), "123456789");
+	ck_assert_str_eq(ft_itoa(2147483647), "2147483647");
+	ck_assert_str_eq(ft_itoa(-2147483648), "-2147483648");

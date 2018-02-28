@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/02/26 13:32:25 by jpollore         ###   ########.fr        #
+#    Updated: 2018/02/27 19:18:12 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ CS += ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c
 CS += ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c
 CS += ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c
 CS += ft_putendl.c ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c
-CS += ft_create_elem.c ft_strsplit.c ft_itoa.c
+CS += ft_create_elem.c ft_strsplit.c ft_itoa.c ft_lstnew.c
+CS += ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c
+CS += ft_lstmap.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))

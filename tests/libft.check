@@ -5,6 +5,21 @@ void	string_to_upper(char *s)
 	*s = ft_toupper(*s);
 }
 
+char	*map_upper_str(char *s)
+{
+	char *res;
+	int len;
+
+	if ((res = (char *)ft_memalloc(sizeof(*res) * ft_strlen(s) + 1)))
+	{
+		len = 0;
+		while (*s)
+			res[len++] = ft_toupper(*s++);
+		return (res);
+	}
+	return (NULL);
+}
+
 void	string_to_idx(unsigned int idx, char *s)
 {
 	*s = '0' + idx;
@@ -19,6 +34,30 @@ char	char_to_idx(unsigned int idx, char c)
 {
 	(void)c;
 	return ('0' + idx);
+}
+
+void	lst_del_str(void *content, size_t content_size)
+{
+	if (content_size)
+		free(content);
+}
+
+void	print_lst_content(t_list *node)
+{
+	ft_putstr_fd((char *)node->content, 1);
+}
+
+t_list	*create_elem_map(t_list *node)
+{
+	t_list *new;
+	char	*new_str;
+
+	if (!node)
+		return (NULL);
+	new_str = map_upper_str((char *)node->content);
+	if (!(new = ft_lstnew(&new_str, ft_strlen((char *)node->content))))
+		return (NULL);
+	return (new);
 }
 
 #test check_bzero
@@ -775,6 +814,12 @@ char	char_to_idx(unsigned int idx, char c)
 	s = ft_strtrim("\n\n\n\n\n\n\t\t_ABC_ \t \t");
 	ck_assert_str_eq(s, "_ABC_");
 	free(s);
+	s = ft_strtrim("  A B C  ");
+	ck_assert_str_eq(s, "A B C");
+	free(s);
+	s = ft_strtrim("  A   B   C  ");
+	ck_assert_str_eq(s, "A   B   C");
+	free(s);
 
 #test check_putchar
 	printf("CHECKING PUTCHAR...\n");
@@ -1091,3 +1136,122 @@ char	char_to_idx(unsigned int idx, char c)
 	ck_assert_str_eq(ft_itoa(123456789), "123456789");
 	ck_assert_str_eq(ft_itoa(2147483647), "2147483647");
 	ck_assert_str_eq(ft_itoa(-2147483648), "-2147483648");
+
+#test check_lstnew
+	printf("CHECKING LSTNEW...\n");
+
+	t_list *node;
+	int nb;
+
+	node = ft_lstnew("ABC", sizeof(char) * 4);
+	ck_assert_str_eq("ABC", (char *)node->content);
+	ck_assert_int_eq(4, node->content_size);
+	ck_assert_ptr_eq(0, node->next);
+	free(node->content);
+	free(node);
+	node = ft_lstnew(NULL, 10);
+	ck_assert_ptr_eq(NULL, node->content);
+	ck_assert_int_eq(0, node->content_size);
+	ck_assert_ptr_eq(0, node->next);
+	free(node->content);
+	free(node);
+	nb = 98765;
+	node = ft_lstnew(&nb,sizeof(int));
+	ck_assert_int_eq(nb, *(int *)node->content);
+	ck_assert_int_eq(sizeof(int), node->content_size);
+	ck_assert_ptr_eq(0, node->next);
+	free(node->content);
+	free(node);
+
+#test check_lstdelone
+	printf("CHECKING LSTDELONE...\n");
+
+	t_list *node;
+
+	node = ft_lstnew("ABC", sizeof(char) * 4);
+	ft_lstdelone(&node, &lst_del_str);
+	ck_assert_ptr_eq(node, NULL);
+
+#test check_lstdel
+	printf("CHECKING LSTDEL...\n");
+
+	t_list *n1;
+	t_list *n2;
+	t_list *n3;
+	t_list *n4;
+
+	n1 = ft_lstnew("ABC", sizeof(char) * 4);
+	n2 = ft_lstnew("ABC", sizeof(char) * 4);
+	n3 = ft_lstnew("ABC", sizeof(char) * 4);
+	n4 = ft_lstnew("ABC", sizeof(char) * 4);
+	n1->next = n2;
+	n2->next = n3;
+	n3->next = n4;
+
+	ft_lstdel(&n1, &lst_del_str);
+	ck_assert_ptr_eq(n1, NULL);
+	//ck_assert_ptr_eq(n2, NULL);
+	//ck_assert_ptr_eq(n3, NULL);
+	//ck_assert_ptr_eq(n4, NULL);
+
+#test check_lstadd
+	printf("CHECKING LSTADD...\n");
+
+	t_list *n1;
+	t_list *n2;
+	t_list *new;
+
+	n1 = ft_lstnew("ABC", sizeof(char) * 4);
+	n2 = ft_lstnew("DEF", sizeof(char) * 4);
+	new = ft_lstnew("HIJ", sizeof(char) * 4);
+	n1->next = n2;
+	ft_lstadd(&n1, new);
+
+	ck_assert_str_eq("HIJ", (char *)n1->content);
+
+#test check_lstiter
+	printf("CHECKING LSTITER...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *str;
+	t_list *n1;
+	t_list *n2;
+
+	n1 = ft_lstnew("ABC", sizeof(char) * 4);
+	n2 = ft_lstnew("DEF", sizeof(char) * 4);
+	n1->next = n2;
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_lsiter(n1, &print_lst_content);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 6);
+	str = (char *)malloc(sizeof(char) * bytes_written + 1);
+	rewind(fp);
+	fscanf(fp, "%s", str);
+	ck_assert_str_eq(str, "ABCDEF");
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");
+
+#test check_lstmap
+	printf("CHECKING LSTMAP...\n");
+
+	t_list *n1;
+	t_list *n2;
+	t_list *n3;
+	t_list *new;
+
+	n1 = ft_lstnew("abc", sizeof(char) * 4);
+	n2 = ft_lstnew("def", sizeof(char) * 4);
+	n3 = ft_lstnew("hij", sizeof(char) * 4);
+	n1->next = n2;
+	n2->next = n3;
+
+	new = ft_lstmap(n1, &create_elem_map);
+	ck_assert_ptr_ne(new, NULL);
+	//ck_assert_str_eq("ABC", new->content);

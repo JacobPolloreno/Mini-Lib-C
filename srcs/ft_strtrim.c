@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 14:53:38 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/25 15:19:05 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/27 17:53:49 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,23 @@ char	*ft_strtrim(const char *s)
 {
 	size_t	size;
 	char	*new;
-	char	*ptr;
+	char	*head;
+	char	*tail;
 
-	size = 0;
-	ptr = (char *)s;
-	while (*ptr)
-	{
-		if (!(*ptr == ' ' || *ptr == '\n' || *ptr == '\t'))
-			size++;
-		ptr++;
-	}
-	if ((new = (char *)ft_memalloc(sizeof(*new) * size + 1)))
+	head = (char *)s;
+	while (*head && (*head == ' ' || *head == '\n' || *head == '\t'))
+		head++;
+	tail = head;
+	while (*(tail + 1))
+		tail++;
+	while (*tail && (*tail == ' ' || *tail == '\n' || *tail == '\t') &&
+			(*(tail - 1) == ' ' || *(tail - 1) == '\n' || *(tail - 1) == '\t'))
+		tail--;
+	if ((new = (char *)ft_memalloc(sizeof(*new) * (tail - head) + 1)))
 	{
 		size = 0;
-		while (*s)
-		{
-			if (!(*s == ' ' || *s == '\n' || *s == '\t'))
-				new[size++] = *s;
-			s++;
-		}
+		while (head < tail)
+			new[size++] = *(head)++;
 		new[size] = '\0';
 		return (new);
 	}

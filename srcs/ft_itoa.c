@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 13:31:45 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/26 20:26:21 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/27 15:28:24 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char			*ft_itoa(int n)
 	{
 		if (sign < 0 && !len)
 			res[len++] = '-';
-		res[len++] = *(char *)tail->data;
+		res[len++] = *(char *)tail->content;
 		tail = tail->prev;
 	}
 	res[len] = '\0';
@@ -86,8 +86,9 @@ static t_dlist	*create_elem_ch(char ch)
 
 	if ((node = (t_dlist *)ft_memalloc(sizeof(*node))))
 	{
-		node->data = (void *)ft_memalloc(sizeof(char));
-		*((char *)node->data) = ch;
+		node->content = (void *)ft_memalloc(sizeof(char));
+		*((char *)node->content) = ch;
+		node->content_size = sizeof(char);
 		node->next = 0;
 		node->prev = 0;
 	}

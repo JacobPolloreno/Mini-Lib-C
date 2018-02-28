@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 12:56:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/26 13:29:55 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/27 20:05:38 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,27 @@ static int		remove_init(const char *str, const char c);
 char			**ft_strsplit(const char *str, const char c)
 {
 	int		words;
-	int		cnt;
+	int		i;
 	char	**res;
-	t_list	*larr;
+	t_list	*arr;
 	t_list	*tmp;
 
-	cnt = 0;
+	i = 0;
 	words = 0;
-	if (!(larr = get_word_cnt(&words, str, c)))
+	if (!(arr = get_word_cnt(&words, str, c)))
 		return (NULL);
 	res = (char **)ft_memalloc(sizeof(char*) * (words + 1));
-	while (cnt < words)
+	while (i < words)
 	{
-		res[cnt] = (char *)ft_memalloc(sizeof(char) * (*(int *)larr->data + 1));
-		cnt++;
-		tmp = larr;
-		larr = larr->next;
+		res[i] = (char *)ft_memalloc(sizeof(char) * *(int *)arr->content + 1);
+		i++;
+		tmp = arr;
+		arr = arr->next;
 		free(tmp);
 	}
 	put_words(res, str, c);
-	res[cnt] = (char *)ft_memalloc(sizeof(char));
-	res[cnt] = 0;
+	res[i] = (char *)ft_memalloc(sizeof(char));
+	res[i] = 0;
 	return (res);
 }
 
@@ -51,7 +51,7 @@ static t_list	*create_elem_length(int len)
 
 	if ((node = (t_list *)ft_memalloc(sizeof(*node))))
 	{
-		node->data = &len;
+		node->content = &len;
 		node->next = 0;
 	}
 	return (node);

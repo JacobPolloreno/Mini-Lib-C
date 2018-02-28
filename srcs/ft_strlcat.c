@@ -6,13 +6,25 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:40:22 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/22 20:58:05 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/27 20:26:46 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		concat(char **dst, char **src, size_t len);
+static void		concat(char **dst, char **src, size_t len)
+{
+	while (**src)
+	{
+		if (len != 1)
+		{
+			**dst = **src;
+			*dst = *dst + 1;
+			len--;
+		}
+		*src = *src + 1;
+	}
+}
 
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -33,18 +45,4 @@ size_t			ft_strlcat(char *dst, const char *src, size_t dstsize)
 	concat(&dst_ptr, &src_ptr, len);
 	*dst_ptr = '\0';
 	return (dst_len + (src_ptr - src));
-}
-
-static void		concat(char **dst, char **src, size_t len)
-{
-	while (**src)
-	{
-		if (len != 1)
-		{
-			**dst = **src;
-			*dst = *dst + 1;
-			len--;
-		}
-		*src = *src + 1;
-	}
 }

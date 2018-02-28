@@ -6,44 +6,12 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 12:56:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/27 20:05:38 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/27 20:28:47 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_list.h"
-
-static t_list	*get_word_cnt(int *words, const char *str, const char c);
-static t_list	*create_elem_length(int len);
-static void		put_words(char **res, const char *str, const char c);
-static int		remove_init(const char *str, const char c);
-
-char			**ft_strsplit(const char *str, const char c)
-{
-	int		words;
-	int		i;
-	char	**res;
-	t_list	*arr;
-	t_list	*tmp;
-
-	i = 0;
-	words = 0;
-	if (!(arr = get_word_cnt(&words, str, c)))
-		return (NULL);
-	res = (char **)ft_memalloc(sizeof(char*) * (words + 1));
-	while (i < words)
-	{
-		res[i] = (char *)ft_memalloc(sizeof(char) * *(int *)arr->content + 1);
-		i++;
-		tmp = arr;
-		arr = arr->next;
-		free(tmp);
-	}
-	put_words(res, str, c);
-	res[i] = (char *)ft_memalloc(sizeof(char));
-	res[i] = 0;
-	return (res);
-}
 
 static t_list	*create_elem_length(int len)
 {
@@ -55,6 +23,18 @@ static t_list	*create_elem_length(int len)
 		node->next = 0;
 	}
 	return (node);
+}
+
+static int		remove_init(const char *str, const char c)
+{
+	int len;
+
+	len = 0;
+	while (str[len] &&
+			(str[len] == c) &&
+			(str[len + 1] == c))
+		len++;
+	return (len);
 }
 
 static t_list	*get_word_cnt(int *words, const char *str, const char c)
@@ -85,18 +65,6 @@ static t_list	*get_word_cnt(int *words, const char *str, const char c)
 	return (head);
 }
 
-static int		remove_init(const char *str, const char c)
-{
-	int len;
-
-	len = 0;
-	while (str[len] &&
-			(str[len] == c) &&
-			(str[len + 1] == c))
-		len++;
-	return (len);
-}
-
 static void		put_words(char **res, const char *str, const char c)
 {
 	int	len;
@@ -121,4 +89,31 @@ static void		put_words(char **res, const char *str, const char c)
 		else
 			len++;
 	}
+}
+
+char			**ft_strsplit(const char *str, const char c)
+{
+	int		words;
+	int		i;
+	char	**res;
+	t_list	*arr;
+	t_list	*tmp;
+
+	i = 0;
+	words = 0;
+	if (!(arr = get_word_cnt(&words, str, c)))
+		return (NULL);
+	res = (char **)ft_memalloc(sizeof(char*) * (words + 1));
+	while (i < words)
+	{
+		res[i] = (char *)ft_memalloc(sizeof(char) * *(int *)arr->content + 1);
+		i++;
+		tmp = arr;
+		arr = arr->next;
+		free(tmp);
+	}
+	put_words(res, str, c);
+	res[i] = (char *)ft_memalloc(sizeof(char));
+	res[i] = 0;
+	return (res);
 }

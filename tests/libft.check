@@ -101,15 +101,19 @@ t_list	*create_elem_map(t_list *node)
 #test check_memchr
    const char str[] = "http://www.42siliconvalley.com";
    const char ch = '.';
+   char *src = "/|\x12\xff\x09\x42\2002\42|\\";
+   int size;
    char *ret;
    char *ret2;
 
    printf("CHECKING MEMCHR...\n");
+   size = 10;
    ret = memchr(str, ch, strlen(str));
-   ret2 = memchr(str, ch, strlen(str));
+   ret2 = ft_memchr(str, ch, strlen(str));
    ck_assert_str_eq(ret, ".42siliconvalley.com");
    ck_assert_str_eq(ret2, ".42siliconvalley.com");
    ck_assert_ptr_eq(ret, ret2);
+   ck_assert_ptr_eq(memchr(src, '\200', size), ft_memchr(src, '\200', size));
 
 #test check_memcmp
 	char str1[15];
@@ -475,21 +479,24 @@ t_list	*create_elem_map(t_list *node)
 	printf("\tft_strlen took %f to execute\n", time_taken);
 
 #test check_strstr
-	const char *largestring = "Foo Bar Baz";
-	const char *smallstring = "Bar";
+	const char *largestring = "Foo BarBarx";
+	const char *smallstring = "Barx";
+	const char *s1 = "MZIRIBMZIRIBMZP";
+    const char *s2 = "MZIRIBMZP";
 	char *ret;
 	char *ret2;
 
 	printf("CHECKING STRSTR...\n");
 	ret = strstr(largestring, smallstring);
 	ck_assert_int_eq(*ret, *smallstring);
-	ck_assert_str_eq(ret, "Bar Baz");
+	ck_assert_str_eq(ret, "Barx");
 
 	ret2 = ft_strstr(largestring, smallstring);
 	ck_assert_int_eq(*ret2, *smallstring);
-	ck_assert_str_eq(ret2, "Bar Baz");
+	ck_assert_str_eq(ret2, "Barx");
 
 	ck_assert_ptr_eq(ret, ret2);
+	ck_assert_str_eq(strstr(s1, s2), ft_strstr(s1, s2));
 
 #test check_strnstr
 	const char *largestring = "Foo Bar Baz";

@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 20:41:21 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/23 17:28:07 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/27 20:49:58 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return (ptr);
 		ptr++;
 	}
+	if (c == '\0')
+		return (ptr);
 	return (NULL);
 }

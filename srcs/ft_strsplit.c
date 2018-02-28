@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 12:56:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/27 20:28:47 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 09:37:07 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_list	*create_elem_length(int len)
 	return (node);
 }
 
-static int		remove_init(const char *str, const char c)
+static int		remove_init(const char *str, char c)
 {
 	int len;
 
@@ -37,7 +37,7 @@ static int		remove_init(const char *str, const char c)
 	return (len);
 }
 
-static t_list	*get_word_cnt(int *words, const char *str, const char c)
+static t_list	*get_word_cnt(int *words, const char *str, char c)
 {
 	int		len;
 	int		sub_len;
@@ -65,7 +65,7 @@ static t_list	*get_word_cnt(int *words, const char *str, const char c)
 	return (head);
 }
 
-static void		put_words(char **res, const char *str, const char c)
+static void		put_words(char **res, const char *str, char c)
 {
 	int	len;
 	int	word;
@@ -91,7 +91,7 @@ static void		put_words(char **res, const char *str, const char c)
 	}
 }
 
-char			**ft_strsplit(const char *str, const char c)
+char			**ft_strsplit(const char *str, char c)
 {
 	int		words;
 	int		i;

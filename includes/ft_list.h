@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 18:49:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 09:40:12 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 09:47:11 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ t_list	*ft_lstnew(const void *content, size_t content_size);
 void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void	ft_lsiter(t_list *lst, void (*f)(t_list *elem));
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 #endif

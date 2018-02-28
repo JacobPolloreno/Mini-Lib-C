@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 18:29:56 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/27 18:47:12 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 10:58:13 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (!alst || !*alst || !new)
-		return ;
 	new->next = *alst;
 	*alst = new;
 }

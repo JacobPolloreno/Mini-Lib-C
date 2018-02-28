@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 12:56:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 09:37:07 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 12:56:38 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ char			**ft_strsplit(const char *str, char c)
 		free(tmp);
 	}
 	put_words(res, str, c);
-	res[i] = (char *)ft_memalloc(sizeof(char));
 	res[i] = 0;
 	return (res);
 }

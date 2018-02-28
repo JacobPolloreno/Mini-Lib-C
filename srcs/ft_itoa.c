@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 13:31:45 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/27 20:29:58 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 10:53:46 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,9 @@ char			*ft_itoa(int n)
 	sign = (n < 0) ? -1 : 1;
 	len = 0;
 	tail = get_digits((long)n * sign, &len);
-	if (sign > 0)
-		res = (char *)ft_memalloc(sizeof(*res) * len + 1);
-	else
-		res = (char *)ft_memalloc(sizeof(*res) * len + 2);
+	len = sign > 0 ? len + 1 : len + 2;
+	if (!(res = (char *)ft_memalloc(sizeof(*res) * len)))
+		return (NULL);
 	len = 0;
 	while (tail)
 	{

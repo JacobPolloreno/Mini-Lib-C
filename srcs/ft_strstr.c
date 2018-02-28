@@ -6,30 +6,32 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/15 16:14:39 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/23 22:08:48 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 11:27:52 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int		reset_len;
 	char	*hstack;
+	int		i;
+	int		j;
 
-	reset_len = 0;
-	hstack = (char *)haystack;
+	hstack = (char*)haystack;
 	if (!*needle)
 		return (hstack);
-	while (needle[reset_len])
+	i = 0;
+	j = 0;
+	while (needle[j] && hstack[i])
 	{
-		if (!*hstack)
-			break ;
-		else if (*hstack == needle[reset_len])
-			reset_len++;
-		else if (reset_len)
-			reset_len = 0;
-		hstack++;
+		if (hstack[i + j] == needle[j])
+		{
+			j++;
+			continue ;
+		}
+		j = 0;
+		i++;
 	}
-	if (reset_len && !needle[reset_len])
-		return (hstack - reset_len);
+	if (!needle[j])
+		return (hstack + i);
 	return ((void *)0);
 }

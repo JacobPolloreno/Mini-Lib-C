@@ -76,6 +76,9 @@ t_list	*create_elem_map(t_list *node)
 
 #test check_memccpy
 	const char *src = "42 is a school.";
+	char	bf1[] = "abcdefghijklmnopqrstuvwxyz";
+	char	bf2[] = "abcdefghijklmnopqrstuvwxyz";
+	char	*src2 = "string with\200inside !";
 	char buff[50];
 	char buff2[50];
 	char *dest;
@@ -97,6 +100,10 @@ t_list	*create_elem_map(t_list *node)
 	/* ck_assert_str_eq(dest, src); */
 	/* ck_assert_str_eq(dest2, src); */
 	/* ck_assert_str_eq(dest, dest2); */
+
+	memccpy(bf1, src2, '\200', 21);
+	ft_memccpy(bf2, src2, '\200', 21);
+	ck_assert_str_eq(bf1, bf2);
 
 #test check_memchr
    const char str[] = "http://www.42siliconvalley.com";
@@ -128,13 +135,13 @@ t_list	*create_elem_map(t_list *node)
 	memcpy(str1, "abcdef", 6);
 	memcpy(str2, "ABCDEF", 6);
 
-	ck_assert_int_eq(memcmp("", "", 0), ft_memcmp("", "", 0));
-	ck_assert_int_eq(memcmp("", "", 1), ft_memcmp("", "", 1));
-	ck_assert_int_eq(memcmp("Z", "Z", 1), ft_memcmp("Z", "Z", 1));
-	ck_assert_int_eq(memcmp("a", "b", 1), ft_memcmp("a", "b", 1));
-	ck_assert_int_eq(memcmp("b", "a", 1), ft_memcmp("b", "a", 1));
-	ck_assert_int_eq(memcmp("a", "A", 1), ft_memcmp("a", "A", 1));
-	ck_assert_int_eq(memcmp("ABx", "ABX", 3), ft_memcmp("ABx", "ABX", 3));
+	//ck_assert_int_eq(memcmp("", "", 0), ft_memcmp("", "", 0));
+	//ck_assert_int_eq(memcmp("", "", 1), ft_memcmp("", "", 1));
+	//ck_assert_int_eq(memcmp("Z", "Z", 1), ft_memcmp("Z", "Z", 1));
+	//ck_assert_int_eq(memcmp("a", "b", 1), ft_memcmp("a", "b", 1));
+	//ck_assert_int_eq(memcmp("b", "a", 1), ft_memcmp("b", "a", 1));
+	//ck_assert_int_eq(memcmp("a", "A", 1), ft_memcmp("a", "A", 1));
+	//ck_assert_int_eq(memcmp("ABx", "ABX", 3), ft_memcmp("ABx", "ABX", 3));
 
 	t = clock();
 	ret = memcmp(str1, str2, 5);
@@ -483,10 +490,13 @@ t_list	*create_elem_map(t_list *node)
 	const char *smallstring = "Barx";
 	const char *s1 = "MZIRIBMZIRIBMZP";
     const char *s2 = "MZIRIBMZP";
+	const char *s3 = "FF";
+	const char *s4 = "see FF your FF return FF now FF";
 	char *ret;
 	char *ret2;
 
 	printf("CHECKING STRSTR...\n");
+	ck_assert_ptr_eq(strstr(s3, s4), ft_strstr(s3, s4));
 	ret = strstr(largestring, smallstring);
 	ck_assert_int_eq(*ret, *smallstring);
 	ck_assert_str_eq(ret, "Barx");
@@ -560,6 +570,8 @@ t_list	*create_elem_map(t_list *node)
 	ck_assert_int_eq(atoi("-2147483648"), ft_atoi("-2147483648"));
 	ck_assert_int_eq(atoi("-9223372036854775808"), ft_atoi("-9223372036854775808"));
 	ck_assert_int_eq(atoi("9223372036854775807"), ft_atoi("9223372036854775807"));
+	ck_assert_int_eq(atoi("92233720368547758078"), ft_atoi("92233720368547758078"));
+	ck_assert_int_eq(atoi("-9223372036854775807"), ft_atoi("-9223372036854775807"));
 
 #test check_isalpha
 	printf("CHECKING ISALPHA...\n");
@@ -824,8 +836,23 @@ t_list	*create_elem_map(t_list *node)
 	s = ft_strtrim("  A B C  ");
 	ck_assert_str_eq(s, "A B C");
 	free(s);
+	s = ft_strtrim("  A\n\tB\n\t\nC  ");
+	ck_assert_str_eq(s, "A\n\tB\n\t\nC");
+	free(s);
 	s = ft_strtrim("  A   B   C  ");
 	ck_assert_str_eq(s, "A   B   C");
+	free(s);
+	s = ft_strtrim("  A   B   C  ");
+	ck_assert_str_eq(s, "A   B   C");
+	free(s);
+	s = ft_strtrim("  A   B   C\n\n\n \t\t \n ");
+	ck_assert_str_eq(s, "A   B   C");
+	free(s);
+	s = ft_strtrim("   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ");
+	ck_assert_str_eq(s, "Hello \t  Please\n Trim me !");
+	free(s);
+	s = ft_strtrim("   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !");
+	ck_assert_str_eq(s, "Hello \t  Please\n Trim me !");
 	free(s);
 
 #test check_putchar
@@ -1112,25 +1139,20 @@ t_list	*create_elem_map(t_list *node)
 
 	char **words;
 
-	words = ft_strsplit("*One**Two***Three***", '*');
-	ck_assert_str_eq(words[0], "One");
-	ck_assert_str_eq(words[1], "Two");
-	ck_assert_str_eq(words[2], "Three");
-	free(words[2]);
-	free(words[1]);
-	free(words[0]);
+	words = ft_strsplit("*One**Two***Three***!*", '*');
+	ck_assert_str_eq(*words++, "One");
+	ck_assert_str_eq(*words++, "Two");
+	ck_assert_str_eq(*words++, "Three");
+	ck_assert_str_eq(*words++, "!");
+	ck_assert_ptr_eq(*words, NULL);
 
 	words = ft_strsplit("*A*B*C*D*E", '*');
-	ck_assert_str_eq(words[0], "A");
-	ck_assert_str_eq(words[1], "B");
-	ck_assert_str_eq(words[2], "C");
-	ck_assert_str_eq(words[3], "D");
-	ck_assert_str_eq(words[4], "E");
-	free(words[4]);
-	free(words[3]);
-	free(words[2]);
-	free(words[1]);
-	free(words[0]);
+	ck_assert_str_eq(*words++, "A");
+	ck_assert_str_eq(*words++, "B");
+	ck_assert_str_eq(*words++, "C");
+	ck_assert_str_eq(*words++, "D");
+	ck_assert_str_eq(*words++, "E");
+	ck_assert_ptr_eq(words, NULL);
 
 #test check_itoa
 	printf("CHECKING ITOA...\n");
@@ -1232,7 +1254,7 @@ t_list	*create_elem_map(t_list *node)
 
 	bytes_written = 0;
 	fp = freopen("./tests/redir.txt", "w+", stdout);
-	ft_lsiter(n1, &print_lst_content);
+	ft_lstiter(n1, &print_lst_content);
 	stat("./tests/redir.txt", &st);
 	bytes_written = st.st_size;
 	ck_assert_int_eq(bytes_written, 6);

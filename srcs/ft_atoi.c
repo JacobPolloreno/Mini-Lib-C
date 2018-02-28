@@ -6,13 +6,13 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 08:58:09 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/24 09:41:59 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 12:29:54 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int			ft_atoi(const char *str)
 {
-	long int	res;
+	long long	res;
 	int			sign;
 
 	sign = 1;
@@ -32,6 +32,8 @@ int			ft_atoi(const char *str)
 	}
 	while (*str && (*str >= 48 && *str <= 57))
 	{
+		if (res >= 922337203685477580 && (*str - 48) > 7)
+			return (sign == -1 ? 0 : -1);
 		res = res * 10 + (*str - 48);
 		str++;
 	}

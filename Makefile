@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/02/27 19:18:12 by jpollore         ###   ########.fr        #
+#    Updated: 2018/02/28 15:35:06 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ make_test: clean_test $(NAME)
 	gcc $(CFLAGS) $(OPTION2) $(TEST_SRC) -o $(TS_NAME)
 
 run_test: make_test
-	./$(TS_NAME); /bin/rm -f $(TS_NAME)
+	./$(TS_NAME); /bin/rm -f $(TS_NAME); /bin/rm -f $(TEST_SRC)
 
 clean_test:
 	/bin/rm -f $(TEST_SRC)

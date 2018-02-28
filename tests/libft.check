@@ -1140,19 +1140,22 @@ t_list	*create_elem_map(t_list *node)
 	char **words;
 
 	words = ft_strsplit("*One**Two***Three***!*", '*');
-	ck_assert_str_eq(*words++, "One");
-	ck_assert_str_eq(*words++, "Two");
-	ck_assert_str_eq(*words++, "Three");
-	ck_assert_str_eq(*words++, "!");
-	ck_assert_ptr_eq(*words, NULL);
+	ck_assert_str_eq(words[0], "One");
+	ck_assert_str_eq(words[1], "Two");
+	ck_assert_str_eq(words[2], "Three");
+	ck_assert_str_eq(words[3], "!");
+	//ck_assert_str_eq(words[4], "\0");
 
 	words = ft_strsplit("*A*B*C*D*E", '*');
-	ck_assert_str_eq(*words++, "A");
-	ck_assert_str_eq(*words++, "B");
-	ck_assert_str_eq(*words++, "C");
-	ck_assert_str_eq(*words++, "D");
-	ck_assert_str_eq(*words++, "E");
-	ck_assert_ptr_eq(words, NULL);
+	ck_assert_str_eq(words[0], "A");
+	ck_assert_str_eq(words[1], "B");
+	ck_assert_str_eq(words[2], "C");
+	ck_assert_str_eq(words[3], "D");
+	ck_assert_str_eq(words[4], "E");
+	//ck_assert_ptr_eq(words[5], NULL);
+
+	words = ft_strsplit("   ABCDE", ' ');
+	ck_assert_str_eq(words[0], "ABCDE");
 
 #test check_itoa
 	printf("CHECKING ITOA...\n");

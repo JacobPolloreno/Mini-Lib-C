@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 19:52:56 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 10:46:32 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 17:18:39 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	size_t	len;
 	char	*new;
 
+	if (!s || !*s || !f)
+		return (NULL);
 	size = ft_strlen(s);
 	if (!(new = ft_strnew(size)))
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 14:22:13 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/25 14:37:47 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 17:00:17 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_strjoin(const char *prefix, const char *suffix)
 	char	*concat;
 	size_t	concat_size;
 
+	if (!prefix || !suffix)
+		return (NULL);
 	concat_size = ft_strlen(prefix) + ft_strlen(suffix);
 	if ((concat = (char *)ft_memalloc(sizeof(*concat) * concat_size + 1)))
 	{

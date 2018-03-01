@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 12:56:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 15:28:32 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 17:25:49 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char			**ft_strsplit(const char *str, char c)
 	size_t				words;
 	size_t				current_word;
 
+	if (!str)
+		return (NULL);
 	words = get_word_cnt(str, c);
 	if (!(res = (char **)ft_memalloc(sizeof(*res) * words + 1)))
 		return (NULL);

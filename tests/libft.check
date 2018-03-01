@@ -60,6 +60,11 @@ t_list	*create_elem_map(t_list *node)
 	return (new);
 }
 
+char	strmap_call(char s)
+{
+	return (s + 1);
+}
+
 #test check_bzero
 	char str[20] = "42 is a school";
 	char str2[20] = "42 is a school";
@@ -712,6 +717,8 @@ t_list	*create_elem_map(t_list *node)
 	printf("CHECKING STRCLR...\n");
 
 	char *str;
+	//char *str2 = "Hello";
+	int i;
 
 	str = ft_strnew(10);
 	memset(str, 'A', 9);
@@ -720,6 +727,15 @@ t_list	*create_elem_map(t_list *node)
 	ft_strclr(str);
 	ck_assert_str_ne(str, "AAAAAAAAA");
 	ck_assert_str_eq(str, "");
+
+	i = 0;
+	//ft_strclr(NULL);
+	//ft_strclr(str2);
+	//while (i < 6)
+	//{
+	//	ck_assert_msg(str2[i] != '\0', "Not fully cleared");
+	//	i++;
+	//}
 
 #test check_striter
 	printf("CHECKING STRITER...\n");
@@ -752,9 +768,18 @@ t_list	*create_elem_map(t_list *node)
 
 	char *src = "abcdefgh";
 	char *str;
+	char  str2[] = "Hello";
+	char  *ret;
+
+	ft_strmap(NULL, NULL);
+	ft_strmap("", NULL);
+	ret = ft_strmap(str2, strmap_call);
+	ck_assert_str_eq(ret, "Ifmmp");
+	free(ret);
 
 	str = ft_strmap(src, &char_to_upper);
 	ck_assert_str_eq(str, "ABCDEFGH");
+
 
 #test check_strmapi
 	printf("CHECKING STRMAPI...\n");

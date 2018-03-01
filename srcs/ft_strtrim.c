@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 14:53:38 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 12:07:18 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 17:02:16 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strtrim(const char *s)
 	char	*tail;
 
 	head = (char *)s;
+	if (!s)
+		return (NULL);
 	while (*head && (*head == ' ' || *head == '\n' || *head == '\t'))
 		head++;
 	tail = head;

@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/02/28 15:35:06 by jpollore         ###   ########.fr        #
+#    Updated: 2018/02/28 17:41:16 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,13 @@ CS += ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c
 CS += ft_lstmap.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
-SRCS = $(addprefix $(SRC), $(CS))
+SRCS = $(CS)
+# SRCS = $(addprefix $(SRC), $(CS))
 TEST_CHECK = $(addprefix $(TEST), $(TS))
 TEST_SRC = $(addsuffix .c, $(TEST_CHECK))
 CFLAGS = -Wall -Wextra -Werror
-OPTION1 = -I$(HEADER)
+OPTION1 = -I.
+# OPTION1 = -I$(HEADER)
 OPTION2 = $(OPTION1) -I$(TEST_HEADER) -L$(TEST_LIBRARY) -lcheck $(NAME)
 
 all: $(NAME)

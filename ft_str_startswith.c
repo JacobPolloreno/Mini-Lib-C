@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_str_startswith.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/25 18:48:07 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 19:06:42 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/28 20:34:18 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/28 20:42:40 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_create_elem(void *content, size_t content_size)
+int			ft_str_startswith(const void *prefix, const void *s)
 {
-	t_list *tmp;
+	size_t prefix_len;
+	size_t str_len;
 
-	tmp = (t_list *)ft_memalloc(sizeof(t_list));
-	if (tmp)
-	{
-		tmp->content = content;
-		tmp->content_size = content_size;
-		tmp->next = NULL;
-	}
-	return (tmp);
+	prefix_len = ft_strlen(prefix);
+	str_len = ft_strlen(s);
+	return (str_len < prefix_len ? 0 : ft_strncmp(prefix, s, prefix_len) == 0);
 }

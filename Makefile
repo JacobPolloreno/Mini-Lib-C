@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/02/28 17:41:16 by jpollore         ###   ########.fr        #
+#    Updated: 2018/02/28 18:06:08 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,14 +55,14 @@ fclean: clean
 	/bin/rm -rf $(NAME)
 
 re: fclean all
+#
+# make_test: clean_test $(NAME)
+# 	checkmk $(TEST_CHECK) > $(TEST_SRC)
+# 	gcc $(CFLAGS) $(OPTION2) $(TEST_SRC) -o $(TS_NAME)
 
-make_test: clean_test $(NAME)
-	checkmk $(TEST_CHECK) > $(TEST_SRC)
-	gcc $(CFLAGS) $(OPTION2) $(TEST_SRC) -o $(TS_NAME)
+# run_test: make_test
+# 	./$(TS_NAME); /bin/rm -f $(TS_NAME); /bin/rm -f $(TEST_SRC)
 
-run_test: make_test
-	./$(TS_NAME); /bin/rm -f $(TS_NAME); /bin/rm -f $(TEST_SRC)
-
-clean_test:
-	/bin/rm -f $(TEST_SRC)
-	/bin/rm -f $(TS_NAME)
+# clean_test:
+# 	/bin/rm -f $(TEST_SRC)
+# 	/bin/rm -f $(TS_NAME)

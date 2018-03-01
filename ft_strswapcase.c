@@ -6,13 +6,13 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 09:06:56 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/01 09:06:59 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/03/01 09:11:02 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_swapcase(const char *s)
+char	*ft_strswapcase(const char *s)
 {
 	size_t	len;
 	char	*swapped;

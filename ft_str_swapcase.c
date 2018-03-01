@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 08:49:26 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/01 08:53:47 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/03/01 08:59:30 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_swapcase(const char *s)
 	char	ch;
 
 	len = ft_strlen(s);
-	if ((swapped = (char *)ft_memalloc(sizeof(*swapped) * len)))
+	if ((swapped = (char *)ft_memalloc(sizeof(*swapped) * len + 1)))
 	{
 		len = 0;
 		while (s[len])
@@ -31,6 +31,7 @@ char	*ft_swapcase(const char *s)
 				ch = ch - 32;
 			swapped[len++] = ch;
 		}
+		swapped[len] = '\0';
 		return (swapped);
 	}
 	return (NULL);

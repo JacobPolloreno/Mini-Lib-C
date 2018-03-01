@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/03/01 08:58:05 by jpollore         ###   ########.fr        #
+#    Updated: 2018/03/01 09:05:17 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ CS += ft_putendl.c ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c
 CS += ft_strsplit.c ft_itoa.c ft_lstnew.c
 CS += ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c
 CS += ft_lstmap.c ft_getstrupper.c ft_lstfilter.c ft_strrev.c
-CS += ft_is_sort.c ft_sort_wordtab.c ft_str_startswith.c
-CS += ft_str_endswith.c ft_str_swapcase.c
+CS += ft_issort.c ft_sort_wordtab.c ft_strstartswith.c
+CS += ft_strendswith.c ft_strswapcase.c
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(CS)
 CFLAGS = -Wall -Wextra -Werror

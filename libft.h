@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/01 08:58:07 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/03/01 09:05:57 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		ft_striter(char *s, void (*f)(char *));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		ft_strrev(char *s1);
 char		*ft_getstrupper(char *s);
+char		*ft_itoa(int n);
 char		*ft_strcat(char *dst, const char *src);
 char		*ft_strncat(char *dst, const char *src, size_t n);
 char		*ft_strcpy(char *dst, const char *src);
@@ -75,7 +76,6 @@ char		*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char		*ft_strsub(const char *s, unsigned int start, size_t len);
 char		*ft_strjoin(const char *prefix, const char *suffix);
 char		*ft_strtrim(const char *s);
-char		*ft_itoa(int n);
 char		*ft_swapcase(const char *s);
 char		**ft_strsplit(const char *str, char c);
 int			ft_atoi(const char *str);
@@ -85,15 +85,15 @@ int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
-int			ft_str_startswith(const void *prefix, const void *s);
-int			ft_str_endswith(const void *suffix, const void *s);
+int			ft_strendswith(const void *suffix, const void *s);
+int			ft_strstartswith(const void *prefix, const void *s);
 int			ft_strequ(const char *s1, const char *s2);
 int			ft_strnequ(const char *s1, const char *s2, size_t n);
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
-int			ft_is_sort(int *tab, int length, int (*f)(int, int));
+int			ft_issort(int *tab, int length, int (*f)(int, int));
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list		*ft_lstnew(const void *content, size_t content_size);
 #endif

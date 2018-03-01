@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 20:51:02 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/03/01 08:58:07 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char		*ft_strsub(const char *s, unsigned int start, size_t len);
 char		*ft_strjoin(const char *prefix, const char *suffix);
 char		*ft_strtrim(const char *s);
 char		*ft_itoa(int n);
+char		*ft_swapcase(const char *s);
 char		**ft_strsplit(const char *str, char c);
 int			ft_atoi(const char *str);
 int			ft_isalpha(int c);
@@ -85,6 +86,7 @@ int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_str_startswith(const void *prefix, const void *s);
+int			ft_str_endswith(const void *suffix, const void *s);
 int			ft_strequ(const char *s1, const char *s2);
 int			ft_strnequ(const char *s1, const char *s2, size_t n);
 int			ft_strcmp(const char *s1, const char *s2);

@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 15:40:11 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:13:10 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,28 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "ft_list.h"
 
+typedef struct s_list	t_list;
+typedef struct s_dlist	t_dlist;
+struct		s_list
+{
+	void	*content;
+	size_t	content_size;
+	t_list	*next;
+};
+struct		s_dlist
+{
+	void	*content;
+	size_t	content_size;
+	t_dlist	*next;
+	t_dlist	*prev;
+};
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlen(const char *str);
+void		ft_lstadd(t_list **alst, t_list *new);
+void		ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void		ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void		ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void		*ft_memalloc(size_t size);
 void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
@@ -69,4 +87,6 @@ int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+t_list		*ft_lstnew(const void *content, size_t content_size);
 #endif

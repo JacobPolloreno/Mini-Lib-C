@@ -6,12 +6,11 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 12:56:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 17:25:49 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:08:49 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_list.h"
 
 static size_t	get_word_cnt(const char *str, char c)
 {

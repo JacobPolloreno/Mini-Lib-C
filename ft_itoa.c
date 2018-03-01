@@ -6,12 +6,11 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 13:31:45 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 10:53:46 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:06:23 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_list.h"
 
 static char		*handle_zero(void)
 {

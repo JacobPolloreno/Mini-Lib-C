@@ -6,12 +6,11 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 19:15:15 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/27 20:28:59 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:05:51 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_list.h"
 
 static void	lst_del_f(void *content, size_t content_size)
 {

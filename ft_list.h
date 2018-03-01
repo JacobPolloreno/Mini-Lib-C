@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 18:49:34 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 09:48:47 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:03:40 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ struct	s_dlist
 	t_dlist	*next;
 	t_dlist	*prev;
 };
-t_list	*ft_create_elem(void *content, size_t content_size);
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list	*ft_lstnew(const void *content, size_t content_size);
 void	ft_lstadd(t_list **alst, t_list *new);

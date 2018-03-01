@@ -6,12 +6,11 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 18:29:56 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 10:58:13 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:06:14 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_list.h"
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {

@@ -6,18 +6,18 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/02/28 18:06:08 by jpollore         ###   ########.fr        #
+#    Updated: 2018/02/28 18:14:22 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = libft.a
-HEADER = includes/
-TS_NAME = check.out
-TEST_HEADER = /nfs/2018/j/jpollore/.brew/include/
-TEST_LIBRARY = /nfs/2018/j/jpollore/.brew/lib/
-TEST = tests/
-SRC = srcs/
+# HEADER = includes/
+# TS_NAME = check.out
+# TEST_HEADER = /nfs/2018/j/jpollore/.brew/include/
+# TEST_LIBRARY = /nfs/2018/j/jpollore/.brew/lib/
+# TEST = tests/
+# SRC = srcs/
 CS = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c
 CS += ft_strlcat.c ft_strcmp.c ft_strncmp.c ft_atoi.c ft_strstr.c ft_memset.c
 CS += ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c
@@ -31,16 +31,16 @@ CS += ft_putendl.c ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c
 CS += ft_create_elem.c ft_strsplit.c ft_itoa.c ft_lstnew.c
 CS += ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c
 CS += ft_lstmap.c
-TS = libft.check
+# TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(CS)
 # SRCS = $(addprefix $(SRC), $(CS))
-TEST_CHECK = $(addprefix $(TEST), $(TS))
-TEST_SRC = $(addsuffix .c, $(TEST_CHECK))
+# TEST_CHECK = $(addprefix $(TEST), $(TS))
+# TEST_SRC = $(addsuffix .c, $(TEST_CHECK))
 CFLAGS = -Wall -Wextra -Werror
 OPTION1 = -I.
 # OPTION1 = -I$(HEADER)
-OPTION2 = $(OPTION1) -I$(TEST_HEADER) -L$(TEST_LIBRARY) -lcheck $(NAME)
+# OPTION2 = $(OPTION1) -I$(TEST_HEADER) -L$(TEST_LIBRARY) -lcheck $(NAME)
 
 all: $(NAME)
 

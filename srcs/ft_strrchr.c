@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:18:04 by jpollore          #+#    #+#             */
-/*   Updated: 2018/02/28 10:33:25 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:46:43 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	ptr = (unsigned char *)s;
 	ch = (unsigned char)c;
+	r = NULL;
 	if (!*s)
 		return (NULL);
 	while (*ptr)

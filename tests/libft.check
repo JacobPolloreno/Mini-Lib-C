@@ -392,6 +392,7 @@ t_list	*create_elem_map(t_list *node)
 	char *start;
 	char *ptr;
 	char *ptr2;
+	char buf[] = "abcdedcba";
 
 	printf("CHECKING STRRCHR...\n");
 	start = str;
@@ -423,6 +424,8 @@ t_list	*create_elem_map(t_list *node)
 
 	ck_assert_ptr_eq(ptr, ptr2);
 	ck_assert_ptr_eq(str, start);
+
+	ck_assert_ptr_eq(strrchr(buf, 'z'), ft_strrchr(buf, 'z'));
 
 #test check_strdup
 	char src[9999];
@@ -486,6 +489,8 @@ t_list	*create_elem_map(t_list *node)
 	printf("\tft_strlen took %f to execute\n", time_taken);
 
 #test check_strstr
+	printf("CHECKING STRSTR...\n");
+
 	const char *largestring = "Foo BarBarx";
 	const char *smallstring = "Barx";
 	const char *s1 = "MZIRIBMZIRIBMZP";
@@ -495,7 +500,6 @@ t_list	*create_elem_map(t_list *node)
 	char *ret;
 	char *ret2;
 
-	printf("CHECKING STRSTR...\n");
 	ck_assert_ptr_eq(strstr(s3, s4), ft_strstr(s3, s4));
 	ret = strstr(largestring, smallstring);
 	ck_assert_int_eq(*ret, *smallstring);
@@ -509,12 +513,19 @@ t_list	*create_elem_map(t_list *node)
 	ck_assert_str_eq(strstr(s1, s2), ft_strstr(s1, s2));
 
 #test check_strnstr
+	printf("CHECKING STRNSTR...\n");
+
 	const char *largestring = "Foo Bar Baz";
 	const char *smallstring = "Bar";
 	char *ret;
 	char *ret2;
+	char buf[10];
+	char buf2[] = "ozarabozaraboze123";
 
-	printf("CHECKING STRNSTR...\n");
+	bzero(buf, 10);
+	strcpy(buf, "un deux 9");
+
+	ck_assert_ptr_eq(ft_strnstr(buf, "deux", 5), ((void*)0));
 	ret = strnstr(largestring, smallstring, strlen(largestring));
 	ck_assert_int_eq(*ret, *smallstring);
 	ck_assert_str_eq(ret, "Bar Baz");
@@ -532,8 +543,11 @@ t_list	*create_elem_map(t_list *node)
 	ck_assert_str_eq(ret2, largestring);
 	ck_assert_ptr_eq(ret, ret2);
 
+	ck_assert_int_eq(strcmp(ft_strnstr(buf2, "ozaraboze", 15), "ozaraboze123"), 0);
+
 #test check_strcmp
 	printf("CHECKING STRCMP...\n");
+
 	ck_assert_int_eq(ft_strcmp("A", "A"), strcmp("A", "A"));
 	ck_assert_int_eq(ft_strcmp("", ""), strcmp("", ""));
 	ck_assert_int_eq(ft_strcmp("ABc", "ABc"), strcmp("ABc", "ABc"));
@@ -541,6 +555,7 @@ t_list	*create_elem_map(t_list *node)
 
 #test check_strncmp
 	printf("CHECKING STRNCMP...\n");
+
 	ck_assert_int_eq(ft_strncmp("A", "A", 1), strncmp("A", "A", 1));
 	ck_assert_int_eq(ft_strncmp("", "", 0), strncmp("", "", 0));
 	ck_assert_int_eq(ft_strncmp("ABc", "ABc", 3), strncmp("ABc", "ABc", 3));

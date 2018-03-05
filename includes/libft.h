@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/01 09:11:17 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/03/05 10:23:03 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		ft_strclr(char *s);
 void		ft_striter(char *s, void (*f)(char *));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		ft_strrev(char *s1);
+void		ft_strcre(char *str, char ch1, char ch2);
 char		*ft_getstrupper(char *s);
 char		*ft_itoa(int n);
 char		*ft_strcat(char *dst, const char *src);

@@ -1327,3 +1327,11 @@ char	strmap_call(char s)
 	new = ft_lstmap(n1, &create_elem_map);
 	ck_assert_ptr_ne(new, NULL);
 	//ck_assert_str_eq("ABC", new->content);
+
+#test	check_ft_str_replace
+	printf("CHECKING STR REPLACE...\n");
+
+	char str[] = "AAAxxx AAAxxx A ";
+
+	ft_strcre(str, 'A', 'x');
+	ck_assert_str_eq(str, "xxxxxx xxxxxx x ");

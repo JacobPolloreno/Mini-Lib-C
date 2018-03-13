@@ -1335,3 +1335,77 @@ char	strmap_call(char s)
 
 	ft_strcre(str, 'A', 'x');
 	ck_assert_str_eq(str, "xxxxxx xxxxxx x ");
+
+#test	check_ft_putstrs
+	printf("CHECKING PUTSTRS...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char **str;
+	char *buf;
+
+	ft_putstrs(NULL);
+	str = malloc(sizeof(*str) * 3);
+	str[0] = ft_strdup("abc");
+	str[1] = ft_strdup("def");
+	str[2] = ft_strdup("ghi");
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	ft_putstrs((const char **) str);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 12);
+	buf = (char *)malloc(sizeof(char) * 4);
+	rewind(fp);
+	fscanf(fp, "%s", buf);
+	ck_assert_str_eq(buf, "abc");
+	bzero(buf, 4);
+	fscanf(fp, "%s", buf);
+	ck_assert_str_eq(buf, "def");
+	bzero(buf, 4);
+	fscanf(fp, "%s", buf);
+	ck_assert_str_eq(buf, "ghi");
+	bzero(buf, 4);
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");
+
+#test	check_ft_putstrs_fd
+	printf("CHECKING PUTSTRS_FD...\n");
+
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char **str;
+	char *buf;
+
+	ft_putstrs_fd(NULL, 2);
+	str = malloc(sizeof(*str) * 3);
+	str[0] = ft_strdup("abc");
+	str[1] = ft_strdup("def");
+	str[2] = ft_strdup("ghi");
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stderr);
+	ft_putstrs_fd((const char **)str, 2);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 12);
+	buf = (char *)malloc(sizeof(char) * 4);
+	rewind(fp);
+	fscanf(fp, "%s", buf);
+	ck_assert_str_eq(buf, "abc");
+	bzero(buf, 4);
+	fscanf(fp, "%s", buf);
+	ck_assert_str_eq(buf, "def");
+	bzero(buf, 4);
+	fscanf(fp, "%s", buf);
+	ck_assert_str_eq(buf, "ghi");
+	bzero(buf, 4);
+	fclose(fp);
+	free(str);
+
+	remove("./tests/redir.txt");

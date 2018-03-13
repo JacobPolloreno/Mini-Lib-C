@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/03/05 10:23:16 by jpollore         ###   ########.fr        #
+#    Updated: 2018/03/13 15:32:12 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ CS += ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c
 CS += ft_lstmap.c ft_getstrupper.c ft_lstfilter.c ft_strrev.c
 CS += ft_issort.c ft_sort_wordtab.c ft_strstartswith.c
 CS += ft_strendswith.c ft_strswapcase.c ft_strcre.c
+CS += ft_putstrs.c ft_putstrs_fd.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))

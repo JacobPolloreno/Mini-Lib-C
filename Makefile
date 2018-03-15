@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = clang
 NAME = libft.a
 HEADER = includes/
 TS_NAME = check.out

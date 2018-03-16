@@ -40,6 +40,9 @@ SRCS = $(addprefix $(SRC), $(CS))
 TEST_CHECK = $(addprefix $(TEST), $(TS))
 TEST_SRC = $(addsuffix .c, $(TEST_CHECK))
 CFLAGS = -Wall -Wextra -Werror
+ifeq ($(CDEBUG), 1)
+	CFLAGS += -g
+endif
 OPTION1 = -I$(HEADER)
 OPTION2 = $(OPTION1) -I$(TEST_HEADER) -L$(TEST_LIBRARY) -lcheck $(NAME)
 

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrs_fd.c                                    :+:      :+:    :+:   */
+/*   btree_level_count.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 15:27:17 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/13 15:28:44 by jpollore         ###   ########.fr       */
+/*   Created: 2018/01/26 15:56:14 by jpollore          #+#    #+#             */
+/*   Updated: 2018/01/26 16:14:59 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstrs_fd(const char **strs, int fd)
+int	btree_level_count(t_btree *root)
 {
-	char	**ptr;
-	size_t	idx;
-
-	if (!strs)
-		return ;
-	ptr = (char **)strs;
-	idx = 0;
-	while (ptr[idx])
-	{
-		ft_putstr_fd(ptr[idx++], fd);
-		ft_putchar_fd('\n', fd);
-	}
+	if (root == NULL)
+		return (0);
+	if (root->left == NULL && root->right == NULL)
+		return (0);
+	return (1 + MAX(btree_level_count(root->left),
+			btree_level_count(root->right)));
 }

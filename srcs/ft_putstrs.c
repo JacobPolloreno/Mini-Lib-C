@@ -14,8 +14,8 @@
 
 void	ft_putstrs(const char **strs)
 {
-	size_t idx;
-	char **ptr;
+	size_t	idx;
+	char	**ptr;
 
 	if (!strs)
 		return ;

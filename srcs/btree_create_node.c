@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrs_fd.c                                    :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 15:27:17 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/13 15:28:44 by jpollore         ###   ########.fr       */
+/*   Created: 2018/01/26 10:36:10 by jpollore          #+#    #+#             */
+/*   Updated: 2018/01/26 10:55:58 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstrs_fd(const char **strs, int fd)
+t_btree	*btree_create_node(void *item)
 {
-	char	**ptr;
-	size_t	idx;
+	t_btree	*node;
 
-	if (!strs)
-		return ;
-	ptr = (char **)strs;
-	idx = 0;
-	while (ptr[idx])
+	if ((node = (t_btree *)ft_memalloc(sizeof(*node))))
 	{
-		ft_putstr_fd(ptr[idx++], fd);
-		ft_putchar_fd('\n', fd);
+		node->left = 0;
+		node->right = 0;
+		node->item = item;
 	}
+	return (node);
 }

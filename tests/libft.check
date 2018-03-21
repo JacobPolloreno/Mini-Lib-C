@@ -65,6 +65,35 @@ char	strmap_call(char s)
 	return (s + 1);
 }
 
+int		btree_cmpf_int(void *d1, void *d2)
+{
+	int nb1;
+	int nb2;
+
+	nb1 = *((int *)d1);
+	nb2 = *((int *)d2);
+	return (nb1 - nb2);
+}
+
+void	btree_deletef_int(t_btree **node)
+{
+	if (!node)
+		return ;
+	free(*node);
+	*node = NULL;
+}
+
+void	*btree_updatef_int(void **data, void *new_data)
+{
+	(void)data;
+	return (new_data);
+}
+
+void	btree_print_int(void *data)
+{
+	printf("%d ", *(int *)data);
+}
+
 #test check_bzero
 	char str[20] = "42 is a school";
 	char str2[20] = "42 is a school";
@@ -1409,3 +1438,149 @@ char	strmap_call(char s)
 	free(str);
 
 	remove("./tests/redir.txt");
+
+#test	check_btree_create_node
+	printf("CHECKING BTREE CREATE NODE...\n");
+
+	t_btree *node;
+	int nb1;
+
+	nb1 = 10;
+	node = btree_create_node(&nb1);
+	ck_assert_ptr_ne(node, NULL);
+	ck_assert_ptr_eq(node->left, NULL);
+	ck_assert_ptr_eq(node->right, NULL);
+	ck_assert_ptr_eq((int *)node->item, &nb1);
+	ck_assert_int_eq(*((int *)node->item), nb1);
+
+#test	check_btree_insert_node
+	printf("CHECKING BTREE INSERT NODE...\n");
+
+	t_btree *node;
+	int nb1;
+	int nb2;
+	int nb3;
+	int nb4;
+	int nb5;
+
+	nb1 = 10;
+	nb2 = 25;
+	nb3 = 5;
+	nb4 = 99;
+	nb5 = 120;
+	node = btree_create_node(&nb1);
+	btree_insert_node(&node, &nb2, &btree_cmpf_int);
+	btree_insert_node(&node, &nb3, &btree_cmpf_int);
+	btree_insert_node(&node, &nb3, &btree_cmpf_int);
+	btree_insert_node(&node, &nb4, &btree_cmpf_int);
+	btree_insert_node(&node, &nb5, &btree_cmpf_int);
+	ck_assert_int_eq(*((int *)node->item), nb1);
+	ck_assert_int_eq(*((int *)node->right->item), nb2);
+	ck_assert_int_eq(*((int *)node->left->item), nb3);
+	ck_assert_int_eq(*((int *)node->right->right->item), nb4);
+	ck_assert_int_eq(*((int *)node->right->right->right->item), nb5);
+
+#test	check_btree_minvalue_node
+	printf("CHECKING BTREE MINVALUE NODE...\n");
+
+	t_btree *node;
+	t_btree	*min_node;
+	int nb1;
+	int nb2;
+	int nb3;
+	int nb4;
+
+	nb1 = 10;
+	nb2 = 25;
+	nb3 = 5;
+	nb4 = 99;
+
+	node = btree_create_node(&nb1);
+	btree_insert_node(&node, &nb2, &btree_cmpf_int);
+	btree_insert_node(&node, &nb3, &btree_cmpf_int);
+	btree_insert_node(&node, &nb3, &btree_cmpf_int);
+	btree_insert_node(&node, &nb4, &btree_cmpf_int);
+
+	min_node = btree_minvalue_node(&node);
+	ck_assert_int_eq(*((int *)min_node->item), 5);
+
+#test	check_btree_update_node
+	printf("CHECKING BTREE UPDATE NODE...\n");
+
+	t_btree *node;
+	int nb1;
+	int nb2;
+
+	nb1 = 1;
+	node = btree_create_node(&nb1);
+	nb2 = 99;
+
+	ck_assert_int_eq(*((int *)node->item), nb1);
+	btree_update_node(&node, &nb2, &btree_updatef_int);
+	ck_assert_int_eq(*((int *)node->item), nb2);
+	btree_update_node(&node, &nb1, &btree_updatef_int);
+	ck_assert_int_eq(*((int *)node->item), nb1);
+
+#test	check_btree_delete_node
+	printf("CHECKING BTREE DELETE NODE...\n");
+
+	t_btree *node;
+	int nb1;
+	int nb2;
+	int nb3;
+	int nb4;
+	int nb5;
+
+	nb1 = 10;
+	nb2 = 25;
+	nb3 = 5;
+	nb4 = 99;
+	nb5 = 120;
+
+	node = btree_create_node(&nb1);
+	btree_insert_node(&node, &nb2, &btree_cmpf_int);
+	btree_insert_node(&node, &nb3, &btree_cmpf_int);
+	btree_insert_node(&node, &nb4, &btree_cmpf_int);
+	btree_insert_node(&node, &nb5, &btree_cmpf_int);
+
+	node = btree_remove_node(&node, &nb1, &btree_cmpf_int,
+		&btree_deletef_int, &btree_updatef_int);
+	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb1);
+	//btree_apply_infix(node, &btree_print_int);
+	//printf("\n");
+	ck_assert_int_ne(*((int *)node->item), nb1);
+	ck_assert_int_eq(*((int *)node->item), nb2);
+
+	node = btree_remove_node(&node, &nb4, &btree_cmpf_int,
+		&btree_deletef_int, &btree_updatef_int);
+	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb4);
+	//btree_apply_infix(node, &btree_print_int);
+	//printf("\n");
+	ck_assert_int_eq(*((int *)node->item), nb2);
+	ck_assert_int_eq(*((int *)node->left->item), nb3);
+	ck_assert_int_eq(*((int *)node->right->item), nb5);
+
+	node = btree_remove_node(&node, &nb2, &btree_cmpf_int,
+		&btree_deletef_int, &btree_updatef_int);
+	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb2);
+	//btree_apply_infix(node, &btree_print_int);
+	//printf("\n");
+	ck_assert_int_eq(*((int *)node->item), nb5);
+	ck_assert_int_eq(*((int *)node->left->item), nb3);
+	ck_assert_ptr_eq(node->right, NULL);
+
+	node = btree_remove_node(&node, &nb3, &btree_cmpf_int,
+		&btree_deletef_int, &btree_updatef_int);
+	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb3);
+	//btree_apply_infix(node, &btree_print_int);
+	//printf("\n");
+	ck_assert_int_eq(*((int *)node->item), nb5);
+	ck_assert_ptr_eq(node->right, NULL);
+	ck_assert_ptr_eq(node->left, NULL);
+
+	node = btree_remove_node(&node, &nb5, &btree_cmpf_int,
+		&btree_deletef_int, &btree_updatef_int);
+	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb5);
+	//btree_apply_infix(node, &btree_print_int);
+	//printf("\n");
+	ck_assert_ptr_eq(node, NULL);

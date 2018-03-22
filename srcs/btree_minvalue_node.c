@@ -6,13 +6,13 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 15:31:53 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/20 16:09:47 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/03/22 12:38:10 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_btree *btree_minvalue_node(t_btree **root)
+t_btree	*btree_minvalue_node(t_btree **root)
 {
 	t_btree *cursor;
 

@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/03/20 17:19:32 by jpollore         ###   ########.fr        #
+#    Updated: 2018/03/22 12:49:52 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ CS += ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c
 CS += ft_lstmap.c ft_getstrupper.c ft_lstfilter.c ft_strrev.c
 CS += ft_issort.c ft_sort_wordtab.c ft_strstartswith.c
 CS += ft_strendswith.c ft_strswapcase.c ft_strcre.c
-CS += ft_putstrs.c ft_putstrs_fd.c
+CS += ft_putstrs.c ft_putstrs_fd.c ft_strexpand.c
+CS += ft_createfile.c ft_deletefile.c fdsearchcmp.c fdcmp.c
 CS += btree_apply_infix.c btree_apply_prefix.c btree_apply_suffix.c
 CS += btree_create_node.c btree_insert_node.c btree_level_count.c
 CS += btree_search_item.c btree_update_node.c btree_minvalue_node.c

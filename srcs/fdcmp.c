@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_update_node.c                                :+:      :+:    :+:   */
+/*   fdcmp.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 15:39:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/22 12:37:35 by jpollore         ###   ########.fr       */
+/*   Created: 2018/03/22 12:32:06 by jpollore          #+#    #+#             */
+/*   Updated: 2018/03/22 12:32:09 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	btree_update_node(t_btree **node, void *new_data,
-			void *(*updatef)(void **, void *))
+int		fd_cmp(void *fd1, void *fd2)
 {
-	if (!node || !new_data || !updatef)
-		return ;
-	(*node)->item = (*updatef)(&((*node)->item), new_data);
+	t_file	*ptr1;
+	t_file	*ptr2;
+
+	if (!fd1 || !fd2)
+		return (-1);
+	ptr1 = (t_file *)fd1;
+	ptr2 = (t_file *)fd2;
+	return (ptr1->fd - ptr2->fd);
 }

@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_update_node.c                                :+:      :+:    :+:   */
+/*   ft_strexpand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 15:39:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/22 12:37:35 by jpollore         ###   ########.fr       */
+/*   Created: 2018/03/22 12:37:09 by jpollore          #+#    #+#             */
+/*   Updated: 2018/03/22 12:37:15 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	btree_update_node(t_btree **node, void *new_data,
-			void *(*updatef)(void **, void *))
+char	*ft_strexpand(char *str, size_t expand_by)
 {
-	if (!node || !new_data || !updatef)
-		return ;
-	(*node)->item = (*updatef)(&((*node)->item), new_data);
+	char	*dst;
+	size_t	size;
+
+	size = str ? ft_strlen(str) : 0;
+	if ((dst = ft_strnew(size + expand_by)))
+	{
+		if (str)
+		{
+			ft_strcpy(dst, str);
+			ft_strdel(&str);
+		}
+	}
+	return (dst);
 }

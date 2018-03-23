@@ -57,6 +57,7 @@ void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memset(void *b, int c, size_t n);
+void		*btree_updatefd(void **data, void *new_data);
 void		ft_bzero(void *s, size_t n);
 void		ft_memdel(void **ap);
 void		ft_putchar(char ch);
@@ -85,6 +86,7 @@ void		btree_insert_node(t_btree **root, void *item,
 				int (*cmpf)(void *, void*));
 void		btree_update_node(t_btree **node, void *new_data,
 				void *(*updatef)(void **, void *));
+void		btree_deletefd(t_btree **node);
 void		delete_file(t_file **file);
 char		*ft_getstrupper(char *s);
 char		*ft_itoa(int n);

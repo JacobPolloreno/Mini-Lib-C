@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/20 17:22:19 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:37:07 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_list	t_list;
 typedef struct s_dlist	t_dlist;
 typedef struct s_bnode	t_btree;
 typedef struct s_file	t_file;
+typedef	struct s_btree_fns	t_btree_fns;
 struct		s_list
 {
 	void	*content;
@@ -41,9 +42,16 @@ struct		s_bnode
 	void	*item;
 	t_btree	*right;
 };
-struct		s_file {
+struct		s_file
+{
 	char	*content;
-	int	fd;
+	int		fd;
+};
+struct		s_btree_fns
+{
+	int		(*cmpf)(void *, void*);
+	void	(*delf)(t_btree **);
+	void	*(*updatef)(void **, void *);
 };
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlen(const char *str);
@@ -108,31 +116,30 @@ char		*ft_strtrim(const char *s);
 char		*ft_strswapcase(const char *s);
 char		**ft_strsplit(const char *str, char c);
 char		*ft_strexpand(char *str, size_t expand_by);
-int		ft_atoi(const char *str);
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
-int		ft_memcmp(const void *s1, const void *s2, size_t n);
-int		ft_strendswith(const void *suffix, const void *s);
-int		ft_strstartswith(const void *prefix, const void *s);
-int		ft_strequ(const char *s1, const char *s2);
-int		ft_strnequ(const char *s1, const char *s2, size_t n);
-int		ft_strcmp(const char *s1, const char *s2);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_tolower(int c);
-int		ft_toupper(int c);
-int		ft_issort(int *tab, int length, int (*f)(int, int));
-int		btree_level_count(t_btree *root);
-int		fd_cmp(void *fd1, void *fd2);
-int		fdsearchcmp(void *data_ref, void *node);
+int			ft_atoi(const char *str);
+int			ft_isalpha(int c);
+int			ft_isdigit(int c);
+int			ft_isalnum(int c);
+int			ft_isascii(int c);
+int			ft_isprint(int c);
+int			ft_memcmp(const void *s1, const void *s2, size_t n);
+int			ft_strendswith(const void *suffix, const void *s);
+int			ft_strstartswith(const void *prefix, const void *s);
+int			ft_strequ(const char *s1, const char *s2);
+int			ft_strnequ(const char *s1, const char *s2, size_t n);
+int			ft_strcmp(const char *s1, const char *s2);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_tolower(int c);
+int			ft_toupper(int c);
+int			ft_issort(int *tab, int length, int (*f)(int, int));
+int			btree_level_count(t_btree *root);
+int			fd_cmp(void *fd1, void *fd2);
+int			fdsearchcmp(void *data_ref, void *node);
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list		*ft_lstnew(const void *content, size_t content_size);
 t_btree		*btree_create_node(void *item);
 t_btree		*btree_minvalue_node(t_btree **root);
 t_btree		*btree_remove_node(t_btree **root, void *data_ref,
-				int (*cmpf)(void *, void*), void (*delf)(t_btree **),
-				void *(*updatef)(void **, void *));
+				t_btree_fns *bfns);
 t_file		*create_file(int fd);
 #endif

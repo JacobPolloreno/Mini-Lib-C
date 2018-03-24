@@ -15,13 +15,16 @@
 t_btree	*btree_remove_fdnode(t_btree **root, void *data_ref)
 {
 	t_btree_fns	*fns;
+	t_btree		*new_root;
 
 	if ((fns = (t_btree_fns *)ft_memalloc(sizeof(*fns))))
 	{
 		fns->cmpf = &fdsearchcmp;
 		fns->delf = &btree_deletefd;
 		fns->updatef = &btree_updatefd;
-		return (btree_remove_node(root, data_ref, fns));
+		new_root = btree_remove_node(root, data_ref, fns);
+		free(fns);
+		return (new_root);
 	}
 	return (NULL);
 }

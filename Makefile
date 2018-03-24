@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/03/22 12:49:52 by jpollore         ###   ########.fr        #
+#    Updated: 2018/03/23 17:56:09 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ CS += btree_apply_infix.c btree_apply_prefix.c btree_apply_suffix.c
 CS += btree_create_node.c btree_insert_node.c btree_level_count.c
 CS += btree_search_item.c btree_update_node.c btree_minvalue_node.c
 CS += btree_remove_node.c btree_deletefd.c btree_updatefd.c
+CS += btree_remove_fdnode.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))

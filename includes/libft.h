@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/23 17:37:07 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:55:46 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,6 @@ t_btree		*btree_create_node(void *item);
 t_btree		*btree_minvalue_node(t_btree **root);
 t_btree		*btree_remove_node(t_btree **root, void *data_ref,
 				t_btree_fns *bfns);
+t_btree		*btree_remove_fdnode(t_btree **root, void *data_ref);
 t_file		*create_file(int fd);
 #endif

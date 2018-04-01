@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Update data function for binary tree nodes that use t_file structs
+*/
+
 void	*btree_updatefd(void **data, void *new_data)
 {
 	t_file	*new_file;

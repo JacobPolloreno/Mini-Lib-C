@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Apply function to binary tree nodes using infix traversal
+*/
+
 void	btree_apply_infix(t_btree *root, void (*applyf)(void *))
 {
 	if (!root || !applyf)

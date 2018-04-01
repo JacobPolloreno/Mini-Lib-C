@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Return new linked list with elements filtered out.
+*/
+
 t_list	*ft_lstfilter(t_list *lst, int compare, int (*f)(void *, size_t, int))
 {
 	t_list *head;

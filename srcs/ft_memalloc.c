@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Allocates memory with malloc then runs zeroes out the memory allocated
+*/
+
 void	*ft_memalloc(size_t size)
 {
 	void	*buf;

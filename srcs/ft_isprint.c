@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** printing character test (space character inclusive)
+*/
+
 int	ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);

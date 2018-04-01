@@ -12,6 +12,11 @@
 
 #include "libft.h"
 
+/*
+** Create a new node (struct) for a binary tree
+** 	set param item in struct. Accepts a void * to be generalizable.
+*/
+
 t_btree	*btree_create_node(void *item)
 {
 	t_btree	*node;

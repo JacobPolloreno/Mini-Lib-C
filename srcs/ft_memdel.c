@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Free memory at pointer address and set to null
+*/
+
 void	ft_memdel(void **ap)
 {
 	if (!ap || !*ap)

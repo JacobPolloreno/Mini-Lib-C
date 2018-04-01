@@ -12,8 +12,12 @@
 
 #include "libft.h"
 
+/*
+** Insert a node into the binary tree using prefix traversal
+*/
+
 void	btree_insert_node(t_btree **root, void *item,
-			int (*cmpf)(void *, void*))
+			int (*cmpf)(void *, void *))
 {
 	if (!root || !item || !cmpf)
 		return ;

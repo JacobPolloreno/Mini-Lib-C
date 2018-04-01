@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Comparison function for t_file structs file descriptors
+*/
+
 int		fd_cmp(void *fd1, void *fd2)
 {
 	t_file	*ptr1;

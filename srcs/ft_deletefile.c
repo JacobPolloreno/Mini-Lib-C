@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Free file and set to null
+*/
+
 void	delete_file(t_file **file)
 {
 	if (!file)

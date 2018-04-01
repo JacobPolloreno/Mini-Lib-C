@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Delete a binary tree node that has t_file nodes
+*/
+
 void	btree_deletefd(t_btree **node)
 {
 	if (!node)

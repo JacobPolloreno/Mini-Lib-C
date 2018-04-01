@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Returns number of levels a binary tree has
+*/
+
 int	btree_level_count(t_btree *root)
 {
 	if (root == NULL)

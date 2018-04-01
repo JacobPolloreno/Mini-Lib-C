@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Comparison function for t_file structs which compares file descriptors
+*/
+
 int		fdsearchcmp(void *data_ref, void *node)
 {
 	t_file	*ptr;

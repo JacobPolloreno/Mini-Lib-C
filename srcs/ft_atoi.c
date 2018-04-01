@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Convert ASCII string to integer
+*/
+
 int			ft_atoi(const char *str)
 {
 	long long	res;

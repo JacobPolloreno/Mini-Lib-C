@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Convert ASCII decimal-digit string to integer
+*/
+
 static char		*handle_zero(void)
 {
 	char *res;

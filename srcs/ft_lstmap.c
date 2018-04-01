@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Return new linked list with function applied to each element of linked list
+*/
+
 static void	lst_del_f(void *content, size_t content_size)
 {
 	if (content && content_size)

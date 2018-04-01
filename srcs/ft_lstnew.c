@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Return new linked list element with content set to param content
+*/
+
 t_list	*ft_lstnew(const void *content, size_t content_size)
 {
 	t_list *node;

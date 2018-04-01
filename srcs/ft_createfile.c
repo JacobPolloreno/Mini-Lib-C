@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Returns a new malloc'd t_file
+*/
+
 t_file		*create_file(int fd)
 {
 	t_file *node;

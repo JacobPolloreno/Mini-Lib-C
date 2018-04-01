@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Return new string with all upper case characters
+*/
+
 char	*ft_getstrupper(char *s)
 {
 	char	*res;

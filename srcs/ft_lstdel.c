@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Free entire linked list and it's members
+*/
+
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	t_list *prev;

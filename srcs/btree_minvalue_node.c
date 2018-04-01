@@ -12,6 +12,11 @@
 
 #include "libft.h"
 
+/*
+** Return the node at the bottom left(min) of binary tree
+** 	given a root
+*/
+
 t_btree	*btree_minvalue_node(t_btree **root)
 {
 	t_btree *cursor;

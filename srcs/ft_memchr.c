@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Locate byte in byte string
+*/
+
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*ptr;

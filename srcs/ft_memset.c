@@ -12,6 +12,10 @@
 
 #include <string.h>
 
+/*
+** Fill a byte string with a byte value
+*/
+
 void	*ft_memset(void *b, int c, size_t n)
 {
 	unsigned char	*ptr_c;

@@ -12,6 +12,11 @@
 
 #include "libft.h"
 
+/*
+** Update a nodes data using an update function that takes the node's
+** 	current data as well as new data
+*/
+
 void	btree_update_node(t_btree **node, void *new_data,
 			void *(*updatef)(void **, void *))
 {

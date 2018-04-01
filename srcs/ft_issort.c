@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Test if integer array is sorted
+*/
+
 int	ft_issort(int *tab, int length, int (*f)(int, int))
 {
 	int ele;

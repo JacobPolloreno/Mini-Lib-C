@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Append new t_list node at front of list
+*/
+
 void	ft_lstadd(t_list **alst, t_list *new)
 {
 	new->next = *alst;

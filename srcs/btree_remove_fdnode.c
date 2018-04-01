@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+/*
+** Removes a node in the binary tree that has t_file as content
+** 	we define a set of functions to perform the required actions
+** 	for fd comparison, delete file, and update file nodes
+*/
+
 t_btree	*btree_remove_fdnode(t_btree **root, void *data_ref)
 {
 	t_btree_fns	*fns;

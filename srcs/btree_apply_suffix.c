@@ -12,6 +12,11 @@
 
 #include "libft.h"
 
+/*
+** Apply function to binary tree nodes using suffix traversal
+** 	Go left; Go right; Apply
+*/
+
 void	btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 {
 	if (!root || !applyf)

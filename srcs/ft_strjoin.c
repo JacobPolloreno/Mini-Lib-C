@@ -13,7 +13,7 @@
 #include "libft.h"
 
 /*
-** 	Allocates and returns a "fresh" null-terminated concatenated string
+** Allocates and returns a "fresh" null-terminated concatenated string
 **  of prefix and suffix strings.
 */
 

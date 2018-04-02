@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Return list of strings. Split string at seperator haracter(c)
+*/
+
 static size_t	get_word_cnt(const char *str, char c)
 {
 	size_t words;

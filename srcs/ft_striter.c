@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Apply function to each character in string.
+*/
+
 void	ft_striter(char *s, void (*f)(char *))
 {
 	char *ptr;

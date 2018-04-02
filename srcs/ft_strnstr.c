@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Locate a substring in a string. Not more than len characters are searched.
+*/
+
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	char	*hstack;

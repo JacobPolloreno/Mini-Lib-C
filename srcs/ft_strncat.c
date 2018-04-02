@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Concatenate strings. Append not more than n characters.
+*/
+
 char	*ft_strncat(char *dst, const char *src, size_t n)
 {
 	int concat_len;

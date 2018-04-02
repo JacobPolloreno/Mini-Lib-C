@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Removes a node in the binary tree
+*/
+
 static t_btree	*found_one_child(t_btree **root, void (*delf)(t_btree **))
 {
 	t_btree *tmp;

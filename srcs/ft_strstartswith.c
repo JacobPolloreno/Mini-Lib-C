@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Test if the string starts with the prefix
+*/
+
 int			ft_strstartswith(const void *prefix, const void *s)
 {
 	size_t prefix_len;

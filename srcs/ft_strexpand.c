@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Expand malloc'd(realloc) space of string
+*/
+
 char	*ft_strexpand(char *str, size_t expand_by)
 {
 	char	*dst;

@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Save a copy of a string
+*/
+
 char	*ft_strdup(const char *src)
 {
 	char	*copy;

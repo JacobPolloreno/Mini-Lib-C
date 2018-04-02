@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Clear string by zero-ing memory of string
+*/
+
 void	ft_strclr(char *s)
 {
 	if (!s || !*s)

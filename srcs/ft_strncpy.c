@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Copy strings. Copy at most n characters from src into dst
+*/
+
 char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
 	size_t len;

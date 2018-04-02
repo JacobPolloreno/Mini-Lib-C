@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Write number to standard output
+*/
+
 void	ft_putnbr(int n)
 {
 	long int	res;

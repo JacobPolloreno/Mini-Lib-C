@@ -12,6 +12,11 @@
 
 #include "libft.h"
 
+/*
+** Apply function to each character in string.
+** 	up to n characters
+*/
+
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int len;

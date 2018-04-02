@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Allocate and return "fresh" string.
+*/
+
 char	*ft_strnew(size_t size)
 {
 	char *new;

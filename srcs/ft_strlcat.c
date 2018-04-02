@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Size-bounded string concatenation
+*/
+
 static void		concat(char **dst, char **src, size_t len)
 {
 	while (**src)

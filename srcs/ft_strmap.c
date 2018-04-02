@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Apply function to each character in string and return new string
+*/
+
 char	*ft_strmap(const char *s, char (*f)(char))
 {
 	size_t	size;

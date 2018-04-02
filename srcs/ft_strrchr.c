@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Locate character in string
+*/
+
 char	*ft_strrchr(const char *s, int c)
 {
 	unsigned char	*ptr;

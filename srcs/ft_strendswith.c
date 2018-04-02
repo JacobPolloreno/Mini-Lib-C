@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Test if the string ends with the suffix
+*/
+
 int			ft_strendswith(const void *suffix, const void *s)
 {
 	char	*sf;

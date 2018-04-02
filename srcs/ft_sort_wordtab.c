@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Lexicographically sort (quicksort alg) word array
+*/
+
 static void		ft_string_swap(char **a, char **b)
 {
 	char *swp;

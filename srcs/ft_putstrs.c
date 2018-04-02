@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Write strings(string array) to standard output
+*/
+
 void	ft_putstrs(const char **strs)
 {
 	size_t	idx;

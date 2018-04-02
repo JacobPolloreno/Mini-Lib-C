@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Swap case for characters in string
+*/
+
 char	*ft_strswapcase(const char *s)
 {
 	size_t	len;

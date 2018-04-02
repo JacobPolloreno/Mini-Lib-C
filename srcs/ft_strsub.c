@@ -12,6 +12,11 @@
 
 #include "libft.h"
 
+/*
+** Return a substring beginning form start index.
+** 	behavior is undefined if start + len is not a substring
+*/
+
 char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
 	char	*substr;

@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Free string and set to NULL
+*/
+
 void	ft_strdel(char **as)
 {
 	if (!as || !*as)

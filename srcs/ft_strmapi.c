@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Apply function to n character in string and return new string
+*/
+
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
 	size_t	size;

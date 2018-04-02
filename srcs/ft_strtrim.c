@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Remove leading and trailing newline, tab, and space characters
+*/
+
 char	*ft_strtrim(const char *s)
 {
 	size_t	size;

@@ -12,18 +12,22 @@
 
 #include "libft.h"
 
-void	ft_strrev(char *s1)
+/*
+** Reverse a string
+*/
+
+void	ft_strrev(char *s)
 {
 	size_t	len;
 	char	*head;
 	char	*tail;
 	char	tmp;
 
-	if (!s1)
+	if (!s)
 		return ;
-	len = ft_strlen(s1);
-	head = s1;
-	tail = s1 + len - 1;
+	len = ft_strlen(s);
+	head = s;
+	tail = s + len - 1;
 	while (head < tail)
 	{
 		tmp = *head;

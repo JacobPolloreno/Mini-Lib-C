@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/23 17:55:46 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/04/02 11:26:16 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,9 @@ int			ft_issort(int *tab, int length, int (*f)(int, int));
 int			btree_level_count(t_btree *root);
 int			fd_cmp(void *fd1, void *fd2);
 int			fdsearchcmp(void *data_ref, void *node);
-int		btree_insert_node(t_btree **root, void *item,
+int			btree_insert_node(t_btree **root, void *item,
 				int (*cmpf)(void *, void*));
-int		get_next_line(const int fd, char **line);
+int			get_next_line(const int fd, char **line);
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list		*ft_lstnew(const void *content, size_t content_size);
 t_btree		*btree_create_node(void *item);

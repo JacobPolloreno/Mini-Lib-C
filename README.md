@@ -40,7 +40,7 @@ learning purposes.
 | [btree_apply_suffix.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_apply_suffix.c) | ```void btree_apply_suffix(t_btree *root, void (*applyf)(void *);```| Apply function to binary tree nodes using suffix traversal (go left; go right; apply) |
 | [btree_create_node.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_create_node.c) | ```t_btree *btree_create_node(void *item);```  | Create a new node (struct) for a binary tree |
 | [btree_deletefd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_deletefd.c) | ```void btree_deletefd(t_btree **node);```  | Delete a btree node that has **t_file** set as item, using ```delete_file()``` |
-| [btree_insert_node.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_insert_node.c) | ```void btree_insert_node(t_btree **root, void *item, int (*cmpf)(void *, void *));```  | Insert a node into the binary tree using prefix traversal |
+| [btree_insert_node.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_insert_node.c) | ```int btree_insert_node(t_btree **root, void *item, int (*cmpf)(void *, void *));```  | Insert a node into the binary tree using prefix traversal. Return 0 if successful, -1 if error. |
 | [btree_level_count.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_level_count.c) | ```int btree_level_count(t_btree *root);```  | Returns the number of levels a binary tree has |
 | [btree_minvalue_node.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_minvalue_node.c) | ```t_btree *btree_minvalue_node(t_btree **root);```  | Return the node at the bottom left(min value) of the binary tree given a root node |
 | [btree_remove_fdnode.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_remove_fdnode.c) | ```t_btree *btree_remove_fdnode(t_btree **root, void *data_ref);```  | Remove a fd node in the binary tree that matches the data_ref |
@@ -123,3 +123,4 @@ learning purposes.
 | [ft_strtrim.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strtrim.c) | ```char *ft_strtrim(const char *s);``` | Remove leading and trailing newline, tab, and space characters. |
 | [ft_tolower.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_tolower.c) | ```int ft_tolower(int c);``` | Convert character to lower case |
 | [ft_toupper.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_toupper.c) | ```int ft_toupper(int c);``` | Convert character to upper case |
+| [get_next_line.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/get_next_line.c) | ```int get_next_line(const int fd, char **line);``` | Return next line in fd. Handles multiple file descriptors |

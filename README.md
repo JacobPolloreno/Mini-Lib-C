@@ -9,6 +9,8 @@ learning purposes.
 1. `git clone https://github.com/JacobPolloreno/42LIBFT.git libft`
 2. `cd libft`
 3. run `make` to compile the library and produce a `libft.a` file
+	* create env variable ```export CDEBUG=1``` before compiling to add ```-g``` flag for
+	  debugging
 4. to make use of the library run `gcc -L. -lft your_c_file.c` while in the `libft/` directory
 	* you can move the `libft.a` file into your project repo **but** you must also copy over the `libft.h` header file
 	* if you decide to move the library, run `gcc -L<path_to_library> -lft your_c_file.c`
@@ -17,8 +19,8 @@ learning purposes.
 
 ### To Run Unit Test
 1. `brew install check` to install the testing framework
-2. you may need to change the paths found in the Makefile under `TEST_HEADER` and `TEST_LIBRARY` to
-   point the check file
+2. you may need to change the paths found in the Makefile `TEST_HEADER` and `TEST_LIBRARY` to
+   point where your check was installation path
 3. `make run_test` will compile the test file in `tests/libft.check` and run the test
 
 * Note: the test framework takes advantage of the `checkmk` awk script to generate the check .c file

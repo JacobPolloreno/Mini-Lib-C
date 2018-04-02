@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Replace character in string
+*/
+
 void	ft_strcre(char *str, char ch1, char ch2)
 {
 	unsigned char *ptr;

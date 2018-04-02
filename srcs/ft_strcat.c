@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Concatenate strings
+*/
+
 char	*ft_strcat(char *dst, const char *src)
 {
 	int concat_len;

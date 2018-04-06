@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   enqueue.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/19 14:59:02 by jpollore          #+#    #+#             */
-/*   Updated: 2018/03/04 09:11:37 by jpollore         ###   ########.fr       */
+/*   Created: 2018/04/06 11:03:34 by jpollore          #+#    #+#             */
+/*   Updated: 2018/04/06 11:27:30 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
-# include <ctype.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <string.h>
-# include <strings.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <time.h>
-# include <unistd.h>
-# include "libft.h"
-#endif
+#include "libft.h"
+
+/*
+** Insert a node at queue tail
+*/
+
+int	enqueue(t_queue **head, t_queue **tail, void *data)
+{
+	t_queue *node;
+
+	if ((node = (t_queue *)ft_memalloc(sizeof(*node))))
+	{
+		node->data = data;
+		node->next = NULL;
+		if (queue_isempty(head))
+			*head = node;
+		else
+			(*tail)->next = node;
+		(*tail) = node;
+		return (0);
+	}
+	return (1);
+}

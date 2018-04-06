@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/04/02 11:26:16 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/04/06 11:22:24 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_dlist	t_dlist;
 typedef struct s_bnode	t_btree;
 typedef struct s_file	t_file;
 typedef	struct s_btree_fns	t_btree_fns;
+typedef	struct s_stack	t_stack;
+typedef	struct s_queue	t_queue;
 struct		s_list
 {
 	void	*content;
@@ -54,19 +56,22 @@ struct		s_btree_fns
 	void	(*delf)(t_btree **);
 	void	*(*updatef)(void **, void *);
 };
+struct		s_stack
+{
+	void	*data;
+	t_stack *next;
+};
+struct		s_queue
+{
+	void	*data;
+	t_queue *next;
+};
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlen(const char *str);
 void		ft_lstadd(t_list **alst, t_list *new_node);
 void		ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void		ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void		ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-void		*ft_memalloc(size_t size);
-void		*ft_memchr(const void *s, int c, size_t n);
-void		*ft_memcpy(void *dst, const void *src, size_t n);
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
-void		*ft_memmove(void *dst, const void *src, size_t len);
-void		*ft_memset(void *b, int c, size_t n);
-void		*btree_updatefd(void **data, void *new_data);
 void		ft_bzero(void *s, size_t n);
 void		ft_memdel(void **ap);
 void		ft_putchar(char ch);
@@ -89,12 +94,25 @@ void		ft_putstrs_fd(const char **strs, int fd);
 void		btree_apply_prefix(t_btree *root, void (*applyf)(void *));
 void		btree_apply_infix(t_btree *root, void (*applyf)(void *));
 void		btree_apply_suffix(t_btree *root, void (*applyf)(void *));
-void		*btree_search_item(t_btree *root, void *data_ref,
-				int (*cmpf)(void *, void *));
 void		btree_update_node(t_btree **node, void *new_data,
 				void *(*updatef)(void **, void *));
 void		btree_deletefd(t_btree **node);
 void		delete_file(t_file **file);
+void		stack_print(t_stack **current, void (*displayf)(void *));
+void		stack_iter(t_stack **current, void (*applf)(void *));
+void		queue_print(t_queue *current, void (*displayf)(void *));
+void		queue_iter(t_queue *current, void (*applyf)(void *));
+void		*ft_memalloc(size_t size);
+void		*ft_memchr(const void *s, int c, size_t n);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
+void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void		*ft_memmove(void *dst, const void *src, size_t len);
+void		*ft_memset(void *b, int c, size_t n);
+void		*stack_pop(t_stack **top);
+void		*btree_updatefd(void **data, void *new_data);
+void		*btree_search_item(t_btree *root, void *data_ref,
+				int (*cmpf)(void *, void *));
+void		*dequeue(t_queue **head, t_queue **tail);
 char		*ft_getstrupper(char *s);
 char		*ft_itoa(int n);
 char		*ft_strcat(char *dst, const char *src);
@@ -137,6 +155,10 @@ int			fdsearchcmp(void *data_ref, void *node);
 int			btree_insert_node(t_btree **root, void *item,
 				int (*cmpf)(void *, void*));
 int			get_next_line(const int fd, char **line);
+int			stack_isempty(t_stack **top);
+int			stack_push(t_stack **top, void *data);
+int			enqueue(t_queue **head, t_queue **tail, void *data);
+int			queue_isempty(t_queue **head);
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list		*ft_lstnew(const void *content, size_t content_size);
 t_btree		*btree_create_node(void *item);

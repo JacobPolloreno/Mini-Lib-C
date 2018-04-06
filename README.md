@@ -31,6 +31,8 @@ learning purposes.
 ## Data Structures Supported
  - Linked list (look for _ft\_ls-_ prefix in file names. Both single and double linked list supported.
  - Binary tree (look for _btree-_ prefix in file names.
+ - Stack (look for _stack-_ prefix)
+ - Queue (look for _queue-_ prefix)
  
 ## Functions Implemented
 | Name | Prototype | Description |
@@ -48,6 +50,8 @@ learning purposes.
 | [btree_search_item.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_search_item.c) | ```void *btree_search_item(t_btree *root, void *data_ref, int (*cmpf)(void *, void *));```  | Return the contents of the node that matches the data_ref |
 | [btree_update_node.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_update_node.c) | ```void btree_update_node(t_btree **node, void *new_data, void *(*updatef)(void **, void *));```  | Update a nodes data using an update function that takes the node's current data as well as new data |
 | [btree_updatefd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_updatefd.c) | ```void	*btree_updatefd(void **data, void *new_data);```  | Update data function for binary tree nodes that use **t_file** structs as content |
+| [dequeue.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/dequeue.c) | ```void *dequeue(t_queue **head, t_queue **tail);```  | Remove node from queue head |
+| [enqueue.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/enqueue.c) | ```int enqueue(t_queue **head, t_queue **tail, void *data);```  | Insert a node at queue tail |
 | [fdcmp.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/fdcmp.c) | ```int fd_cmp(void *fd1, void *fd2);```  | Comparison function for **t_file** structs comparing file descriptor ints |
 | [fdsearchcmp.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/fdsearchcmp.c) | ```int fdsearchcmp(void *data_ref, void *node);```  | Comparison function for **t_file** structs comparing file descriptor ints |
 | [ft_atoi.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_atoi.c) | ```int ft_atoi(const char *str);``` | Converts ASCII string to integer. Reimplementation of standard atoi. |
@@ -124,3 +128,11 @@ learning purposes.
 | [ft_tolower.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_tolower.c) | ```int ft_tolower(int c);``` | Convert character to lower case |
 | [ft_toupper.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_toupper.c) | ```int ft_toupper(int c);``` | Convert character to upper case |
 | [get_next_line.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/get_next_line.c) | ```int get_next_line(const int fd, char **line);``` | Return next line in fd. Handles multiple file descriptors |
+| [queue_isempty.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/queue_isempty.c) | ```int queue_isempty(t_queue **head);``` | Test if queue is empty |
+| [queue_iter.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/queue_iter.c) | ```void queue_iter(t_queue **current, void (*applyf)(void *data));``` | Apply function to each element of the queue |
+| [queue_print.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/queue_print.c) | ```void queue_print(t_queue **current, void (*displayf)(void *data));``` | Print queue |
+| [stack_isempty.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/stack_isempty.c) | ```int stack_isempty(t_stack **top);``` | Test if stack is empty |
+| [stack_iter.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/stack_iter.c) | ```void stack_iter(t_stack **current, void (*applyf)(void *data));``` | Apply function to each element of the stack |
+| [stack_pop.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/stack_pop.c) | ```void *stack_pop(t_stack **top);``` | Remove a node from the top |
+| [stack_print.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/stack_print.c) | ```void stack_print(t_stack **current, void (*displayf)(void *data));``` | Print stack |
+| [stack_push.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/stack_push.c) | ```void stack_push(t_stack **top, void *data);``` | Insert a node at the top |

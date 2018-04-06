@@ -39,7 +39,10 @@ CS += btree_apply_infix.c btree_apply_prefix.c btree_apply_suffix.c
 CS += btree_create_node.c btree_insert_node.c btree_level_count.c
 CS += btree_search_item.c btree_update_node.c btree_minvalue_node.c
 CS += btree_remove_node.c btree_deletefd.c btree_updatefd.c
-CS += btree_remove_fdnode.c get_next_line.c
+CS += btree_remove_fdnode.c get_next_line.c stack_isempty.c
+CS += stack_print.c stack_push.c stack_iter.c stack_pop.c
+CS += queue_isempty.c queue_iter.c queue_print.c enqueue.c
+CS += dequeue.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))
@@ -66,13 +69,17 @@ fclean: clean
 
 re: fclean all
 
+re_test: re
+	make run_test
+
 make_test: clean_test $(NAME)
 	checkmk $(TEST_CHECK) > $(TEST_SRC)
 	gcc $(CFLAGS) $(OPTION2) $(TEST_SRC) -o $(TS_NAME)
 
 run_test: make_test
-	./$(TS_NAME); /bin/rm -f $(TS_NAME); /bin/rm -f $(TEST_SRC)
+	./$(TS_NAME); make clean_test
 
 clean_test:
 	/bin/rm -f $(TEST_SRC)
 	/bin/rm -f $(TS_NAME)
+	/bin/rm -rf $(TS_NAME).dSYM

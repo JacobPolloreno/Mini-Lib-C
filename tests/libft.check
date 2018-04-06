@@ -1,4 +1,14 @@
-#include "test.h"
+#include <ctype.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <time.h>
+#include <unistd.h>
+#include "libft.h"
 
 void	string_to_upper(char *s)
 {
@@ -92,6 +102,11 @@ void	*btree_updatef_int(void **data, void *new_data)
 void	btree_print_int(void *data)
 {
 	printf("%d ", *(int *)data);
+}
+
+void	stack_print_int(void *data)
+{
+	ft_putnbr(*(int*)data);
 }
 
 #test check_bzero
@@ -1537,22 +1552,27 @@ void	btree_print_int(void *data)
 	nb4 = 99;
 	nb5 = 120;
 
+	t_btree_fns *fns;
+
+	fns = (t_btree_fns *)ft_memalloc(sizeof(*fns));
+	fns->cmpf = &btree_cmpf_int;
+	fns->delf = &btree_deletef_int;
+	fns->updatef = &btree_updatef_int;
+
 	node = btree_create_node(&nb1);
 	btree_insert_node(&node, &nb2, &btree_cmpf_int);
 	btree_insert_node(&node, &nb3, &btree_cmpf_int);
 	btree_insert_node(&node, &nb4, &btree_cmpf_int);
 	btree_insert_node(&node, &nb5, &btree_cmpf_int);
 
-	node = btree_remove_node(&node, &nb1, &btree_cmpf_int,
-		&btree_deletef_int, &btree_updatef_int);
+	node = btree_remove_node(&node, &nb1, fns);
 	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb1);
 	//btree_apply_infix(node, &btree_print_int);
 	//printf("\n");
 	ck_assert_int_ne(*((int *)node->item), nb1);
 	ck_assert_int_eq(*((int *)node->item), nb2);
 
-	node = btree_remove_node(&node, &nb4, &btree_cmpf_int,
-		&btree_deletef_int, &btree_updatef_int);
+	node = btree_remove_node(&node, &nb4, fns);
 	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb4);
 	//btree_apply_infix(node, &btree_print_int);
 	//printf("\n");
@@ -1560,8 +1580,7 @@ void	btree_print_int(void *data)
 	ck_assert_int_eq(*((int *)node->left->item), nb3);
 	ck_assert_int_eq(*((int *)node->right->item), nb5);
 
-	node = btree_remove_node(&node, &nb2, &btree_cmpf_int,
-		&btree_deletef_int, &btree_updatef_int);
+	node = btree_remove_node(&node, &nb2, fns);
 	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb2);
 	//btree_apply_infix(node, &btree_print_int);
 	//printf("\n");
@@ -1569,8 +1588,7 @@ void	btree_print_int(void *data)
 	ck_assert_int_eq(*((int *)node->left->item), nb3);
 	ck_assert_ptr_eq(node->right, NULL);
 
-	node = btree_remove_node(&node, &nb3, &btree_cmpf_int,
-		&btree_deletef_int, &btree_updatef_int);
+	node = btree_remove_node(&node, &nb3, fns);
 	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb3);
 	//btree_apply_infix(node, &btree_print_int);
 	//printf("\n");
@@ -1578,9 +1596,95 @@ void	btree_print_int(void *data)
 	ck_assert_ptr_eq(node->right, NULL);
 	ck_assert_ptr_eq(node->left, NULL);
 
-	node = btree_remove_node(&node, &nb5, &btree_cmpf_int,
-		&btree_deletef_int, &btree_updatef_int);
+	node = btree_remove_node(&node, &nb5, fns);
 	//printf("LEVEL COUNT %d (rm %d): ", btree_level_count(node), nb5);
 	//btree_apply_infix(node, &btree_print_int);
 	//printf("\n");
 	ck_assert_ptr_eq(node, NULL);
+
+#test check_stack_push
+	printf("CHECKING STACK PUSH...\n");
+
+	t_stack *top;
+	int nb1;
+	int nb2;
+
+	nb1 = 10;
+	nb2 = 25;
+
+	stack_push(&top, &nb1);
+	stack_push(&top, &nb2);
+
+	ck_assert_ptr_eq(top->data, &nb2);
+	ck_assert_ptr_eq(top->next->data, &nb1);
+	ck_assert_int_eq(*((int *)top->data), nb2);
+	ck_assert_int_eq(*((int *)top->next->data), nb1);
+
+#test check_stack_isempty
+	printf("CHECKING STACK IS EMPTY...\n");
+
+	t_stack *top;
+	int nb1;
+
+	nb1 = 10;
+
+	top = NULL;
+	ck_assert_int_eq(stack_isempty(&top), 1);
+	stack_push(&top, &nb1);
+	ck_assert_int_eq(stack_isempty(&top), 0);
+
+
+#test check_stack_pop
+	printf("CHECKING STACK POP...\n");
+
+	t_stack *top;
+	int nb1;
+	int nb2;
+
+	nb1 = 10;
+	nb2 = 25;
+
+	stack_push(&top, &nb1);
+	stack_push(&top, &nb2);
+
+	ck_assert_int_eq(*((int *)stack_pop(&top)), nb2);
+	ck_assert_int_eq(*((int *)stack_pop(&top)), nb1);
+
+#test check_stack_iter
+	printf("CHECKING STACK ITER...\n");
+
+	t_stack *top;
+	int nb1;
+	int nb2;
+	int nb3;
+	int nb4;
+	struct stat st;
+	int bytes_written;
+	FILE *fp;
+	char *buf;
+
+	nb1 = 10;
+	nb2 = 25;
+	nb3 = -5;
+	nb4 = 99;
+
+	top = NULL;
+	stack_push(&top, &nb1);
+	stack_push(&top, &nb2);
+	stack_push(&top, &nb3);
+	stack_push(&top, &nb4);
+
+	bytes_written = 0;
+	fp = freopen("./tests/redir.txt", "w+", stdout);
+	stack_iter(&top, &stack_print_int);
+	stat("./tests/redir.txt", &st);
+	bytes_written = st.st_size;
+	ck_assert_int_eq(bytes_written, 8);
+	buf = (char *)malloc(sizeof(char) * bytes_written);
+	rewind(fp);
+	fscanf(fp, "%s", buf);
+	fclose(fp);
+
+	ck_assert_str_eq("99-52510", buf);
+
+	remove("./tests/redir.txt");

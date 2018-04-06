@@ -35,7 +35,7 @@ learning purposes.
  - Queue (look for _queue-_ prefix)
  
 ## Functions Implemented
-| Name | Prototype | Description |
+| Filename | Prototype | Description |
 | --- | --- | --- |
 | [btree_apply_infix.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_apply_infix.c) | ```void btree_apply_infix(t_btree *root, void (*applyf)(void *);``` | Apply function to binary tree nodes using infix traversal (go left; apply; go right) |
 | [btree_apply_prefix.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/btree_apply_prefix.c) | ```void btree_apply_prefix(t_btree *root, void (*applyf)(v:oid *);```| Apply function to binary tree nodes using prefix traversal (apply; go left; go right) |

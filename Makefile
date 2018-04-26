@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/03/23 17:56:09 by jpollore         ###   ########.fr        #
+#    Updated: 2018/04/24 14:48:50 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ CS += btree_remove_node.c btree_deletefd.c btree_updatefd.c
 CS += btree_remove_fdnode.c get_next_line.c stack_isempty.c
 CS += stack_print.c stack_push.c stack_iter.c stack_pop.c
 CS += queue_isempty.c queue_iter.c queue_print.c enqueue.c
-CS += dequeue.c
+CS += dequeue.c ft_strchri.c ft_pow.c ft_itoa_base.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))

@@ -1253,6 +1253,27 @@ void	stack_print_int(void *data)
 	ck_assert_str_eq(ft_itoa(2147483647), "2147483647");
 	ck_assert_str_eq(ft_itoa(-2147483648), "-2147483648");
 
+#test check_itoa_base
+	printf("CHECKING ITOA BASE...\n");
+
+	ck_assert_str_eq(ft_itoa_base(123, 10), "123");
+	ck_assert_str_eq(ft_itoa_base(10, 10), "10");
+	ck_assert_str_eq(ft_itoa_base(-123, 10), "-123");
+	ck_assert_str_eq(ft_itoa_base(0, 10), "0");
+
+	ck_assert_str_eq(ft_itoa_base(123456789, 10), "123456789");
+	ck_assert_str_eq(ft_itoa_base(2147483647, 10), "2147483647");
+	ck_assert_str_eq(ft_itoa_base(-2147483648, 10), "-2147483648");
+
+	ck_assert_str_eq(ft_itoa_base(255, 16), "FF");
+	ck_assert_str_eq(ft_itoa_base(-255, 16), "FF");
+	ck_assert_str_eq(ft_itoa_base(255, 13), "168");
+	ck_assert_str_eq(ft_itoa_base(255, 13), "168");
+
+	ck_assert_str_eq(ft_itoa_base(16, 2), "10000");
+	ck_assert_str_eq(ft_itoa_base(0, 2), "0");
+	ck_assert_str_eq(ft_itoa_base(222, 5), "1342");
+
 #test check_lstnew
 	printf("CHECKING LSTNEW...\n");
 

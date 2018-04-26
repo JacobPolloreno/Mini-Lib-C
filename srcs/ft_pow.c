@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchri.c                                       :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/25 14:43:53 by jpollore          #+#    #+#             */
-/*   Updated: 2018/04/25 14:43:57 by jpollore         ###   ########.fr       */
+/*   Created: 2018/04/25 14:42:20 by jpollore          #+#    #+#             */
+/*   Updated: 2018/04/25 14:42:21 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-/*
-** Locate character in string starting from i
-*/
-
-char	*ft_strchri(const char *s, int find, unsigned int start)
+long	ft_pow(long base, int pow)
 {
-	char *ptr;
-
-	if (ft_strlen(s) < start)
-		return (NULL);
-	ptr = (char *)s;
-	ptr += start;
-	while (*ptr)
-	{
-		if (*ptr == find)
-			return (ptr);
-		ptr++;
-	}
-	if (find == '\0')
-		return (ptr);
-	return (NULL);
+	if (pow == 0)
+		return (1);
+	else
+		return (base * ft_pow(base, pow - 1));
 }

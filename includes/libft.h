@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/04/06 11:22:24 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:49:37 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,14 @@ void		*btree_search_item(t_btree *root, void *data_ref,
 void		*dequeue(t_queue **head, t_queue **tail);
 char		*ft_getstrupper(char *s);
 char		*ft_itoa(int n);
+char		*ft_itoa_base(int n, int base);
 char		*ft_strcat(char *dst, const char *src);
 char		*ft_strncat(char *dst, const char *src, size_t n);
 char		*ft_strcpy(char *dst, const char *src);
 char		*ft_strncpy(char *dst, const char *src, size_t n);
 char		*ft_strdup(const char *s1);
 char		*ft_strchr(const char *s, int c);
+char		*ft_strchri(const char *s, int c, unsigned int start);
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strstr(const char *haystack, const char *needle);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
@@ -159,6 +161,7 @@ int			stack_isempty(t_stack **top);
 int			stack_push(t_stack **top, void *data);
 int			enqueue(t_queue **head, t_queue **tail, void *data);
 int			queue_isempty(t_queue **head);
+long		ft_pow(int num, int pow);
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list		*ft_lstnew(const void *content, size_t content_size);
 t_btree		*btree_create_node(void *item);

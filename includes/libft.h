@@ -114,8 +114,8 @@ void		*btree_search_item(t_btree *root, void *data_ref,
 				int (*cmpf)(void *, void *));
 void		*dequeue(t_queue **head, t_queue **tail);
 char		*ft_getstrupper(char *s);
-char		*ft_itoa(int n);
-char		*ft_itoa_base(int n, int base);
+char		*ft_itoa(long n);
+char		*ft_itoa_base(long n, int base);
 char		*ft_strcat(char *dst, const char *src);
 char		*ft_strncat(char *dst, const char *src, size_t n);
 char		*ft_strcpy(char *dst, const char *src);

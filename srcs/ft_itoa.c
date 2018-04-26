@@ -16,7 +16,7 @@
 ** Convert ASCII decimal-digit string to integer
 */
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	return (ft_itoa_base(n, 10));
 }

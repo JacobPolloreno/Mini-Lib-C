@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 14:44:19 by jpollore          #+#    #+#             */
-/*   Updated: 2018/04/26 15:00:35 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:40:03 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 static char	digit_to_char(int nb)
 {
 	if (nb >= 10)
-		return (nb - 10 + 'A');
+		return (nb - 10 + 'a');
 	else
 		return (nb + '0');
 }
 
-char		*ft_itoa_base(int n, int base)
+char		*ft_itoa_base(long n, int base)
 {
-	char	*res;
-	int		len;
-	int		neg;
-	long	nbr;
+	char		*res;
+	int			len;
+	int			neg;
+	long long	nbr;
 
 	neg = 0;
 	if (((nbr = (long)n) < 0) && (nbr *= -1))

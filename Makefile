@@ -43,6 +43,7 @@ CS += btree_remove_fdnode.c get_next_line.c stack_isempty.c
 CS += stack_print.c stack_push.c stack_iter.c stack_pop.c
 CS += queue_isempty.c queue_iter.c queue_print.c enqueue.c
 CS += dequeue.c ft_strchri.c ft_pow.c ft_itoa_base.c
+CS += ft_strtolower.c ft_strtoupper.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC), $(CS))

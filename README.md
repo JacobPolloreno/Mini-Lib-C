@@ -65,7 +65,8 @@ learning purposes.
 | [ft_isdigit.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_isdigit.c) | ```int ft_isdigit(int c);``` | Return decimal-digit character test. Reimplementation of isdigit |
 | [ft_isprint.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_isprint.c) | ```int ft_isprint(int c);``` | Return printing character test. Reimplementation of isprint |
 | [ft_issort.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_issort.c) | ```int ft_issort(int *tab, int length, int (*f)(int, int));``` | Test if integer array is sorted |
-| [ft_itoa.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_itoa.c) | ```char *ft_itoa(int n);``` | Convert ASCII decimal-digit string to integer|
+| [ft_itoa.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_itoa.c) | ```char *ft_itoa(long n);``` | Convert ASCII decimal-digit string to integer|
+| [ft_itoa_base.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_itoa_base.c) | ```char *ft_itoa(long n, int base);``` | Convert ASCII decimal-digit string to integer in base|
 | [ft_lstadd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_lstadd.c) | ```void ft_lstadd(t_list **alst, t_list *new);``` | Append new t_list node at front of list |
 | [ft_lstdel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_lstdel.c) | ```void ft_lstdel(t_list **alst, void (*del)(void *, size_t));``` | Remove and free the linked list and it's members|
 | [ft_lstdelone.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_lstdelone.c) | ```void ft_lstdelone(t_list **alst, void (*del)(void *, size_t));``` | Remove and free the t_list node |
@@ -81,6 +82,7 @@ learning purposes.
 | [ft_memdel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_memdel.c) | ```void ft_memdel(void **ap);``` | Free memory at pointer and set to null |
 | [ft_memmove.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_memmove.c) | ```void *ft_memmove(void *dst, const void *src, size_t len);``` | Copy byte string. Reimplementation of memmove. |
 | [ft_memset.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_memset.c) | ```void *ft_memset(void *b, int c, size_t n);``` | Fill a byte string with a byte value. Reimplementation of memset. |
+| [ft_pow.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_pow.c) | ```long ft_pow(long base, int pow);``` | Return mathematical power |
 | [ft_putchar.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putchar.c) | ```void ft_putchar(char ch);``` |  Write a character to standard output |
 | [ft_putchar_fd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putchar_fd.c) | ```void ft_putchar(char ch);``` |  Write a character to file descriptor |
 | [ft_putendl.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putendl.c) | ```void ft_putendl(const char *s);``` |  Put a string with newline to stdout |
@@ -95,8 +97,8 @@ learning purposes.
 | [ft_strcat.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcat.c) | ```char *ft_strcat(char *dst, const char *src);``` |  Concatenate strings. Reimplementation of strcat. |
 | [ft_strcat.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcat.c) | ```char *ft_strcat(char *dst, const char *src);``` |  Concatenate strings. Reimplementation of strcat. |
 | [ft_strchr.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strchr.c) | ```char *ft_strchr(const char *s, int c);``` |  Locate character in string. Reimplementation of strchr. |
+| [ft_strchri.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strchri.c) | ```char *ft_strchr(const char *s, int c, unsigned int start);``` |  Locate character in string starting from character index |
 | [ft_strclr.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strclr.c) | ```void ft_strclr(char *s);``` |  Clear string by zero-ing memory of string |
-| [ft_strchr.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strchr.c) | ```char *ft_strchr(const char *s, int c);``` |  Locate character in string. Reimplementation of strchr. |
 | [ft_strcmp.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcmp.c) | ```int ft_strcmp(const char *s1, const char *s2);``` |  Compare strings. Reimplementation of strcmp. |
 | [ft_strcpy.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcpy.c) | ```char *ft_strcpy(char *dst, const char *src);``` |  Copy strings. Reimplementation of strcpy. |
 | [ft_strcre.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcre.c) | ```void ft_strcre(char *str, char ch1, char ch2);``` |  Replace character in string |
@@ -125,6 +127,8 @@ learning purposes.
 | [ft_strsub.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strsub.c) | ```char *ft_strsub(const char *s, unsigned int start, size_t len);``` |  Return a substring beginning from start index. Behavior is undefined if start+len is not a substring. |
 | [ft_strswapcase.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strswapcase.c) | ```char *ft_strswapcase(const char *s);``` |  Swap case for characters in string. |
 | [ft_strtrim.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strtrim.c) | ```char *ft_strtrim(const char *s);``` | Remove leading and trailing newline, tab, and space characters. |
+| [ft_strtolower.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strtolower.c) | ```void ft_strtolower(char *s);``` | Convert characters in string to upper case |
+| [ft_strtoupper.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strtoupper.c) | ```void ft_strtoupper(char *s);``` | Convert characters in string to lower case |
 | [ft_tolower.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_tolower.c) | ```int ft_tolower(int c);``` | Convert character to lower case |
 | [ft_toupper.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_toupper.c) | ```int ft_toupper(int c);``` | Convert character to upper case |
 | [get_next_line.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/get_next_line.c) | ```int get_next_line(const int fd, char **line);``` | Return next line in fd. Handles multiple file descriptors |

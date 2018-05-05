@@ -91,6 +91,8 @@ void		ft_strrev(char *s1);
 void		ft_strcre(char *str, char ch1, char ch2);
 void		ft_putstrs(const char **strs);
 void		ft_putstrs_fd(const char **strs, int fd);
+void		ft_strtoupper(char *str);
+void		ft_strtolower(char *str);
 void		btree_apply_prefix(t_btree *root, void (*applyf)(void *));
 void		btree_apply_infix(t_btree *root, void (*applyf)(void *));
 void		btree_apply_suffix(t_btree *root, void (*applyf)(void *));

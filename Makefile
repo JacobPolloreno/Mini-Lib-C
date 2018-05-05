@@ -10,7 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
+
+ifeq ($(USE_CLANG), 1)
+	CC = clang
+else
+	CC = gcc
+endif
 NAME = libft.a
 HEADER = includes/
 TS_NAME = check.out

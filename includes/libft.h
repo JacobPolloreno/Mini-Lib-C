@@ -18,6 +18,9 @@
 # define MAX(x, y)	(((x) >= (y)) ? (x) : (y))
 # define MIN(x, y)	(((x) < (y)) ? (x) : (y))
 # define BUFF_SIZE 1024
+# define STDIN_FILENO 0
+# define STDOUT_FILENO 1
+# define STDERR_FILENO 2
 
 typedef struct s_list	t_list;
 typedef struct s_dlist	t_dlist;
@@ -26,6 +29,7 @@ typedef struct s_file	t_file;
 typedef	struct s_btree_fns	t_btree_fns;
 typedef	struct s_stack	t_stack;
 typedef	struct s_queue	t_queue;
+typedef	unsigned long	t_char32;
 struct		s_list
 {
 	void	*content;
@@ -82,6 +86,12 @@ void		ft_putendl(const char *s);
 void		ft_putendl_fd(const char *s, int fd);
 void		ft_putnbr(int n);
 void		ft_putnbr_fd(int n, int fd);
+void		ft_putwchar(const t_char32 ch);
+void		ft_putwchar_fd(const t_char32 ch, int fd);
+void		ft_putwstr(const t_char32 *s);
+void		ft_putwstr_fd(const t_char32 *s, int fd);
+void		ft_printbits(int nb);
+void		ft_printbits_fd(int nb, int fd);
 void		ft_sort_wordtab(char **tab);
 void		ft_strdel(char **as);
 void		ft_strclr(char *s);

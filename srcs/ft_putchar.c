@@ -18,5 +18,5 @@
 
 void	ft_putchar(char ch)
 {
-	write(1, &ch, 1);
+	write(1, &ch, STDOUT_FILENO);
 }

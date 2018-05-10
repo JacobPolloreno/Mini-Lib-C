@@ -1711,3 +1711,8 @@ void	stack_print_int(void *data)
 	ck_assert_str_eq("99-52510", buf);
 
 	remove("./tests/redir.txt");
+
+#test	check_getwchar
+	printf("CHECKING GET WIDE CHARACTER...\n");
+
+	ft_putstr(ft_getwchar(0242));

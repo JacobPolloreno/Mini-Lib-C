@@ -147,6 +147,7 @@ char		*ft_strtrim(const char *s);
 char		*ft_strswapcase(const char *s);
 char		**ft_strsplit(const char *str, char c);
 char		*ft_strexpand(char *str, size_t expand_by);
+char		*ft_getwchar(const t_char32 ch);
 int			ft_atoi(const char *str);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -182,4 +183,5 @@ t_btree		*btree_remove_node(t_btree **root, void *data_ref,
 				t_btree_fns *bfns);
 t_btree		*btree_remove_fdnode(t_btree **root, void *data_ref);
 t_file		*create_file(int fd);
+t_char32	*ft_wstrnew(size_t size);
 #endif

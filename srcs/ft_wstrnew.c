@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwstr.c                                       :+:      :+:    :+:   */
+/*   ft_wstrnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 14:11:44 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/10 14:11:46 by jpollore         ###   ########.fr       */
+/*   Created: 2018/05/10 15:07:06 by jpollore          #+#    #+#             */
+/*   Updated: 2018/05/10 15:07:12 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putwstr(const wchar_t *str)
+/*
+** Allocate and return "fresh" wide character string.
+*/
+
+wchar_t	*ft_wstrnew(size_t size)
 {
-	ft_putwstr_fd(str, STDOUT_FILENO);
+	wchar_t *new;
+
+	if ((new = (wchar_t *)ft_memalloc(sizeof(*new) * size + 1)))
+	{
+		ft_memset(new, '\0', sizeof(*new) * size);
+		return (new);
+	}
+	return (NULL);
 }

@@ -1715,4 +1715,11 @@ void	stack_print_int(void *data)
 #test	check_getwchar
 	printf("CHECKING GET WIDE CHARACTER...\n");
 
+	ft_putstr(ft_getwchar(044));
+	printf("\n");
 	ft_putstr(ft_getwchar(0242));
+	printf("\n");
+	ft_putstr(ft_getwchar(020254));
+	printf("\n");
+	ft_putstr(ft_getwchar(0201510));
+	printf("\n");

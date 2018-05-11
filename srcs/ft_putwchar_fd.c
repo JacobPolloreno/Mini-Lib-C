@@ -23,7 +23,7 @@
 ** 	0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 */
 
-void	ft_putwchar_fd(const t_char32 ch, int fd)
+void	ft_putwchar_fd(const wchar_t ch, int fd)
 {
 	if (ch < (1 << 7))
 	{

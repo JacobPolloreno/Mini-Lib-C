@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_putwchar(const t_char32 ch)
+void	ft_putwchar(const wchar_t ch)
 {
 	ft_putwchar_fd(ch, STDOUT_FILENO);
 }

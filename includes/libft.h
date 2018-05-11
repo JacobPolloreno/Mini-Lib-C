@@ -29,7 +29,6 @@ typedef struct s_file	t_file;
 typedef	struct s_btree_fns	t_btree_fns;
 typedef	struct s_stack	t_stack;
 typedef	struct s_queue	t_queue;
-typedef	unsigned long	t_char32;
 struct		s_list
 {
 	void	*content;
@@ -86,10 +85,10 @@ void		ft_putendl(const char *s);
 void		ft_putendl_fd(const char *s, int fd);
 void		ft_putnbr(int n);
 void		ft_putnbr_fd(int n, int fd);
-void		ft_putwchar(const t_char32 ch);
-void		ft_putwchar_fd(const t_char32 ch, int fd);
-void		ft_putwstr(const t_char32 *s);
-void		ft_putwstr_fd(const t_char32 *s, int fd);
+void		ft_putwchar(const wchar_t ch);
+void		ft_putwchar_fd(const wchar_t ch, int fd);
+void		ft_putwstr(const wchar_t *s);
+void		ft_putwstr_fd(const wchar_t *s, int fd);
 void		ft_printbits(int nb);
 void		ft_printbits_fd(int nb, int fd);
 void		ft_sort_wordtab(char **tab);
@@ -147,7 +146,7 @@ char		*ft_strtrim(const char *s);
 char		*ft_strswapcase(const char *s);
 char		**ft_strsplit(const char *str, char c);
 char		*ft_strexpand(char *str, size_t expand_by);
-char		*ft_getwchar(const t_char32 ch);
+char		*ft_getwchar(const wchar_t ch);
 int			ft_atoi(const char *str);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -183,5 +182,5 @@ t_btree		*btree_remove_node(t_btree **root, void *data_ref,
 				t_btree_fns *bfns);
 t_btree		*btree_remove_fdnode(t_btree **root, void *data_ref);
 t_file		*create_file(int fd);
-t_char32	*ft_wstrnew(size_t size);
+wchar_t		*ft_wstrnew(size_t size);
 #endif

@@ -39,7 +39,7 @@ static void	conv_wchar_to_utf8(const wchar_t ch, char *str)
 		str[len++] = ((ch >> 18) | 0xF0);
 		str[len++] = (((ch >> 12) & 0x3F) | 0x80);
 		str[len++] = (((ch >> 6) & 0x3F) | 0x80);
-		str[len++] = (ch & 0x3F);
+		str[len++] = ((ch & 0x3F) | 0x80);
 	}
 	str[len] = '\0';
 }

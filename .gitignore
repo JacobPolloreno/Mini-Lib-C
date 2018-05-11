@@ -4,3 +4,4 @@ tests/*.c
 libft.a
 tags
 check.out
+single.test*

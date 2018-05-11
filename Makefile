@@ -53,8 +53,8 @@ CS += ft_printbits_fd.c ft_putwchar.c ft_putwchar_fd.c
 CS += ft_putwstr.c ft_putwstr_fd.c ft_getwchar.c ft_wstrnew.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
-SRCS = $(addprefix $(SRC), $(CS))
-TEST_CHECK = $(addprefix $(TEST), $(TS))
+SRCS = $(addprefix $(SRC)/, $(CS))
+TEST_CHECK = $(addprefix $(TEST)/, $(TS))
 TEST_SRC = $(addsuffix .c, $(TEST_CHECK))
 CFLAGS = -Wall -Wextra -Werror
 ifeq ($(CDEBUG), 1)

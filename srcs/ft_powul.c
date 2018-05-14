@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pow.c                                           :+:      :+:    :+:   */
+/*   ft_powul.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_pow(long base, int pow)
+unsigned long	ft_powul(unsigned long base, unsigned long pow)
 {
 	if (pow == 0)
 		return (1);
 	else
-		return (base * ft_pow(base, pow - 1));
+		return (base * ft_powul(base, pow - 1));
 }

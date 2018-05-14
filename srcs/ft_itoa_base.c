@@ -38,7 +38,7 @@ char		*ft_itoa_base(long n, int base)
 			neg = 1;
 	}
 	len = 1;
-	while (ft_pow(base, len) - 1 < nbr)
+	while (ft_powl(base, len) - 1 < nbr)
 		len++;
 	if (!(res = (char *)ft_memalloc(sizeof(*res) * ++len + neg)))
 		return (NULL);

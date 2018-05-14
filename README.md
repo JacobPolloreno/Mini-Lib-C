@@ -84,7 +84,10 @@ learning purposes.
 | [ft_memdel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_memdel.c) | ```void ft_memdel(void **ap);``` | Free memory at pointer and set to null |
 | [ft_memmove.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_memmove.c) | ```void *ft_memmove(void *dst, const void *src, size_t len);``` | Copy byte string. Reimplementation of memmove. |
 | [ft_memset.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_memset.c) | ```void *ft_memset(void *b, int c, size_t n);``` | Fill a byte string with a byte value. Reimplementation of memset. |
-| [ft_pow.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_pow.c) | ```long ft_pow(long base, int pow);``` | Return mathematical power |
+| [ft_powi.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_powi.c) | ```int ft_powi(int base, int pow);``` | Return mathematical power |
+| [ft_powl.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_powl.c) | ```long ft_powl(long base, long pow);``` | Return mathematical power |
+| [ft_powul.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_powul.c) | ```unsigned long ft_powul(unsigned long base, unsigned long pow);``` | Return mathematical power |
+| [ft_powd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_powd.c) | ```double ft_powd(double base, double pow);``` | Return mathematical power |
 | [ft_putchar.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putchar.c) | ```void ft_putchar(char ch);``` |  Write a character to standard output |
 | [ft_putchar_fd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putchar_fd.c) | ```void ft_putchar(char ch);``` |  Write a character to file descriptor |
 | [ft_putendl.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putendl.c) | ```void ft_putendl(const char *s);``` |  Put a string with newline to stdout |

@@ -27,20 +27,18 @@ static char	digit_to_char(int nb)
 char		*ft_uitoa_base(unsigned long n, int base)
 {
 	char		*res;
-	int			len;
-	unsigned long long nbr;
+	int		len;
 
-	nbr = (long long)n;
 	len = 1;
-	while ((unsigned)ft_pow(base, len) - 1 < nbr)
+	while (ft_powul(base, len) - 1 < n)
 		len++;
 	if (!(res = (char *)ft_memalloc(sizeof(*res) * ++len)))
 		return (NULL);
 	res[--len] = '\0';
 	while (len-- > 0)
 	{
-		res[len] = digit_to_char(nbr % base);
-		nbr /= base;
+		res[len] = digit_to_char(n % base);
+		n /= base;
 	}
 	return (res);
 }

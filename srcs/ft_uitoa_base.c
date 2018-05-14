@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "libft.h"
 
 /*
-** Convert number in base ASCII decimal-digit string
+** Convert unsigned integer ASCII decimal-digit string in base
 */
 
 static char	digit_to_char(int nb)
@@ -24,31 +24,23 @@ static char	digit_to_char(int nb)
 		return (nb + '0');
 }
 
-char		*ft_itoa_base(long n, int base)
+char		*ft_uitoa_base(unsigned long n, int base)
 {
 	char		*res;
 	int			len;
-	int			neg;
-	long long	nbr;
+	unsigned long long nbr;
 
-	neg = 0;
-	if (((nbr = (long long)n) < 0) && (nbr *= -1))
-	{
-		if (base == 10)
-			neg = 1;
-	}
+	nbr = (long long)n;
 	len = 1;
-	while (ft_pow(base, len) - 1 < nbr)
+	while ((unsigned)ft_pow(base, len) - 1 < nbr)
 		len++;
-	if (!(res = (char *)ft_memalloc(sizeof(*res) * ++len + neg)))
+	if (!(res = (char *)ft_memalloc(sizeof(*res) * ++len)))
 		return (NULL);
-	res[--len + neg] = '\0';
+	res[--len] = '\0';
 	while (len-- > 0)
 	{
-		res[len + neg] = digit_to_char(nbr % base);
+		res[len] = digit_to_char(nbr % base);
 		nbr /= base;
 	}
-	if (neg)
-		res[0] = '-';
 	return (res);
 }

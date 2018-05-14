@@ -51,6 +51,7 @@ CS += dequeue.c ft_strchri.c ft_pow.c ft_itoa_base.c
 CS += ft_strtolower.c ft_strtoupper.c ft_printbits.c
 CS += ft_printbits_fd.c ft_putwchar.c ft_putwchar_fd.c
 CS += ft_putwstr.c ft_putwstr_fd.c ft_getwchar.c ft_wstrnew.c
+CS += ft_uitoa.c ft_uitoa_base.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC)/, $(CS))

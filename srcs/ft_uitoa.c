@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,10 +13,10 @@
 #include "libft.h"
 
 /*
-** Convert integer to ASCII decimal-digit string
+** Convert unsigned integer to ASCII decimal-digit string
 */
 
-char	*ft_itoa(long n)
+char	*ft_uitoa(unsigned long n)
 {
-	return (ft_itoa_base(n, 10));
+	return (ft_uitoa_base(n, 10));
 }

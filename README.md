@@ -65,8 +65,10 @@ learning purposes.
 | [ft_isdigit.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_isdigit.c) | ```int ft_isdigit(int c);``` | Return decimal-digit character test. Reimplementation of isdigit |
 | [ft_isprint.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_isprint.c) | ```int ft_isprint(int c);``` | Return printing character test. Reimplementation of isprint |
 | [ft_issort.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_issort.c) | ```int ft_issort(int *tab, int length, int (*f)(int, int));``` | Test if integer array is sorted |
-| [ft_itoa.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_itoa.c) | ```char *ft_itoa(long n);``` | Convert ASCII decimal-digit string to integer|
-| [ft_itoa_base.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_itoa_base.c) | ```char *ft_itoa(long n, int base);``` | Convert ASCII decimal-digit string to integer in base|
+| [ft_itoa.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_itoa.c) | ```char *ft_itoa(long n);``` | Convert integer to ASCII decimal-digit |
+| [ft_itoa_base.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_itoa_base.c) | ```char *ft_itoa(long n, int base);``` | Convert number in base to ASCII decimal-digit string to integer in base|
+| [ft_uitoa.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_uitoa.c) | ```char *ft_itoa(unsigned long n);``` | Convert unsigned integer to ASCII decimal-digit string |
+| [ft_uitoa_base.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_uitoa_base.c) | ```char *ft_itoa(unsigned long n, int base);``` | Convert unsigned num in base to ASCII decimal-digit string |
 | [ft_lstadd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_lstadd.c) | ```void ft_lstadd(t_list **alst, t_list *new);``` | Append new t_list node at front of list |
 | [ft_lstdel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_lstdel.c) | ```void ft_lstdel(t_list **alst, void (*del)(void *, size_t));``` | Remove and free the linked list and it's members|
 | [ft_lstdelone.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_lstdelone.c) | ```void ft_lstdelone(t_list **alst, void (*del)(void *, size_t));``` | Remove and free the t_list node |

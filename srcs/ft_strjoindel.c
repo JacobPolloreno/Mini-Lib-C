@@ -18,26 +18,26 @@
 **  malloc'd strings that are thus freed after joining.
 */
 
-char	*ft_strjoindel(char *prefix, char *suffix)
+char	*ft_strjoindel(char **prefix, char **suffix)
 {
 	char	*concat;
 	size_t	concat_size;
 	size_t	tmp;
 
-	if (!prefix || !suffix)
+	if (!prefix || !suffix || !*prefix || !*suffix)
 		return (NULL);
-	concat_size = ft_strlen(prefix) + ft_strlen(suffix);
+	concat_size = ft_strlen(*prefix) + ft_strlen(*suffix);
 	if ((concat = (char *)ft_memalloc(sizeof(*concat) * concat_size + 1)))
 	{
 		tmp = 0;
 		while (prefix[tmp])
-			*concat++ = prefix[tmp++];
+			*concat++ = (*prefix)[tmp++];
 		tmp = 0;
 		while (suffix[tmp])
-			*concat++ = suffix[tmp++];
+			*concat++ = (*suffix)[tmp++];
 		*concat = '\0';
-		ft_strdel(&prefix);
-		ft_strdel(&suffix);
+		ft_strdel(prefix);
+		ft_strdel(suffix);
 		return (concat - concat_size);
 	}
 	return (NULL);

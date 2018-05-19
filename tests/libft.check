@@ -1727,4 +1727,30 @@ void	stack_print_int(void *data)
 #test	check_strjoindel
 	printf("CHECKING STRJOIN DEL...\n");
 
-	printf("%s\n", ft_strjoindel(ft_strdup("0"), ft_strdup("1")));
+	char *zero;
+	char *one;
+
+	zero = ft_strdup("0");
+	one = ft_strdup("1");
+
+	printf("%s\n", ft_strjoindel(&zero, &one));
+	ck_assert_ptr_eq(zero, NULL);
+	ck_assert_ptr_eq(one, NULL);
+
+	zero = ft_strdup("0");
+	one = ft_strdup("1");
+
+	printf("%s\n", ft_strjoindel(NULL, &one));
+	printf("%s\n", ft_strjoindel(&zero, NULL));
+	printf("%s\n", ft_strjoindel(NULL, NULL));
+
+#test	check_strsubdel
+	printf("CHECKING STRSUB DEL...\n");
+
+	char *str;
+
+	str = ft_strdup("ABC 1234");
+	printf("NO CUT: %s\n", ft_strsubdel(&str, 0, ft_strlen(str)));
+	ck_assert_ptr_eq(str, NULL);
+	str = ft_strdup("ABC 1234");
+	printf("CUT %d: %s\n", 4, ft_strsubdel(&str, 4, ft_strlen(str)));

@@ -100,7 +100,6 @@ learning purposes.
 | [ft_putstrs_fd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putstrs_fd.c) | ```void ft_putstrs_fd(const char **strs, int fd);``` |  Write strings to file descriptor |
 | [ft_sort_wordtab.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_sort_wordtab.c) | ```void ft_sort_wordtab(char **tab);``` |  Lexicographically sort (with quicksort) word array |
 | [ft_strcat.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcat.c) | ```char *ft_strcat(char *dst, const char *src);``` |  Concatenate strings. Reimplementation of strcat. |
-| [ft_strcat.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcat.c) | ```char *ft_strcat(char *dst, const char *src);``` |  Concatenate strings. Reimplementation of strcat. |
 | [ft_strchr.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strchr.c) | ```char *ft_strchr(const char *s, int c);``` |  Locate character in string. Reimplementation of strchr. |
 | [ft_strchri.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strchri.c) | ```char *ft_strchr(const char *s, int c, unsigned int start);``` |  Locate character in string starting from character index |
 | [ft_strclr.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strclr.c) | ```void ft_strclr(char *s);``` |  Clear string by zero-ing memory of string |
@@ -115,6 +114,7 @@ learning purposes.
 | [ft_striter.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_striter.c) | ```void ft_striter(char *s, void (*f)(char *));``` |  Apply function to each character in string. |
 | [ft_striteri.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_striteri.c) | ```void ft_striteri(char *s, void (*f)(unsigned int, char *));``` |  Apply function to n characters in string.  |
 | [ft_strjoin.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strjoin.c) | ```char *ft_strjoin(const char *prefix, const char *suffix);``` |  Allocates and returns a fresh null-terminated concat string of prefix and suffix. |
+| [ft_strjoindel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strjoindel.c) | ```char *ft_strjoindel(char *prefix, char *suffix);``` |  Allocates and returns a fresh null-terminated concat malloc'd string of prefix and suffix. Prefix and suffix are freed. |
 | [ft_strlcat.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strlcat.c) | ```size_t ft_strlcat(char *dst, const char *src, size_t dstsize);``` |  Size-bounded string concatenation. Reimplementation of strlcat. |
 | [ft_strlen.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strlen.c) | ```size_t ft ft_strlen(const char *str);``` |  Find length of string. Reimplementation of strcat. |
 | [ft_strmap.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strmap.c) | ```char *ft_strmap(const char *s, char (*f)(char));``` |  Apply function to each character in string and return new string|

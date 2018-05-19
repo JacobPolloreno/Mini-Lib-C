@@ -22,16 +22,19 @@ char	*ft_strjoindel(char *prefix, char *suffix)
 {
 	char	*concat;
 	size_t	concat_size;
+	size_t	tmp;
 
 	if (!prefix || !suffix)
 		return (NULL);
 	concat_size = ft_strlen(prefix) + ft_strlen(suffix);
 	if ((concat = (char *)ft_memalloc(sizeof(*concat) * concat_size + 1)))
 	{
-		while (*prefix)
-			*concat++ = *prefix++;
-		while (*suffix)
-			*concat++ = *suffix++;
+		tmp = 0;
+		while (prefix[tmp])
+			*concat++ = prefix[tmp++];
+		tmp = 0;
+		while (suffix[tmp])
+			*concat++ = suffix[tmp++];
 		*concat = '\0';
 		ft_strdel(&prefix);
 		ft_strdel(&suffix);

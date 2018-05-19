@@ -1723,3 +1723,8 @@ void	stack_print_int(void *data)
 	printf("\n");
 	ft_putstr(ft_getwchar(0201510));
 	printf("\n");
+
+#test	check_strjoindel
+	printf("CHECKING STRJOIN DEL...\n");
+
+	printf("%s\n", ft_strjoindel(ft_strdup("0"), ft_strdup("1")));

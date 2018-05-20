@@ -30,10 +30,10 @@ char	*ft_strjoindel(char **prefix, char **suffix)
 	if ((concat = (char *)ft_memalloc(sizeof(*concat) * concat_size + 1)))
 	{
 		tmp = 0;
-		while (prefix[tmp])
+		while ((*prefix)[tmp])
 			*concat++ = (*prefix)[tmp++];
 		tmp = 0;
-		while (suffix[tmp])
+		while ((*suffix)[tmp])
 			*concat++ = (*suffix)[tmp++];
 		*concat = '\0';
 		ft_strdel(prefix);

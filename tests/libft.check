@@ -1735,7 +1735,15 @@ void	stack_print_int(void *data)
 #test	check_putwstr
 	printf("CHECKING PRINT WIDE STR...\n");
 
-	ft_putwstr(L"ABC@@@");
+	ft_putwstr(L"ABC@@@\n");
+
+#test	check_wstrdup
+	printf("CHECKING WIDE STR DUP...\n");
+
+	ft_putwstr(ft_wstrdup(L"AA @@\n"));
+	ft_putwstr(ft_wstrdup(L""));
+	ft_putwstr(ft_wstrdup(NULL));
+	ft_putwstr(NULL);
 
 #test	check_strjoindel
 	printf("CHECKING STRJOIN DEL...\n");

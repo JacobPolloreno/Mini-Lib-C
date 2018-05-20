@@ -139,6 +139,7 @@ learning purposes.
 | [ft_strtoupper.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strtoupper.c) | ```void ft_strtoupper(char *s);``` | Convert characters in string to lower case |
 | [ft_tolower.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_tolower.c) | ```int ft_tolower(int c);``` | Convert character to lower case |
 | [ft_toupper.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_toupper.c) | ```int ft_toupper(int c);``` | Convert character to upper case |
+| [ft_wstrdup.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_wstrdup.c) | ```wchar_t *ft_wstrdup(const wchar_t *src);``` |  Save a copy of a wide string.|
 | [ft_wstrlen.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_wstrlen.c) | ```size_t ft_wstrlen(const wchar_t *str);``` |  Find length of wide string.|
 | [get_next_line.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/get_next_line.c) | ```int get_next_line(const int fd, char **line);``` | Return next line in fd. Handles multiple file descriptors |
 | [queue_isempty.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/queue_isempty.c) | ```int queue_isempty(t_queue **head);``` | Test if queue is empty |

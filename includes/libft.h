@@ -193,4 +193,5 @@ t_btree			*btree_remove_node(t_btree **root, void *data_ref,
 t_btree			*btree_remove_fdnode(t_btree **root, void *data_ref);
 t_file			*create_file(int fd);
 wchar_t			*ft_wstrnew(size_t size);
+wchar_t			*ft_wstrdup(const wchar_t *src);
 #endif

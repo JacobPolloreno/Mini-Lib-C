@@ -53,6 +53,7 @@ CS += ft_printbits_fd.c ft_putwchar.c ft_putwchar_fd.c
 CS += ft_putwstr.c ft_putwstr_fd.c ft_getwchar.c ft_wstrnew.c
 CS += ft_uitoa.c ft_uitoa_base.c ft_powul.c ft_powi.c
 CS += ft_powd.c ft_strjoindel.c ft_strsubdel.c ft_wstrlen.c
+CS += ft_wstrdup.c
 TS = libft.check
 OBJS = $(patsubst %.c, %.o, $(CS))
 SRCS = $(addprefix $(SRC)/, $(CS))

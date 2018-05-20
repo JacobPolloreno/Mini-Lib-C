@@ -142,6 +142,7 @@ learning purposes.
 | [ft_wstrdel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_iwstrdel.c) | ```void ft_wstrdel(wchar_t **as);``` |  Free wide string and set to NULL |
 | [ft_wstrdup.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_wstrdup.c) | ```wchar_t *ft_wstrdup(const wchar_t *src);``` |  Save a copy of a wide string.|
 | [ft_wstrlen.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_wstrlen.c) | ```size_t ft_wstrlen(const wchar_t *str);``` |  Find length of wide string.|
+| [ft_wstr_to_str.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_wstr_to_str.c) | ```char *ft_wstr_to_str(const wchar_t *wstr);``` |  Convert wide string to string. |
 | [get_next_line.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/get_next_line.c) | ```int get_next_line(const int fd, char **line);``` | Return next line in fd. Handles multiple file descriptors |
 | [queue_isempty.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/queue_isempty.c) | ```int queue_isempty(t_queue **head);``` | Test if queue is empty |
 | [queue_iter.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/queue_iter.c) | ```void queue_iter(t_queue **current, void (*applyf)(void *data));``` | Apply function to each element of the queue |

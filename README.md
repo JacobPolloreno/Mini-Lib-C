@@ -98,6 +98,8 @@ learning purposes.
 | [ft_putstr_fd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putstr_fd.c) | ```void ft_putstr_fd(const char *s, int fd);``` |  Write a string to file descriptor |
 | [ft_putstrs.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putstrs.c) | ```void ft_putstrs(const char **strs);``` |  Write strings(string array) to standard output |
 | [ft_putstrs_fd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putstrs_fd.c) | ```void ft_putstrs_fd(const char **strs, int fd);``` |  Write strings to file descriptor |
+| [ft_putwstr.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putwstr.c) | ```void ft_putwstr(const wchar_t *s);``` |  Write a wide string to standard output |
+| [ft_putwstr_fd.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_putwstr_fd.c) | ```void ft_putwstr_fd(const wcharr_t *s, int fd);``` |  Write a wide string to file descriptor |
 | [ft_sort_wordtab.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_sort_wordtab.c) | ```void ft_sort_wordtab(char **tab);``` |  Lexicographically sort (with quicksort) word array |
 | [ft_strcat.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcat.c) | ```char *ft_strcat(char *dst, const char *src);``` |  Concatenate strings. Reimplementation of strcat. |
 | [ft_strchr.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strchr.c) | ```char *ft_strchr(const char *s, int c);``` |  Locate character in string. Reimplementation of strchr. |
@@ -116,7 +118,7 @@ learning purposes.
 | [ft_strjoin.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strjoin.c) | ```char *ft_strjoin(const char *prefix, const char *suffix);``` |  Allocates and returns a fresh null-terminated concat string of prefix and suffix. |
 | [ft_strjoindel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strjoindel.c) | ```char *ft_strjoindel(char **prefix, char **suffix);``` |  Allocates and returns a fresh null-terminated concat malloc'd string of prefix and suffix. Prefix and suffix are freed. |
 | [ft_strlcat.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strlcat.c) | ```size_t ft_strlcat(char *dst, const char *src, size_t dstsize);``` |  Size-bounded string concatenation. Reimplementation of strlcat. |
-| [ft_strlen.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strlen.c) | ```size_t ft ft_strlen(const char *str);``` |  Find length of string. Reimplementation of strcat. |
+| [ft_strlen.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strlen.c) | ```size_t ft_strlen(const char *str);``` |  Find length of string. Reimplementation of strcat. |
 | [ft_strmap.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strmap.c) | ```char *ft_strmap(const char *s, char (*f)(char));``` |  Apply function to each character in string and return new string|
 | [ft_strmapi.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strmapi.c) | ```char *ft_strmapi(const char *s, char (*f)(unsigned int, char));``` |  Apply function to n characters in string and return new string |
 | [ft_strncat.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strncat.c) | ```char *ft_strncat(char *dst, const char *src, size_t n);``` |  Concatenate strings. Append not mroe than n characters. Reimplementation of strncat. |
@@ -137,6 +139,7 @@ learning purposes.
 | [ft_strtoupper.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strtoupper.c) | ```void ft_strtoupper(char *s);``` | Convert characters in string to lower case |
 | [ft_tolower.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_tolower.c) | ```int ft_tolower(int c);``` | Convert character to lower case |
 | [ft_toupper.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_toupper.c) | ```int ft_toupper(int c);``` | Convert character to upper case |
+| [ft_wstrlen.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_wstrlen.c) | ```size_t ft_wstrlen(const wchar_t *str);``` |  Find length of wide string.|
 | [get_next_line.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/get_next_line.c) | ```int get_next_line(const int fd, char **line);``` | Return next line in fd. Handles multiple file descriptors |
 | [queue_isempty.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/queue_isempty.c) | ```int queue_isempty(t_queue **head);``` | Test if queue is empty |
 | [queue_iter.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/queue_iter.c) | ```void queue_iter(t_queue **current, void (*applyf)(void *data));``` | Apply function to each element of the queue |

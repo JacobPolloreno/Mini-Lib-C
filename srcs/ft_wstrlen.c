@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwstr_fd.c                                    :+:      :+:    :+:   */
+/*   ft_wstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 14:11:50 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/10 14:12:04 by jpollore         ###   ########.fr       */
+/*   Created: 2018/05/20 07:01:26 by jpollore          #+#    #+#             */
+/*   Updated: 2018/05/20 07:05:54 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putwstr_fd(const wchar_t *str, int fd)
-{
-	wchar_t *ptr;
-	size_t len;
+/*
+** Find length of wide string
+*/
 
-	ptr = (wchar_t *)str;
-	len = 0;
-	while (ptr[len])
-		ft_putwchar_fd(ptr[len++], fd);
+size_t	ft_wstrlen(const wchar_t *str)
+{
+	size_t count;
+
+	count = 0;
+	if (!str)
+		return (0);
+	while (str[count])
+		count++;
+	return (count);
 }

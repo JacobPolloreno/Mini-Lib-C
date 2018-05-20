@@ -1724,6 +1724,19 @@ void	stack_print_int(void *data)
 	ft_putstr(ft_getwchar(0201510));
 	printf("\n");
 
+#test	check_wstrlen
+	printf("CHECKING WIDE STR LEN...\n");
+
+	ck_assert_int_eq(ft_wstrlen(L"@@"), 2);
+	ck_assert_int_eq(ft_wstrlen(L"@@ @@ @@"), 8);
+	ck_assert_int_eq(ft_wstrlen(L""), 0);
+	ck_assert_int_eq(ft_wstrlen(NULL), 0);
+
+#test	check_putwstr
+	printf("CHECKING PRINT WIDE STR...\n");
+
+	ft_putwstr(L"ABC@@@");
+
 #test	check_strjoindel
 	printf("CHECKING STRJOIN DEL...\n");
 

@@ -29,6 +29,7 @@ typedef struct s_file	t_file;
 typedef	struct s_btree_fns	t_btree_fns;
 typedef	struct s_stack	t_stack;
 typedef	struct s_queue	t_queue;
+typedef wchar_t*	t_wstr;
 struct			s_list
 {
 	void		*content;
@@ -71,6 +72,7 @@ struct			s_queue
 };
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlen(const char *str);
+size_t			ft_wstrlen(const wchar_t *str);
 void			ft_lstadd(t_list **alst, t_list *new_node);
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));

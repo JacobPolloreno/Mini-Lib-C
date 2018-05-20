@@ -1754,16 +1754,16 @@ void	stack_print_int(void *data)
 	zero = ft_strdup("0");
 	one = ft_strdup("1");
 
-	printf("%s\n", ft_strjoindel(&zero, &one));
+	ck_assert_str_eq("01", ft_strjoindel(&zero, &one));
 	ck_assert_ptr_eq(zero, NULL);
 	ck_assert_ptr_eq(one, NULL);
 
 	zero = ft_strdup("0");
 	one = ft_strdup("1");
 
-	printf("%s\n", ft_strjoindel(NULL, &one));
-	printf("%s\n", ft_strjoindel(&zero, NULL));
-	printf("%s\n", ft_strjoindel(NULL, NULL));
+	ck_assert_ptr_eq(NULL, ft_strjoindel(NULL, &one));
+	ck_assert_ptr_eq(NULL, ft_strjoindel(&zero, NULL));
+	ck_assert_ptr_eq(NULL, ft_strjoindel(NULL, NULL));
 
 #test	check_strsubdel
 	printf("CHECKING STRSUB DEL...\n");
@@ -1771,7 +1771,14 @@ void	stack_print_int(void *data)
 	char *str;
 
 	str = ft_strdup("ABC 1234");
-	printf("NO CUT: %s\n", ft_strsubdel(&str, 0, ft_strlen(str)));
+	ck_assert_str_eq("ABC 1234", ft_strsubdel(&str, 0, ft_strlen(str)));
 	ck_assert_ptr_eq(str, NULL);
 	str = ft_strdup("ABC 1234");
-	printf("CUT %d: %s\n", 4, ft_strsubdel(&str, 4, ft_strlen(str)));
+	ck_assert_str_eq("1234", ft_strsubdel(&str, 4, ft_strlen(str)));
+
+#test	check_wstr_to_str
+	printf("CHECKING WSTR TO STR...\n");
+
+	ck_assert_str_eq("ABC", ft_wstr_to_str(L"ABC"));
+	ck_assert_str_eq("", ft_wstr_to_str(L""));
+	ck_assert_ptr_eq(NULL, ft_wstr_to_str(NULL));

@@ -17,6 +17,8 @@ void	ft_putwstr_fd(const wchar_t *str, int fd)
 	wchar_t *ptr;
 	size_t len;
 
+	if (!str || !*str)
+		return ;
 	ptr = (wchar_t *)str;
 	len = 0;
 	while (ptr[len])

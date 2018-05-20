@@ -154,6 +154,7 @@ char			*ft_strswapcase(const char *s);
 char			**ft_strsplit(const char *str, char c);
 char			*ft_strexpand(char *str, size_t expand_by);
 char			*ft_getwchar(const wchar_t ch);
+char			*ft_wstr_to_str(const wchar_t *wstr);
 int				ft_atoi(const char *str);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);

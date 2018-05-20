@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wstrdup.c                                       :+:      :+:    :+:   */
+/*   ft_wstr_to_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/20 07:50:13 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/20 07:51:45 by jpollore         ###   ########.fr       */
+/*   Created: 2018/05/20 08:06:23 by jpollore          #+#    #+#             */
+/*   Updated: 2018/05/20 08:06:31 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Save a copy of a wide string
-*/
-
-wchar_t	*ft_wstrdup(const wchar_t *src)
+char	*ft_wstr_to_str(const wchar_t *wstr)
 {
-	wchar_t	*copy;
-	size_t	len;
+	char	*str;
+	char	*tmp_wchar;
+	size_t	wlen;
 
-	len = 0;
-	if (!src || !*src)
+	if (!wstr)
 		return (NULL);
-	while (*(src + len))
-		len++;
-	if ((copy = ft_wstrnew(len)))
+	wlen = 0;
+	str = ft_strnew(0);
+	while (wstr[wlen])
 	{
-		ft_memcpy(copy, src, len * 4);
-		*(copy + len) = L'\0';
-		return (copy);
+		tmp_wchar = ft_getwchar(wstr[wlen++]);
+		str = ft_strjoindel(&str, &tmp_wchar);
 	}
-	return ((void*)0);
+	return (str);
 }

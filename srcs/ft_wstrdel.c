@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wstrdup.c                                       :+:      :+:    :+:   */
+/*   ft_wstrdel.c                                        :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/20 07:50:13 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/20 07:51:45 by jpollore         ###   ########.fr       */
+/*   Created: 2018/02/24 15:16:23 by jpollore          #+#    #+#             */
+/*   Updated: 2018/02/27 16:55:16 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Save a copy of a wide string
+** Free a wide string and set to NULL
 */
 
-wchar_t	*ft_wstrdup(const wchar_t *src)
+void	ft_wstrdel(wchar_t **as)
 {
-	wchar_t	*copy;
-	size_t	len;
-
-	len = 0;
-	if (!src || !*src)
-		return (NULL);
-	while (*(src + len))
-		len++;
-	if ((copy = ft_wstrnew(len)))
-	{
-		ft_memcpy(copy, src, len * 4);
-		*(copy + len) = L'\0';
-		return (copy);
-	}
-	return ((void*)0);
+	if (!as || !*as)
+		return ;
+	free(*as);
+	*as = NULL;
 }

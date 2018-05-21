@@ -24,21 +24,23 @@ static char	digit_to_char(int nb)
 		return (nb + '0');
 }
 
-char		*ft_itoa_base(int n, int base)
+char		*ft_ltoa_base(long n, int base)
 {
 	char		*res;
 	int			len;
 	int			neg;
-	long	nbr;
+	unsigned long long	nbr;
 
 	neg = 0;
-	if (((nbr = (long)n) < 0) && (nbr *= -1))
+	if ((n < 0) && (nbr = n * -1))
 	{
 		if (base == 10)
 			neg = 1;
 	}
+	else
+		nbr = n;
 	len = 1;
-	while (ft_powl(base, len) - 1 < nbr)
+	while (ft_powul(base, len) - 1 < nbr)
 		len++;
 	if (!(res = (char *)ft_memalloc(sizeof(*res) * ++len + neg)))
 		return (NULL);

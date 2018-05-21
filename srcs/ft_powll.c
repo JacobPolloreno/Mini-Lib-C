@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_powll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/26 13:31:45 by jpollore          #+#    #+#             */
-/*   Updated: 2018/04/26 14:57:56 by jpollore         ###   ########.fr       */
+/*   Created: 2018/04/25 14:42:20 by jpollore          #+#    #+#             */
+/*   Updated: 2018/04/25 14:42:21 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-/*
-** Convert integer to ASCII decimal-digit string
-*/
-
-char	*ft_itoa(int n)
+long long	ft_powll(long long base, long long pow)
 {
-	return (ft_itoa_base(n, 10));
+	if (pow == 0)
+		return (1);
+	else
+		return (base * ft_powll(base, pow - 1));
 }

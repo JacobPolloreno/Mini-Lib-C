@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 14:44:19 by jpollore          #+#    #+#             */
-/*   Updated: 2018/04/26 15:40:03 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/05/22 08:31:34 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,14 @@ static char	digit_to_char(int nb)
 
 char		*ft_ltoa_base(long n, int base)
 {
-	char		*res;
-	int			len;
-	int			neg;
+	char				*res;
+	int					len;
+	int					neg;
 	unsigned long long	nbr;
 
 	neg = 0;
 	if ((n < 0) && (nbr = n * -1))
-	{
-		if (base == 10)
-			neg = 1;
-	}
+		neg = base == 10 ? 1 : 0;
 	else
 		nbr = n;
 	len = 1;

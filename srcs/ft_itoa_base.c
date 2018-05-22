@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 14:44:19 by jpollore          #+#    #+#             */
-/*   Updated: 2018/04/26 15:40:03 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/05/22 08:26:10 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static char	digit_to_char(int nb)
 
 char		*ft_itoa_base(int n, int base)
 {
-	char		*res;
-	int			len;
-	int			neg;
+	char	*res;
+	int		len;
+	int		neg;
 	long	nbr;
 
 	neg = 0;

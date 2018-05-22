@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 14:11:50 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/10 14:12:04 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/05/22 08:25:52 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_putwstr_fd(const wchar_t *str, int fd)
 {
-	wchar_t *ptr;
-	size_t len;
+	wchar_t	*ptr;
+	size_t	len;
 
 	if (!str || !*str)
 		return ;

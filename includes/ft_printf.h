@@ -108,6 +108,7 @@ typedef	enum
 }	t_pad;
 
 int		ft_printf(const char *format, ...);
+int		ft_printf_fd(int fd, const char *format, ...);
 int		alias_c(t_data *data, va_list ap, char **format);
 int		alias_u(t_data *data, va_list ap, char **format);
 int		alias_d(t_data *data, va_list ap, char **format);

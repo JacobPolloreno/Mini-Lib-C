@@ -59,7 +59,7 @@ LIBC_SRCS = $(addprefix $(SRC)/, $(LIBC_CS))
 # Printf
 PRINTF_CS = ft_printf.c print_nums.c print_misc.c length_modifiers.c
 PRINTF_CS += flags_char_field.c flags_width_prec.c aliases_nums.c aliases_misc.c
-PRINTF_CS += print_modifiers.c conv_nums.c conv_misc.c
+PRINTF_CS += print_modifiers.c conv_nums.c conv_misc.c ft_printf_fd.c
 PRINTF_OBJS = $(patsubst %.c, %.o, $(PRINTF_CS))
 PRINTF_SRCS = $(addprefix $(PRINTF_SRC)/, $(PRINTF_CS))
 

@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/19 15:48:09 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/05/28 14:07:31 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_file	t_file;
 typedef	struct s_btree_fns	t_btree_fns;
 typedef	struct s_stack	t_stack;
 typedef	struct s_queue	t_queue;
+typedef	union u_tuple	t_tuple;
 typedef wchar_t*	t_wstr;
 struct			s_list
 {
@@ -77,6 +78,12 @@ struct			s_queue
 {
 	void		*data;
 	t_queue		*next;
+};
+union			u_tuple
+{
+	int			i[2];
+	char		c[2];
+	void		*data[2];
 };
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlen(const char *str);

@@ -86,6 +86,8 @@ static	int	chk_eof_before_return(t_btree **root, const int *fd, t_file **node)
 	char	eof_chck[2];
 	int		ret;
 
+	if (fd == STDIN_FILENO)
+		return (1);
 	if (!(*node)->content && (ret = read(*fd, eof_chck, 1)) != 1)
 	{
 		(*root) = btree_remove_fdnode(root, (void *)fd);

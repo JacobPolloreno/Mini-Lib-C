@@ -53,7 +53,9 @@ LIBC_CS += ft_uitoa.c ft_uitoa_base.c ft_powul.c ft_powi.c
 LIBC_CS += ft_powd.c ft_strjoindel.c ft_strsubdel.c ft_wstrlen.c
 LIBC_CS += ft_wstrdup.c ft_wstrdel.c ft_wstr_to_str.c
 LIBC_CS += ft_wstr_to_str.c ft_ltoa_base.c ft_ultoa_base.c
-LIBC_CS += ft_strsdel.c ft_arriter.c ft_arrmap.c
+LIBC_CS += ft_strsdel.c ft_iarriter.c ft_iarrmap.c ft_iarrappend.c
+LIBC_CS += ft_arriter.c ft_tarriter.c ft_tarrmap.c
+LIBC_CS += ft_tarrappend.c
 LIBC_OBJS = $(patsubst %.c, %.o, $(CS))
 LIBC_SRCS = $(addprefix $(SRC)/, $(LIBC_CS))
 

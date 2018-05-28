@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arriter.c                                       :+:      :+:    :+:   */
+/*   ft_tarrappend.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 14:52:03 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/28 14:58:03 by jpollore         ###   ########.fr       */
+/*   Created: 2018/05/28 15:41:52 by jpollore          #+#    #+#             */
+/*   Updated: 2018/05/28 15:47:26 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_arriter(void *arr, size_t len, size_t data_size, void (*f)(void *))
+t_tuple	*ft_tarrappend(t_tuple *arr, size_t len, t_tuple data)
 {
-	size_t i;
+	t_tuple	*new;
+	size_t	i;
 
-	if (!arr || !len || !f)
-		return ;
-	i = 0;
-	while (i < len)
-		(*f)((arr + data_size * i++));
+	if ((new = (t_tuple *)ft_memalloc(sizeof(*new) * len + 1)))
+	{
+		i = 0;
+		while (i < len)
+		{
+			new[i] = arr[i];
+			i++;
+		}
+		new[i] = data;
+	}
+	return (new);
 }

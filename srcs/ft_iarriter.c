@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arriter.c                                       :+:      :+:    :+:   */
+/*   ft_iarriter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 14:52:03 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/28 14:58:03 by jpollore         ###   ########.fr       */
+/*   Created: 2018/05/28 14:50:56 by jpollore          #+#    #+#             */
+/*   Updated: 2018/05/28 14:51:02 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_arriter(void *arr, size_t len, size_t data_size, void (*f)(void *))
+void	ft_iarriter(int *arr, size_t len, void (*f)(int))
 {
 	size_t i;
 
@@ -20,5 +20,5 @@ void	ft_arriter(void *arr, size_t len, size_t data_size, void (*f)(void *))
 		return ;
 	i = 0;
 	while (i < len)
-		(*f)((arr + data_size * i++));
+		(*f)(arr[i++]);
 }

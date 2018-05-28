@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/28 14:07:31 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/05/28 15:48:57 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,10 @@ void			*btree_updatefd(void **data, void *new_data);
 void			*btree_search_item(t_btree *root, void *data_ref,
 					int (*cmpf)(void *, void *));
 void			*dequeue(t_queue **head, t_queue **tail);
-void			ft_arriter(int *arr, size_t len, void (*f)(int));
+void			ft_arriter(void *arr, size_t len, size_t data_size,
+					void (*f)(void *));
+void			ft_iarriter(int *arr, size_t len, void (*f)(int));
+void			ft_tarriter(t_tuple *arr, size_t len, void (*f)(t_tuple));
 char			*ft_getstrupper(char *s);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(int n, int base);
@@ -202,7 +205,8 @@ int				stack_push(t_stack **top, void *data);
 int				enqueue(t_queue **head, t_queue **tail, void *data);
 int				queue_isempty(t_queue **head);
 int				ft_powi(int num, int pow);
-int				*ft_arrmap(int *arr, size_t len, int (*f)(int));
+int				*ft_iarrmap(int *arr, size_t len, int (*f)(int));
+int				*ft_iarrappend(int *arr, size_t len, int data);
 double			ft_powd(double num, double pow);
 long			ft_powl(long num, long pow);
 unsigned long	ft_powul(unsigned long num, unsigned long pow);
@@ -214,6 +218,9 @@ t_btree			*btree_remove_node(t_btree **root, void *data_ref,
 					t_btree_fns *bfns);
 t_btree			*btree_remove_fdnode(t_btree **root, void *data_ref);
 t_file			*create_file(int fd);
+t_tuple			*ft_tarrmap(t_tuple *arr, size_t len,
+					t_tuple (*f)(t_tuple));
+t_tuple			*ft_tarrappend(t_tuple *arr, size_t len, t_tuple data);
 wchar_t			*ft_wstrnew(size_t size);
 wchar_t			*ft_wstrdup(const wchar_t *src);
 #endif

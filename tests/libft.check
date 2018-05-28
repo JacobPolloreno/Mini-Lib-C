@@ -109,6 +109,25 @@ void	stack_print_int(void *data)
 	ft_putnbr(*(int*)data);
 }
 
+int	pow_2(int nb)
+{
+	return (ft_powi(nb, 2));
+}
+
+void	print_tuple_int(t_tuple data)
+{
+	printf("(%d, %d)\n", data.i[0], data.i[1]);
+}
+
+t_tuple	tuple_add(t_tuple data)
+{
+	t_tuple new;
+
+	new.i[0] = data.i[0] + 1;
+	new.i[1] = data.i[1] + 1;
+	return (new);
+}
+
 #test check_bzero
 	char str[20] = "42 is a school";
 	char str2[20] = "42 is a school";
@@ -1783,9 +1802,115 @@ void	stack_print_int(void *data)
 	ck_assert_str_eq("", ft_wstr_to_str(L""));
 	ck_assert_ptr_eq(NULL, ft_wstr_to_str(NULL));
 
-#test	check_arr_iter
-	printf("CHECKING ARRAY ITER...\n");
+#test	check_iarr_iter
+	printf("CHECKING INT ARRAY ITER...\n");
 
 	int arr[5] = {0, 1, 2, 3, 4};
 
-	ft_arriter(arr, &ft_putnbr);
+	ft_iarriter(arr, 5, &ft_putnbr);
+	printf("\n");
+
+#test	check_iarr_map
+	printf("CHECKING ARRAY MAP...\n");
+
+	int arr[5] = {0, 1, 2, 3, 4};
+	int *narr;
+
+	ft_iarriter(arr, 5, &ft_putnbr);
+	ft_printf("\n");
+
+	narr = ft_iarrmap(arr, 5, &pow_2);
+	ft_iarriter(narr, 5, &ft_putnbr);
+	ft_printf("\n");
+
+#test	check_iarr_append
+	printf("CHECKING ARRAY APPEND...\n");
+
+	int *arr;
+	int *narr;
+
+	arr = (int *)ft_memalloc(sizeof(*arr) * 5);
+	arr[0] = 0;
+	arr[1] = 1;
+	arr[2] = 2;
+	arr[3] = 3;
+	arr[4] = 4;
+
+	narr = ft_iarrappend(arr, 5, 5);
+	ck_assert_int_eq(narr[5], 5);
+	ft_iarriter(narr, 6, &ft_putnbr);
+	ft_printf("\n");
+
+#test	check_arr_iter
+	printf("CHECKING ARRAY ITER...\n");
+
+	int arr[5] = {7, 8, 9, 10, 11};
+
+	ft_arriter((void *)arr, 5, sizeof(int), &stack_print_int);
+	printf("\n");
+
+#test	check_tuple
+	printf("CHECKING TUPLE...\n");
+
+	t_tuple dim;
+
+	dim.i[0] = 1;
+	dim.i[1] = 2;
+
+	ck_assert_int_eq(dim.i[0], 1);
+	ck_assert_int_eq(dim.i[1], 2);
+	print_tuple_int(dim);
+
+#test	check_tarriter
+	printf("CHECKING TUPLE ITER...\n");
+
+	t_tuple *lst;
+
+	lst = (t_tuple *)ft_memalloc(sizeof(*lst) * 2);
+
+	lst[0].i[0] = 1;
+	lst[0].i[1] = 2;
+	lst[1].i[0] = 3;
+	lst[1].i[1] = 4;
+
+	ck_assert_int_eq(lst[0].i[0], 1);
+	ck_assert_int_eq(lst[0].i[1], 2);
+	ck_assert_int_eq(lst[1].i[0], 3);
+	ck_assert_int_eq(lst[1].i[1], 4);
+	ft_tarriter(lst, 2, &print_tuple_int);
+
+#test	check_tarrmap
+	printf("CHECKING TUPLE MAP...\n");
+
+	t_tuple *lst;
+	t_tuple	*nlst;
+
+	lst = (t_tuple *)ft_memalloc(sizeof(*lst) * 2);
+
+	lst[0].i[0] = 1;
+	lst[0].i[1] = 2;
+	lst[1].i[0] = 3;
+	lst[1].i[1] = 4;
+
+	nlst = ft_tarrmap(lst, 2, &tuple_add);
+	ft_tarriter(nlst, 2, &print_tuple_int);
+#
+#test	check_tarrappend
+	printf("CHECKING TUPLE APPEND...\n");
+
+	t_tuple *lst;
+	t_tuple	*nlst;
+	t_tuple new;
+
+	lst = (t_tuple *)ft_memalloc(sizeof(*lst) * 2);
+
+	lst[0].i[0] = 1;
+	lst[0].i[1] = 2;
+	lst[1].i[0] = 3;
+	lst[1].i[1] = 4;
+
+	new.i[0] = 5;
+	new.i[1] = 6;
+
+	nlst = ft_tarrappend(lst, 2, new);
+	ft_tarriter(nlst, 3, &print_tuple_int);

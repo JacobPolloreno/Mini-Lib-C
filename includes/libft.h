@@ -21,6 +21,13 @@
 # define STDIN_FILENO 0
 # define STDOUT_FILENO 1
 # define STDERR_FILENO 2
+# define ANSI_COLOR_RED     "\x1b[31m"
+# define ANSI_COLOR_GREEN   "\x1b[32m"
+# define ANSI_COLOR_YELLOW  "\x1b[33m"
+# define ANSI_COLOR_BLUE    "\x1b[34m"
+# define ANSI_COLOR_MAGENTA "\x1b[35m"
+# define ANSI_COLOR_CYAN    "\x1b[36m"
+# define ANSI_COLOR_RESET   "\x1b[0m"
 # include "ft_printf.h"
 
 typedef struct s_list	t_list;
@@ -96,6 +103,7 @@ void			ft_printbits(int nb);
 void			ft_printbits_fd(int nb, int fd);
 void			ft_sort_wordtab(char **tab);
 void			ft_strdel(char **as);
+void			ft_strsdel(char ***as);
 void			ft_strclr(char *s);
 void			ft_striter(char *s, void (*f)(char *));
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -128,6 +136,7 @@ void			*btree_updatefd(void **data, void *new_data);
 void			*btree_search_item(t_btree *root, void *data_ref,
 					int (*cmpf)(void *, void *));
 void			*dequeue(t_queue **head, t_queue **tail);
+void			ft_arriter(int *arr, size_t len, void (*f)(int));
 char			*ft_getstrupper(char *s);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(int n, int base);
@@ -186,6 +195,7 @@ int				stack_push(t_stack **top, void *data);
 int				enqueue(t_queue **head, t_queue **tail, void *data);
 int				queue_isempty(t_queue **head);
 int				ft_powi(int num, int pow);
+int				*ft_arrmap(int *arr, size_t len, int (*f)(int));
 double			ft_powd(double num, double pow);
 long			ft_powl(long num, long pow);
 unsigned long	ft_powul(unsigned long num, unsigned long pow);

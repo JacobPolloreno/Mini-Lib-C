@@ -54,6 +54,8 @@ learning purposes.
 | [enqueue.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/enqueue.c) | ```int enqueue(t_queue **head, t_queue **tail, void *data);```  | Insert a node at queue tail |
 | [fdcmp.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/fdcmp.c) | ```int fd_cmp(void *fd1, void *fd2);```  | Comparison function for **t_file** structs comparing file descriptor ints |
 | [fdsearchcmp.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/fdsearchcmp.c) | ```int fdsearchcmp(void *data_ref, void *node);```  | Comparison function for **t_file** structs comparing file descriptor ints |
+| [ft_arriter.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_arriter.c) | ```void ft_arriter(int *arr, size_t len, void (*f)(int));``` | Iterates through integer array and performs function on elements. |
+| [ft_arrmap.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_arrmap.c) | ```int ft_arrmap(int *arr, size_t len, void (*f)(int));``` | Iterates through integer array and performs function on elements. Returns array with f(element) |
 | [ft_atoi.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_atoi.c) | ```int ft_atoi(const char *str);``` | Converts ASCII string to integer. Reimplementation of standard atoi. |
 | [ft_bzero.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_bzero.c) | ```void ft_bzero(void *s, size_t n);``` | Write zeroes to a byte string. Reimplementation of standard bzero. |
 | [ft_createfile.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_createfile.c) | ```t_file *create_file(int fd);``` | Returns a new malloc'd t_file |
@@ -110,6 +112,7 @@ learning purposes.
 | [ft_strcre.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strcre.c) | ```void ft_strcre(char *str, char ch1, char ch2);``` |  Replace character in string |
 | [ft_strdel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strdel.c) | ```void ft_strdel(char **as);``` |  Free string and set to NULL |
 | [ft_strdup.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strdup.c) | ```char *ft_strdup(const char *src);``` |  Save a copy of a string. Reimplementation of strdup. |
+| [ft_strsdel.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strsdel.c) | ```void ft_strsdel(char ***as);``` |  Free strings and set to NULL |
 | [ft_strendswith.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strendswith.c) | ```int ft_strendswith(const void *suffix, const void *s);``` |  Test if the string ends with the suffix |
 | [ft_strequ.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strequ.c) | ```int ft_strequ(const char *s1, const char *s2);``` |  Test if two strings are equal. |
 | [ft_strexpand.c](https://github.com/JacobPolloreno/42LIBFT/tree/master/srcs/ft_strexpand.c) | ```int ft_strequ(const char *s1, const char *s2);``` |  Expand malloc'd (realloc) space of string. |

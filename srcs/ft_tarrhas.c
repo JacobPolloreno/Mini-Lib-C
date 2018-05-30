@@ -12,7 +12,8 @@
 
 #include "libft.h"
 
-int	ft_tarrhas(t_tuple *arr, size_t len, t_tuple data, int	(*f)(t_tuple, t_tuple))
+int	ft_tarrhas(t_tuple *arr, size_t len, t_tuple data,
+			int (*f)(t_tuple, t_tuple))
 {
 	size_t	i;
 

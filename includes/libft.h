@@ -208,7 +208,8 @@ int				ft_powi(int num, int pow);
 int				*ft_iarrmap(int *arr, size_t len, int (*f)(int));
 int				*ft_iarrappend(int *arr, size_t len, int data);
 int				ft_ituplecmp(t_tuple t1, t_tuple t2);
-int				ft_tarrhas(t_tuple *arr, size_t len, t_tuple data);
+int				ft_tarrhas(t_tuple *arr, size_t len, t_tuple data,
+					int (*f)(t_tuple, t_tuple));
 double			ft_powd(double num, double pow);
 long			ft_powl(long num, long pow);
 unsigned long	ft_powul(unsigned long num, unsigned long pow);

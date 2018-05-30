@@ -1894,7 +1894,7 @@ t_tuple	tuple_add(t_tuple data)
 
 	nlst = ft_tarrmap(lst, 2, &tuple_add);
 	ft_tarriter(nlst, 2, &print_tuple_int);
-#
+
 #test	check_tarrappend
 	printf("CHECKING TUPLE APPEND...\n");
 
@@ -1914,3 +1914,7 @@ t_tuple	tuple_add(t_tuple data)
 
 	nlst = ft_tarrappend(lst, 2, new);
 	ft_tarriter(nlst, 3, &print_tuple_int);
+
+	printf("\n");
+	nlst = ft_tarrappend(NULL, 0, new);
+	ft_tarriter(nlst, 1, &print_tuple_int);

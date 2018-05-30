@@ -207,6 +207,8 @@ int				queue_isempty(t_queue **head);
 int				ft_powi(int num, int pow);
 int				*ft_iarrmap(int *arr, size_t len, int (*f)(int));
 int				*ft_iarrappend(int *arr, size_t len, int data);
+int				ft_ituplecmp(t_tuple t1, t_tuple t2);
+int				ft_tarrhas(t_tuple *arr, size_t len, t_tuple data);
 double			ft_powd(double num, double pow);
 long			ft_powl(long num, long pow);
 unsigned long	ft_powul(unsigned long num, unsigned long pow);
@@ -218,6 +220,7 @@ t_btree			*btree_remove_node(t_btree **root, void *data_ref,
 					t_btree_fns *bfns);
 t_btree			*btree_remove_fdnode(t_btree **root, void *data_ref);
 t_file			*create_file(int fd);
+t_tuple			ft_ituple(int nb1, int nb2);
 t_tuple			*ft_tarrmap(t_tuple *arr, size_t len,
 					t_tuple (*f)(t_tuple));
 t_tuple			*ft_tarrappend(t_tuple *arr, size_t len, t_tuple data);

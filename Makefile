@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/04/24 14:48:50 by jpollore         ###   ########.fr        #
+#    Updated: 2018/05/31 14:11:39 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ LIBC_CS += ft_wstr_to_str.c ft_ltoa_base.c ft_ultoa_base.c
 LIBC_CS += ft_strsdel.c ft_iarriter.c ft_iarrmap.c ft_iarrappend.c
 LIBC_CS += ft_arriter.c ft_tarriter.c ft_tarrmap.c
 LIBC_CS += ft_tarrappend.c ft_tarrhas.c ft_ituplecmp.c ft_ituple.c
+LIBC_CS += argmin.c
 LIBC_OBJS = $(patsubst %.c, %.o, $(CS))
 LIBC_SRCS = $(addprefix $(SRC)/, $(LIBC_CS))
 

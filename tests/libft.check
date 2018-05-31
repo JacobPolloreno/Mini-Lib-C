@@ -128,6 +128,11 @@ t_tuple	tuple_add(t_tuple data)
 	return (new);
 }
 
+int	int_cmp_min(void *d1, void *d2)
+{
+	return (*((int *)d1) < *((int *)d2) ? 1 : 0);
+}
+
 #test check_bzero
 	char str[20] = "42 is a school";
 	char str2[20] = "42 is a school";
@@ -1918,3 +1923,12 @@ t_tuple	tuple_add(t_tuple data)
 	printf("\n");
 	nlst = ft_tarrappend(NULL, 0, new);
 	ft_tarriter(nlst, 1, &print_tuple_int);
+
+#test	check_argmin
+	printf("CHECKING ARGMIN...\n");
+
+	int arr[5] = {-99, 100, 4, 0, 12345};
+	int arr2[5] = {99, 100, 4, 0, 12345};
+
+	ck_assert_int_eq(argmin(arr, 5, &int_cmp_min), 0);
+	ck_assert_int_eq(argmin(arr2, 5, &int_cmp_min), 3);

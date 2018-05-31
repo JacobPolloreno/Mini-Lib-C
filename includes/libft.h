@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/28 15:48:57 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/05/31 14:32:35 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,8 @@ int				*ft_iarrappend(int *arr, size_t len, int data);
 int				ft_ituplecmp(t_tuple t1, t_tuple t2);
 int				ft_tarrhas(t_tuple *arr, size_t len, t_tuple data,
 					int (*f)(t_tuple, t_tuple));
+int				arrargcmp(void *arr, size_t len, size_t data_size,
+					int (*f)(void *, void *));
 double			ft_powd(double num, double pow);
 long			ft_powl(long num, long pow);
 unsigned long	ft_powul(unsigned long num, unsigned long pow);

@@ -212,6 +212,7 @@ int				ft_tarrhas(t_tuple *arr, size_t len, t_tuple data,
 					int (*f)(t_tuple, t_tuple));
 int				arrargcmp(void *arr, size_t len, size_t data_size,
 					int (*f)(void *, void *));
+int			ft_iarrhas(int *arr, size_t len, int data);
 double			ft_powd(double num, double pow);
 long			ft_powl(long num, long pow);
 unsigned long	ft_powul(unsigned long num, unsigned long pow);

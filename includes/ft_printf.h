@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include "libft.h"
 # include <stdarg.h>
+# include <stdint.h>
 
 /*
 ** LINE

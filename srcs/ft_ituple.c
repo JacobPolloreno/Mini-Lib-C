@@ -16,7 +16,7 @@ t_tuple	ft_ituple(int nb1, int nb2)
 {
 	t_tuple	tuple;
 
-	tuple.i[0] = nb1;
-	tuple.i[1] = nb2;
+	tuple.x = nb1;
+	tuple.y = nb2;
 	return (tuple);
 }

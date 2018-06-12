@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsdel.c                                       :+:      :+:    :+:   */
+/*   ft_tarrappendin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/26 14:16:18 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/26 14:25:57 by jpollore         ###   ########.fr       */
+/*   Created: 2018/05/28 15:41:52 by jpollore          #+#    #+#             */
+/*   Updated: 2018/05/28 15:47:26 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Free strings and set to NULL
-*/
-
-void	ft_strsdel(char ***as)
+void	ft_tarrappendin(t_tuple **arr, size_t len, t_tuple data)
 {
-	char **ptr;
+	t_tuple	*new;
+	size_t	i;
 
-	if (!as || !*as)
-		return ;
-	ptr = *as;
-	while (**as)
+	if ((new = (t_tuple *)ft_memalloc(sizeof(*new) * (len + 1))))
 	{
-		free(**as);
-		(*as)++;
+		i = 0;
+		while (i < len)
+		{
+			new[i] = (*arr)[i];
+			i++;
+		}
+		new[i] = data;
 	}
-	free(ptr);
-	ptr = NULL;
+	free(*arr);
+	*arr = new;
 }

@@ -50,7 +50,7 @@ char			**ft_strsplit(const char *str, char c)
 	if (!str)
 		return (NULL);
 	words = get_word_cnt(str, c);
-	if (!(res = (char **)ft_memalloc(sizeof(*res) * words + 1)))
+	if (!(res = (char **)ft_memalloc(sizeof(*res) * (words + 1))))
 		return (NULL);
 	current_word = 0;
 	len = 0;
@@ -64,6 +64,5 @@ char			**ft_strsplit(const char *str, char c)
 		res[current_word++] = ft_strsub(str, len, sub_len);
 		len += sub_len;
 	}
-	res[current_word] = ((void *)0);
 	return (res);
 }

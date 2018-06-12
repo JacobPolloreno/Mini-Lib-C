@@ -12,20 +12,21 @@
 
 #include "libft.h"
 
-t_tuple	*ft_tarrappend(t_tuple *arr, size_t len, t_tuple data)
+t_tuple	*ft_tarrappend(t_tuple **arr, size_t len, t_tuple data)
 {
 	t_tuple	*new;
 	size_t	i;
 
-	if ((new = (t_tuple *)ft_memalloc(sizeof(*new) * len + 1)))
+	if ((new = (t_tuple *)ft_memalloc(sizeof(*new) * (len + 1))))
 	{
 		i = 0;
 		while (i < len)
 		{
-			new[i] = arr[i];
+			new[i] = (*arr)[i];
 			i++;
 		}
 		new[i] = data;
 	}
+	free(*arr);
 	return (new);
 }

@@ -37,7 +37,7 @@ typedef struct s_file	t_file;
 typedef	struct s_btree_fns	t_btree_fns;
 typedef	struct s_stack	t_stack;
 typedef	struct s_queue	t_queue;
-typedef	union u_tuple	t_tuple;
+typedef	struct s_tuple	t_tuple;
 typedef wchar_t*	t_wstr;
 struct			s_list
 {
@@ -79,11 +79,10 @@ struct			s_queue
 	void		*data;
 	t_queue		*next;
 };
-union			u_tuple
+struct			s_tuple
 {
-	int			i[2];
-	char		c[2];
-	void		*data[2];
+	int		x;
+	int		y;
 };
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlen(const char *str);
@@ -227,7 +226,8 @@ t_file			*create_file(int fd);
 t_tuple			ft_ituple(int nb1, int nb2);
 t_tuple			*ft_tarrmap(t_tuple *arr, size_t len,
 					t_tuple (*f)(t_tuple));
-t_tuple			*ft_tarrappend(t_tuple *arr, size_t len, t_tuple data);
+t_tuple			*ft_tarrappend(t_tuple **arr, size_t len, t_tuple data);
+void			ft_tarrappendin(t_tuple **arr, size_t len, t_tuple data);
 wchar_t			*ft_wstrnew(size_t size);
 wchar_t			*ft_wstrdup(const wchar_t *src);
 #endif

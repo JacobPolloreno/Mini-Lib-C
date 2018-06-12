@@ -14,7 +14,7 @@
 
 int	ft_ituplecmp(t_tuple t1, t_tuple t2)
 {
-	if (t1.i[0] != t2.i[0] || t1.i[1] != t2.i[1])
+	if (t1.x != t2.x || t1.y != t2.y)
 		return (0);
 	return (1);
 }

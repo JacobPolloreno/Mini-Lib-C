@@ -6,7 +6,7 @@
 #    By: jpollore <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:59:03 by jpollore          #+#    #+#              #
-#    Updated: 2018/05/31 14:11:39 by jpollore         ###   ########.fr        #
+#    Updated: 2018/06/15 08:38:44 by jpollore         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ LIBC_CS += ft_strsdel.c ft_iarriter.c ft_iarrmap.c ft_iarrappend.c
 LIBC_CS += ft_arriter.c ft_tarriter.c ft_tarrmap.c
 LIBC_CS += ft_tarrappend.c ft_tarrhas.c ft_ituplecmp.c ft_ituple.c
 LIBC_CS += arrargcmp.c ft_iarrhas.c ft_tarrappendin.c
+LIBC_CS += ft_floorsqrt.c
 LIBC_OBJS = $(patsubst %.c, %.o, $(CS))
 LIBC_SRCS = $(addprefix $(SRC)/, $(LIBC_CS))
 

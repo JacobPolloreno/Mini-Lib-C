@@ -6,7 +6,7 @@
 /*   By: jpollore <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 08:53:00 by jpollore          #+#    #+#             */
-/*   Updated: 2018/05/31 14:32:35 by jpollore         ###   ########.fr       */
+/*   Updated: 2018/06/15 08:38:56 by jpollore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,7 @@ int				ft_tarrhas(t_tuple *arr, size_t len, t_tuple data,
 int				arrargcmp(void *arr, size_t len, size_t data_size,
 					int (*f)(void *, void *));
 int			ft_iarrhas(int *arr, size_t len, int data);
+int				ft_floorsqrt(int x);
 double			ft_powd(double num, double pow);
 long			ft_powl(long num, long pow);
 unsigned long	ft_powul(unsigned long num, unsigned long pow);

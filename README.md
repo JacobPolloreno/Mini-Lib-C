@@ -6,7 +6,7 @@ learning purposes.
 
 ## Getting Started
 * Note: tested on Mac OS High Sierra
-1. `git clone https://github.com/JacobPolloreno/42LIBFT.git libft`
+1. `git clone https://github.com/JacobPolloreno/Mini-Lib-C libft`
 2. `cd libft`
 3. run `make` to compile the library and produce a `libft.a` file
 	* create env variable ```export CDEBUG=1``` before compiling to add ```-g``` flag for
